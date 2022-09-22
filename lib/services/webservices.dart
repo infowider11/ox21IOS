@@ -4,114 +4,102 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:ox21/constants/global_keys.dart';
-import 'dart:convert'as convert;
+import 'dart:convert' as convert;
 
 import 'package:ox21/services/api_urls.dart';
 import 'package:ox21/widgets/custom_snackbar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constants/global_functions.dart';
-class Webservices{
+
+class Webservices {
   static Future<bool> createAccount({
-  required String uuid,
+    required String uuid,
     required String password,
     required BuildContext context,
-})async{
+  }) async {
     var request = {
       "uuid": uuid,
       "password": password,
     };
-    try{
+    try {
       print(ApiUrls.signUpUrl + '?t=1');
       var response = await http.post(
         Uri.parse(ApiUrls.signUpUrl + '?t=1'),
         body: request,
       );
-      if(response.statusCode==200){
+      if (response.statusCode == 200) {
         print('success');
         print(response.body);
         var jsonResponse = convert.jsonDecode(response.body);
-        if(jsonResponse['status']==1){
+        if (jsonResponse['status'] == 1) {
           await updateSharedPreference(jsonResponse['userdetail']);
           return true;
-        }else{
+        } else {
           showSnackbar(context, '${jsonResponse['message']}');
         }
-
-
-      }
-      else{
+      } else {
         print('fail ${response.statusCode} : ${response.body}');
-        if(response.statusCode==500){
-          try{
+        if (response.statusCode == 500) {
+          try {
             var jsonResponse = convert.jsonDecode(response.body);
             showSnackbar(context, '${jsonResponse['message']}');
-
-          }catch(e){
+          } catch (e) {
             print('Error in catch block f4453 $e');
           }
-
-        }
-        else{
+        } else {
           showSnackbar(context, 'Some error Occured please try again later');
         }
         // var jsonResponse = conver
         // showSnackbar(context, 'text')
       }
-    }catch(e){
+    } catch (e) {
       print('Error in Catch block $e');
       showSnackbar(context, 'Some Error occurred.Please try again later.');
     }
     return false;
   }
 
-
   static Future<bool> login({
     required String uuid,
     required String password,
     required BuildContext context,
-  })async{
+  }) async {
     var request = {
       "uuid": uuid,
       "password": password,
     };
-    try{
+    try {
       var response = await http.post(
         Uri.parse(ApiUrls.loginUrl),
         body: request,
       );
-      if(response.statusCode==200){
+      if (response.statusCode == 200) {
         print('success');
         print(response.body);
         var jsonResponse = convert.jsonDecode(response.body);
-        if(jsonResponse['status']==1){
+        if (jsonResponse['status'] == 1) {
           await updateSharedPreference(jsonResponse['data']);
           return true;
-        }else{
+        } else {
           showSnackbar(context, '${jsonResponse['message']}');
         }
-
-
-      }
-      else{
+      } else {
         print('fail ${response.statusCode} : ${response.body}');
-        if(response.statusCode==500){
-          try{
+        if (response.statusCode == 500) {
+          try {
             var jsonResponse = convert.jsonDecode(response.body);
             showSnackbar(context, '${jsonResponse['message']}');
-
-          }catch(e){
+          } catch (e) {
             print('Error in catch block f4453 $e');
           }
-
-        }
-        else{
+        } else {
           showSnackbar(context, 'Some error Occured please try again later');
         }
         // var jsonResponse = conver
         // showSnackbar(context, 'text')
       }
-    }catch(e){
+    } catch (e) {
       print('Error in Catch block $e');
     }
     return false;
@@ -120,54 +108,48 @@ class Webservices{
   static Future<bool> forgotPassword({
     required String uuid,
     required BuildContext context,
-  })async{
+  }) async {
     var request = {
       "uuid": uuid,
     };
-    try{
+    try {
       var response = await http.post(
         Uri.parse(ApiUrls.forgotPassword),
         body: request,
       );
-      if(response.statusCode==200){
+      if (response.statusCode == 200) {
         print('success');
         print(response.body);
         var jsonResponse = convert.jsonDecode(response.body);
-        if(jsonResponse['status']==1 || jsonResponse['status']=='1'){
+        if (jsonResponse['status'] == 1 || jsonResponse['status'] == '1') {
           return true;
-        }else{
+        } else {
           showSnackbar(context, jsonResponse['message']);
         }
-
-      }
-      else{
+      } else {
         print('fail ${response.statusCode} : ${response.body}');
-        if(response.statusCode==500){
-          try{
+        if (response.statusCode == 500) {
+          try {
             var jsonResponse = convert.jsonDecode(response.body);
             showSnackbar(context, '${jsonResponse['message']}');
-
-          }catch(e){
+          } catch (e) {
             print('Error in catch block f4453 $e');
           }
-
-        }
-        else{
+        } else {
           showSnackbar(context, 'Some error Occured please try again later');
         }
         // var jsonResponse = conver
         // showSnackbar(context, 'text')
       }
-    }catch(e){
+    } catch (e) {
       print('Error in Catch block $e');
     }
     return false;
   }
 
-
   static Future<http.Response> getData(String url) async {
     http.Response response =
-    http.Response('{"message":"failure","status":0}', 404);
+        http.Response('{"message":"failure","status":0}', 404);
     log('called $url');
     try {
       response = await http.get(
@@ -183,23 +165,25 @@ class Webservices{
 
   static Future<Map<String, dynamic>> postData(
       {required String url,
-        required Map<String, dynamic> request,
-        required BuildContext context, bool showSuccessMessage  = false, bool isGetMethod = false, bool showErrorMessage = true}) async {
+      required Map<String, dynamic> request,
+      required BuildContext context,
+      bool showSuccessMessage = false,
+      bool isGetMethod = false,
+      bool showErrorMessage = true}) async {
     http.Response response =
-    http.Response('{"message":"failure","status":0}', 404);
+        http.Response('{"message":"failure","status":0}', 404);
     try {
       log('the requesst for $url is $request');
       String tempGetRequest = '?';
       request.forEach((key, value) {
-        tempGetRequest +=key+'=' + value + '&';
-
+        tempGetRequest += key + '=' + value + '&';
       });
-      tempGetRequest = tempGetRequest.substring(0,tempGetRequest.length-1);
+      tempGetRequest = tempGetRequest.substring(0, tempGetRequest.length - 1);
       print('the url issss $url$tempGetRequest');
       late http.Response response;
-      if(isGetMethod){
+      if (isGetMethod) {
         response = await http.get(Uri.parse(url + tempGetRequest));
-      }else{
+      } else {
         response = await http.post(Uri.parse(url), body: request);
       }
       if (response.statusCode == 200) {
@@ -207,25 +191,25 @@ class Webservices{
         var jsonResponse = convert.jsonDecode(response.body);
         log('the response for $url is $jsonResponse');
         if (jsonResponse['status'] == 1) {
-          if(showSuccessMessage){
-            showSnackbar(MyGlobalKeys.navigatorKey.currentContext!, jsonResponse['message']);
+          if (showSuccessMessage) {
+            showSnackbar(MyGlobalKeys.navigatorKey.currentContext!,
+                jsonResponse['message']);
           }
           return jsonResponse;
         } else {
-         if(showErrorMessage){
-           showSnackbar(context, jsonResponse['message']);
-         }
+          if (showErrorMessage) {
+            showSnackbar(context, jsonResponse['message']);
+          }
         }
         return jsonResponse;
-      }
-      else{
+      } else {
         print('the response is ${response.statusCode} : ${response.body}');
-        try{
-          if(showErrorMessage){
+        try {
+          if (showErrorMessage) {
             var jsonResponse = convert.jsonDecode(response.body);
-            showSnackbar(context, jsonResponse['message'] );
+            showSnackbar(context, jsonResponse['message']);
           }
-        }catch(e){
+        } catch (e) {
           print('Error in  catch block 39 $e');
         }
       }
@@ -249,76 +233,80 @@ class Webservices{
   //   }
   //   return response;
   // }
-  static Future<Map<String, dynamic>> getMap(String url, {Map<String, dynamic>? request}) async {
-
+  static Future<Map<String, dynamic>> getMap(String url,
+      {Map<String, dynamic>? request}) async {
     Map<String, dynamic> tempRequest = {};
-    if(request!=null){
+    if (request != null) {
       request.forEach((key, value) {
-        if(value!=null){
+        if (value != null) {
           tempRequest['$key'] = value;
         }
       });
     }
-    try{
+    try {
       log('the request for url $url is $tempRequest');
       late http.Response response;
-      if(request==null){
+      if (request == null) {
         response = await http.get(Uri.parse(url));
-      }else{
+      } else {
         response = await http.post(Uri.parse(url), body: tempRequest);
       }
       if (response.statusCode == 200) {
         var jsonResponse = convert.jsonDecode(response.body);
         if (jsonResponse['status'].toString() == '1') {
           log('the respognse for url: $url is ${jsonResponse}');
-          return jsonResponse['data'] ?? jsonResponse['content']??jsonResponse;
+          return jsonResponse['data'] ??
+              jsonResponse['content'] ??
+              jsonResponse;
         } else {
           log('Error in response for url $url -----${response.body}');
         }
-      }else{
+      } else {
         print('error in status code ${response.statusCode}');
         log(response.body);
       }
-    }catch(e){
+    } catch (e) {
       print('inside catch block 546745 $e');
     }
 
     return {};
   }
+
   static Future<List> getList(String url) async {
     var response = await getData(url);
     if (response.statusCode == 200) {
       var jsonResponse = convert.jsonDecode(response.body);
       if (jsonResponse['status'] == 1) {
         log('the response for url: $url is ${jsonResponse}');
-        return jsonResponse['data']??[];
+        return jsonResponse['data'] ?? [];
       } else {
         log('Error in response for url $url -----${response.body}');
       }
     }
     return [];
   }
-  static Future<List> getListFromRequestParameters(String url, Map<String, dynamic> request,{ bool isGetMethod = true} ) async {
 
+  static Future<List> getListFromRequestParameters(
+      String url, Map<String, dynamic> request,
+      {bool isGetMethod = true}) async {
     Map<String, dynamic> tempRequest = {};
     request.forEach((key, value) {
-      if(value!=null){
+      if (value != null) {
         tempRequest['$key'] = value;
       }
     });
-    try{
+    try {
       log('the request for url $url is $tempRequest');
       String tempGetRequest = '?';
       tempRequest.forEach((key, value) {
-        tempGetRequest +=key+'=' + value + '&';
-
+        tempGetRequest += key + '=' + value + '&';
       });
-      tempGetRequest = tempGetRequest.substring(0,tempGetRequest.length-1);
+      tempGetRequest = tempGetRequest.substring(0, tempGetRequest.length - 1);
       print('the url issss $url$tempGetRequest');
       late http.Response response;
-      if(isGetMethod){
+      if (isGetMethod) {
         response = await http.get(Uri.parse(url + tempGetRequest));
-      }else{
+      } else {
         response = await http.post(Uri.parse(url), body: tempRequest);
       }
       if (response.statusCode == 200) {
@@ -329,12 +317,13 @@ class Webservices{
         } else {
           log('Error in response for url $url -----${response.body}');
         }
-      }else{
+      } else {
         print('error in status code ${response.statusCode}');
         log('The response for url ${url} with status code ${response.statusCode} is ${response.body}');
       }
-    }catch(e){
-      print('inside catch block. Error in getting response for search doctors $e');
+    } catch (e) {
+      print(
+          'inside catch block. Error in getting response for search doctors $e');
     }
 
     return [];
@@ -366,13 +355,14 @@ class Webservices{
         "content-type": "multipart/form-data",
       };
 
-
       if (files != null) {
         (files as Map<dynamic, dynamic>).forEach((key, value) async {
-          request.files.add(await http.MultipartFile.fromPath(key, value.path,));
+          request.files.add(await http.MultipartFile.fromPath(
+            key,
+            value.path,
+          ));
         });
       }
-
 
       log(request.fields.toString());
       final streamedResponse = await request.send();
@@ -393,24 +383,19 @@ class Webservices{
       // return response;
     } catch (e) {
       print(e);
-      try{
-        var response = await http.post(
-            url,
-            body: body
-        );
-        if(response.statusCode==200){
+      try {
+        var response = await http.post(url, body: body);
+        if (response.statusCode == 200) {
           var jsonResponse = convert.jsonDecode(response.body);
           return jsonResponse;
         }
-      }catch(error){
+      } catch (error) {
         print('inside double catch block $error');
       }
       return {'status': 0, 'message': "fail"};
       // return null;
     }
   }
-
-
 
   static Future<Map<String, dynamic>> sampleFunction({
     required Map<String, dynamic> body,
@@ -439,20 +424,21 @@ class Webservices{
         "content-type": "multipart/form-data",
       };
 
-
       if (files != null) {
         (files as Map<dynamic, dynamic>).forEach((key, value) async {
-          request.files.add(await http.MultipartFile.fromPath(key, value.path,));
+          request.files.add(await http.MultipartFile.fromPath(
+            key,
+            value.path,
+          ));
         });
       }
-      if(screenshots.length!=0){
-        for(int i = 0; i<screenshots.length;i++) {
-          request.files.add(
-              await http.MultipartFile.fromPath('screenshots', screenshots[i].path));
+      if (screenshots.length != 0) {
+        for (int i = 0; i < screenshots.length; i++) {
+          request.files.add(await http.MultipartFile.fromPath(
+              'screenshots', screenshots[i].path));
         }
         // request.files.add(await http.MultipartFile.fromPath('screenshots', screenshots));
       }
-
 
       log(request.fields.toString());
       final streamedResponse = await request.send();
@@ -474,7 +460,8 @@ class Webservices{
       return jsonResponse;
       // return response;
     } catch (e) {
-      showSnackbar(MyGlobalKeys.navigatorKey.currentContext!, 'Error in uploading. Please reupload your video');
+      showSnackbar(MyGlobalKeys.navigatorKey.currentContext!,
+          'Error in uploading. Please reupload your video');
       print('Error in catch block');
       print(e);
       // try{
@@ -494,12 +481,11 @@ class Webservices{
     }
   }
 
-
   static Future<Map<String, dynamic>> postDataWithFilesNodeJsFunction({
     required Map<String, dynamic> body,
     required BuildContext context,
-
     required Map<String, List<File>> nodeFiles,
+
     /// endpoint of the api
     required String apiUrl,
     bool showSuccessMessage = false,
@@ -521,14 +507,14 @@ class Webservices{
         "content-type": "multipart/form-data",
       };
 
-      if(nodeFiles!=null){
-        nodeFiles.forEach((key, value) async{
-          value.forEach((element) async{
-            request.files.add(await http.MultipartFile.fromPath(key, element.path));
+      if (nodeFiles != null) {
+        nodeFiles.forEach((key, value) async {
+          value.forEach((element) async {
+            request.files
+                .add(await http.MultipartFile.fromPath(key, element.path));
           });
         });
       }
-
 
       log(request.fields.toString());
       final streamedResponse = await request.send();
@@ -550,7 +536,8 @@ class Webservices{
       return jsonResponse;
       // return response;
     } catch (e) {
-      showSnackbar(MyGlobalKeys.navigatorKey.currentContext!, 'Error in uploading. Please reupload your video');
+      showSnackbar(MyGlobalKeys.navigatorKey.currentContext!,
+          'Error in uploading. Please reupload your video');
       print('Error in catch block');
       print(e);
       // try{
@@ -570,61 +557,60 @@ class Webservices{
     }
   }
 
-
   static Future<String> getPoliciesData({
     required String url,
-  })async{
+  }) async {
     var response = await http.get(Uri.parse(url));
-    if(response.statusCode==200){
+    if (response.statusCode == 200) {
       var jsonResponse = convert.jsonDecode(response.body);
       print('url is $url');
       print('the response is $jsonResponse');
-      if(jsonResponse['status']==1){
+      if (jsonResponse['status'] == 1) {
         return jsonResponse['data'];
-      }
-      else{
+      } else {
         // sho(jsonResponse['message']);
         return "";
       }
-    }
-    else{
+    } else {
       // presentToast("check your internet connection");
       return "";
     }
   }
 
-
-  static Future<String> getLiveConversionRateBTCToUSD()async{
+  static Future<String> getLiveConversionRateBTCToUSD() async {
     String rate = '0';
     print('Calling ${ApiUrls.bitcoinConversionUrl}');
-    var response =  await http.get(Uri.parse(ApiUrls.bitcoinConversionUrl));
-    if(response.statusCode==200){
-      try{
+    var response = await http.get(Uri.parse(ApiUrls.bitcoinConversionUrl));
+    if (response.statusCode == 200) {
+      try {
         var jsonResponse = convert.jsonDecode(response.body);
         print('the price data is ${jsonResponse[0]}');
         return jsonResponse[0]['price'];
-      }catch(e){
+      } catch (e) {
         print('Error in catch block 423 $e');
       }
     }
     return rate;
   }
-  static Future<int> getServerStatus()async{
-    return 1;
-    //
-    // try{var response = await http.get(Uri.parse(ApiUrls.getServerStatus));
-    // if(response.statusCode==200){
-    //   var jsonResponse = convert.jsonDecode(response.body);
-    //   if(jsonResponse['status']=='1' || jsonResponse['status']==1){
-    //     return 1;
-    //   }else{
-    //     print('the server status is not 1');
-    //   }
-    // }else{
-    //   print('the server status code is not 200 ${response.statusCode}');
-    // }}catch(e){
-    //   print('Error in catch block $e');
-    // }
-    // return 0;
+
+  static Future<int> getServerStatus() async {
+    // return 1;
+
+    try {
+      var response = await http.get(Uri.parse(ApiUrls.getServerStatus));
+      if (response.statusCode == 200) {
+        var jsonResponse = convert.jsonDecode(response.body);
+        if (jsonResponse['status'] == '1' || jsonResponse['status'] == 1) {
+          return 1;
+        } else {
+          print('the server status is not 1');
+        }
+      } else {
+        print('the server status code is not 200 ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Error in catch block $e');
+    }
+    return 0;
   }
 }

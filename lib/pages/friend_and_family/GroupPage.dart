@@ -125,6 +125,7 @@ class _GroupPageState extends State<GroupPage> {
 
   @override
   Widget build(BuildContext context) {
+    print('${widget.groupDetail['groupID']}');
     return Scaffold(
       appBar: appBar(
           context: context,
@@ -305,7 +306,7 @@ class _GroupPageState extends State<GroupPage> {
                     child: messages.length == 0
                         ? Center(
                             child: ParagraphText(
-                              text: 'Type a message to start conversation',
+                              text: 'Type a message to start conversation ',
                             ),
                           )
                         : ListView.builder(
@@ -369,8 +370,12 @@ class _GroupPageState extends State<GroupPage> {
                                         if (messages[index]['type'] == 'video')
                                           GestureDetector(
                                             behavior: HitTestBehavior.opaque,
-                                            onTap: ()async{
-                                              push(context: context, screen: PlayVideoPage(url: messages[index]['message']));
+                                            onTap: () async {
+                                              push(
+                                                  context: context,
+                                                  screen: PlayVideoPage(
+                                                      url: messages[index]
+                                                          ['message']));
                                             },
                                             child: CustomCircularImage(
                                               imageUrl: messages[index]

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ox21/constants/global_keys.dart';
 import 'package:ox21/widgets/appbar.dart';
+import 'package:ox21/widgets/custom_snackbar.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class ScanQrToJoinGroupPage extends StatefulWidget {
@@ -13,32 +15,47 @@ class _ScanQrToJoinGroupPageState extends State<ScanQrToJoinGroupPage> {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   QRViewController? controller;
   Barcode? result;
+  int popCounter = 0;
   void _onQRViewCreated(QRViewController controller) {
     this.controller = controller;
     controller.scannedDataStream.listen((scanData) {
-      setState(() {
-        print('the dataa id foutndddddddd ${scanData.format.name}');
-        result = scanData;
-        Navigator.pop(context, result);
-      });
+      onQrDataFetch(scanData);
+    });
+  }
+
+  onQrDataFetch(Barcode scanData) {
+    setState(() {
+      print('the dataa id foutndddddddd ${scanData.format.name}');
+      result = scanData;
+      if (popCounter == 0) {
+        popCounter++;
+        // showSnackbar(context, text)
+        try {
+          Navigator.pop(context, result);
+        } catch (e) {
+          // showSnackbar(
+          //     MyGlobalKeys.navigatorKey.currentContext!, 'Isssue was here');
+        }
+      } else {
+        // showSnackbar(
+        // MyGlobalKeys.navigatorKey.currentContext!, 'issue was heare');
+      }
     });
   }
 
   @override
   void initState() {
     // TODO: implement initState
-    Future.delayed(Duration(milliseconds: 100)).then((value){
+    Future.delayed(Duration(milliseconds: 100)).then((value) {
       controller?.resumeCamera();
-      setState(() {
-      });
+      setState(() {});
     });
-    try{
-      Future.delayed(Duration(seconds: 2)).then((value){
+    try {
+      Future.delayed(Duration(seconds: 2)).then((value) {
         controller?.resumeCamera();
-        setState(() {
-        });
+        setState(() {});
       });
-    }catch(e){
+    } catch (e) {
       print('Error in catch block $e');
     }
     super.initState();
@@ -49,8 +66,10 @@ class _ScanQrToJoinGroupPageState extends State<ScanQrToJoinGroupPage> {
     // TODO: implement dispose
 
     controller?.dispose();
+
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

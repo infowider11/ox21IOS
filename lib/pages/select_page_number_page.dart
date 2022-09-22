@@ -212,22 +212,24 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              MainHeadingText(
-                                text: 'Pricing ',
-                                color: MyColors.secondary,
-                              ),
-                              SubHeadingText(
-                                text: (selectedPricing == null
-                                        ? '0'
-                                        : widget.request['country'] != null
-                                            ? selectedPricing!['local_price']
-                                                .toString()
-                                            : selectedPricing!['global_price']
-                                                .toString()) +
-                                    ' BTC',
-                                color: MyColors.black54Color,
-                                fontSize: 18,
-                              ),
+                              if (serverStatus == 1)
+                                MainHeadingText(
+                                  text: 'Pricing ',
+                                  color: MyColors.secondary,
+                                ),
+                              if (serverStatus == 1)
+                                SubHeadingText(
+                                  text: (selectedPricing == null
+                                          ? '0'
+                                          : widget.request['country'] != null
+                                              ? selectedPricing!['local_price']
+                                                  .toString()
+                                              : selectedPricing!['global_price']
+                                                  .toString()) +
+                                      ' BTC',
+                                  color: MyColors.black54Color,
+                                  fontSize: 18,
+                                ),
                             ],
                           ),
                           flex: 2,
@@ -235,118 +237,131 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
                         Expanded(
                           child: Column(
                             children: [
-                              if(serverStatus==1)
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  RoundEdgedButton(
-                                    textColor: Colors.white,
-                                    text: 'Purchase Now',
-                                    color: selectedPricing == null
-                                        ? MyColors.inactiveButtonColor
-                                        : MyColors.secondary,
-                                    fontSize: 12,
-                                    fontfamily: 'medium',
-                                    onTap: selectedPricing == null
-                                        ? null
-                                        : () async {
-                                      setState(() {
-                                        load = true;
-                                      });
-                                      print(' the pricing is $selectedPricing');
-                                      String requestString =
-                                          '${widget.request['language']},${widget.request['country']},${widget.request['state']},${widget.request['city']},${widget.request['channel']},${selectedPricing!['page_number']}';
+                              if (serverStatus == 1)
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    RoundEdgedButton(
+                                      textColor: Colors.white,
+                                      text: 'Purchase Now',
+                                      color: selectedPricing == null
+                                          ? MyColors.inactiveButtonColor
+                                          : MyColors.secondary,
+                                      fontSize: 12,
+                                      fontfamily: 'medium',
+                                      onTap: selectedPricing == null
+                                          ? null
+                                          : () async {
+                                              setState(() {
+                                                load = true;
+                                              });
+                                              print(
+                                                  ' the pricing is $selectedPricing');
+                                              String requestString =
+                                                  '${widget.request['language']},${widget.request['country']},${widget.request['state']},${widget.request['city']},${widget.request['channel']},${selectedPricing!['page_number']}';
 
-                                      print(
-                                          ' the request string is $requestString');
-                                      Crypt hashedPass = Crypt.sha256(
-                                          requestString,
-                                          salt: MyGlobalConstants.passwordSalt);
-                                      Uuid uuid = Uuid();
+                                              print(
+                                                  ' the request string is $requestString');
+                                              Crypt hashedPass = Crypt.sha256(
+                                                  requestString,
+                                                  salt: MyGlobalConstants
+                                                      .passwordSalt);
+                                              Uuid uuid = Uuid();
 
-                                      String typedPhrase = uuid.v5(
-                                          Uuid.NAMESPACE_URL,
-                                          'Fight for privacy! Fight for freedom');
-                                      print(typedPhrase);
-                                      var request = {
-                                        "user_id": userId.toString(),
-                                        "uuid": typedPhrase.toString(),
-                                        "price": resalePrice ??
-                                            (widget.request['city'] == null
-                                                ? selectedPricing!['global_price']
-                                                .toString()
-                                                : selectedPricing!['local_price']
-                                                .toString()),
-                                        "hash": hashedPass.hash,
-                                        // "token_id": widget.request['channel'].toString(),
-                                        "language": widget.request['language'],
-                                        // "country": widget.request['country'],
-                                        // "state": widget.request['state'],
-                                        // "city":widget.request['city'],
-                                        "channel": widget.request['channel'],
-                                        "page_number":
-                                        widget.request['page_number'],
-                                      };
-                                      // if(widget.request['country']!=null){
-                                      request['country'] =
-                                          widget.request['country'] ?? '';
-                                      // }
-                                      // if(widget.request['state']!=null){
-                                      request['state'] =
-                                          widget.request['state'] ?? '';
-                                      // }
-                                      // if(widget.request['city']!=null){
-                                      request['city'] =
-                                          widget.request['city'] ?? '';
-                                      // }
-                                      //
+                                              String typedPhrase = uuid.v5(
+                                                  Uuid.NAMESPACE_URL,
+                                                  'Fight for privacy! Fight for freedom');
+                                              print(typedPhrase);
+                                              var request = {
+                                                "user_id": userId.toString(),
+                                                "uuid": typedPhrase.toString(),
+                                                "price": resalePrice ??
+                                                    (widget.request['city'] ==
+                                                            null
+                                                        ? selectedPricing![
+                                                                'global_price']
+                                                            .toString()
+                                                        : selectedPricing![
+                                                                'local_price']
+                                                            .toString()),
+                                                "hash": hashedPass.hash,
+                                                // "token_id": widget.request['channel'].toString(),
+                                                "language":
+                                                    widget.request['language'],
+                                                // "country": widget.request['country'],
+                                                // "state": widget.request['state'],
+                                                // "city":widget.request['city'],
+                                                "channel":
+                                                    widget.request['channel'],
+                                                "page_number": widget
+                                                    .request['page_number'],
+                                              };
+                                              // if(widget.request['country']!=null){
+                                              request['country'] =
+                                                  widget.request['country'] ??
+                                                      '';
+                                              // }
+                                              // if(widget.request['state']!=null){
+                                              request['state'] =
+                                                  widget.request['state'] ?? '';
+                                              // }
+                                              // if(widget.request['city']!=null){
+                                              request['city'] =
+                                                  widget.request['city'] ?? '';
+                                              // }
+                                              //
 
-                                      // the requesst for http://ox21nft.xyz/api/buy_banner is {user_id: 171, uuid: 3982377d-193f-5b3c-b249-bbf09072c042, price: 80, hash: J.Ch/oFP8SVVOM9y02GhhkalNrIbbdPLlayxHpJcbRB}
-                                      // I/flutter (23746): i am here
-                                      // [log] the response for http://ox21nft.xyz/api/buy_banner is {status: 1, message: Please payment with in 24 hours, data: {hash: J.Ch/oFP8SVVOM9y02GhhkalNrIbbdPLlayxHpJcbRB, uuid: 3982377d-193f-5b3c-b249-bbf09072c042, user_id: 171, price: 80, orderID: 523107, expire_time: 1652439911}}
+                                              // the requesst for http://ox21nft.xyz/api/buy_banner is {user_id: 171, uuid: 3982377d-193f-5b3c-b249-bbf09072c042, price: 80, hash: J.Ch/oFP8SVVOM9y02GhhkalNrIbbdPLlayxHpJcbRB}
+                                              // I/flutter (23746): i am here
+                                              // [log] the response for http://ox21nft.xyz/api/buy_banner is {status: 1, message: Please payment with in 24 hours, data: {hash: J.Ch/oFP8SVVOM9y02GhhkalNrIbbdPLlayxHpJcbRB, uuid: 3982377d-193f-5b3c-b249-bbf09072c042, user_id: 171, price: 80, orderID: 523107, expire_time: 1652439911}}
 
-                                      // "user_id":4,
-                                      // "uuid":"3982377d-193f-5b3c-b249-bbf09072c042",
-                                      // "price":20.36,
-                                      // "hash":"3982377d-193f-5b3c-b249-bbf09072c042"
-                                      Map<String, dynamic> jsonResponse =
-                                      await Webservices.postData(
-                                          url: ApiUrls.buyBanner,
-                                          request: request,
-                                          context: context);
+                                              // "user_id":4,
+                                              // "uuid":"3982377d-193f-5b3c-b249-bbf09072c042",
+                                              // "price":20.36,
+                                              // "hash":"3982377d-193f-5b3c-b249-bbf09072c042"
+                                              Map<String, dynamic>
+                                                  jsonResponse =
+                                                  await Webservices.postData(
+                                                      url: ApiUrls.buyBanner,
+                                                      request: request,
+                                                      context: context);
 
-                                      if (jsonResponse['status'].toString() ==
-                                          '1') {
-                                        Navigator.popUntil(
-                                            context, (route) => route.isFirst);
-                                        if (jsonResponse['data']['payment_status']
-                                            .toString() ==
-                                            '1') {
-                                          showSnackbar(context,
-                                              'Banner Purchased Successfully');
-                                        } else {
-                                          push(
-                                              context: MyGlobalKeys
-                                                  .navigatorKey.currentContext!,
-                                              screen:
-                                              CompleteTopBannerPaymentPage(
-                                                  purchaseData:
-                                                  jsonResponse['data']));
-                                        }
-                                      } else {
-                                        setState(() {
-                                          load = false;
-                                        });
-                                      }
+                                              if (jsonResponse['status']
+                                                      .toString() ==
+                                                  '1') {
+                                                Navigator.popUntil(context,
+                                                    (route) => route.isFirst);
+                                                if (jsonResponse['data']
+                                                            ['payment_status']
+                                                        .toString() ==
+                                                    '1') {
+                                                  showSnackbar(context,
+                                                      'Banner Purchased Successfully');
+                                                } else {
+                                                  push(
+                                                      context: MyGlobalKeys
+                                                          .navigatorKey
+                                                          .currentContext!,
+                                                      screen:
+                                                          CompleteTopBannerPaymentPage(
+                                                              purchaseData:
+                                                                  jsonResponse[
+                                                                      'data']));
+                                                }
+                                              } else {
+                                                setState(() {
+                                                  load = false;
+                                                });
+                                              }
 
-                                      // Navigator.pushNamed(context, MySubscribedChannels.id);
-                                    },
-                                  ),
-                                  vSizedBox05,
-                                  ParagraphText(text: 'Or'),
-                                  vSizedBox05,
-                                ],
-                              ),
+                                              // Navigator.pushNamed(context, MySubscribedChannels.id);
+                                            },
+                                    ),
+                                    vSizedBox05,
+                                    ParagraphText(text: 'Or'),
+                                    vSizedBox05,
+                                  ],
+                                ),
                               RoundEdgedButton(
                                 textColor: Colors.white,
                                 text: 'Purchase With Ox21 Points',
@@ -361,7 +376,8 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
                                         setState(() {
                                           load = true;
                                         });
-                                        print(' the pricing is $selectedPricing');
+                                        print(
+                                            ' the pricing is $selectedPricing');
                                         String requestString =
                                             '${widget.request['language']},${widget.request['country']},${widget.request['state']},${widget.request['city']},${widget.request['channel']},${selectedPricing!['page_number']}';
 
@@ -369,7 +385,8 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
                                             ' the request string is $requestString');
                                         Crypt hashedPass = Crypt.sha256(
                                             requestString,
-                                            salt: MyGlobalConstants.passwordSalt);
+                                            salt:
+                                                MyGlobalConstants.passwordSalt);
                                         Uuid uuid = Uuid();
 
                                         String typedPhrase = uuid.v5(
@@ -381,25 +398,28 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
                                           "uuid": typedPhrase.toString(),
                                           "price": resalePrice ??
                                               (widget.request['city'] == null
-                                                  ? selectedPricing!['global_price']
+                                                  ? selectedPricing![
+                                                          'global_price']
                                                       .toString()
-                                                  : selectedPricing!['local_price']
+                                                  : selectedPricing![
+                                                          'local_price']
                                                       .toString()),
-                                          "hash": hashedPass.hash,                                          
-                                          "language": widget.request['language'],
+                                          "hash": hashedPass.hash,
+                                          "language":
+                                              widget.request['language'],
                                           "channel": widget.request['channel'],
                                           "page_number":
                                               widget.request['page_number'],
-                                              "payment_by": "points"
+                                          "payment_by": "points"
                                         };
                                         // if(widget.request['country']!=null){
                                         request['country'] =
-                                            widget.request['country'] ?? '';                                     
+                                            widget.request['country'] ?? '';
                                         request['state'] =
-                                            widget.request['state'] ?? '';                                      
+                                            widget.request['state'] ?? '';
                                         request['city'] =
                                             widget.request['city'] ?? '';
-                                        
+
                                         Map<String, dynamic> jsonResponse =
                                             await Webservices.postData(
                                                 url: ApiUrls.buyBanner,
@@ -408,16 +428,17 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
 
                                         if (jsonResponse['status'].toString() ==
                                             '1') {
-                                          Navigator.popUntil(
-                                              context, (route) => route.isFirst);
-                                          if (jsonResponse['data']['payment_status']
+                                          Navigator.popUntil(context,
+                                              (route) => route.isFirst);
+                                          if (jsonResponse['data']
+                                                      ['payment_status']
                                                   .toString() ==
                                               '1') {
                                             showSnackbar(context,
                                                 'Banner Purchased Successfully');
                                           } else {
-                                          
-                                          showSnackbar(context, jsonResponse['message']);
+                                            showSnackbar(context,
+                                                jsonResponse['message']);
                                             // push(
                                             //     context: MyGlobalKeys
                                             //         .navigatorKey.currentContext!,
@@ -435,8 +456,6 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
                                         // Navigator.pushNamed(context, MySubscribedChannels.id);
                                       },
                               ),
-                                                        
-                              
                             ],
                           ),
                         ),

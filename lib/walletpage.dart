@@ -39,7 +39,6 @@ class _WalletPageState extends State<WalletPage> {
   TextEditingController searchChannelController = TextEditingController();
   TextEditingController bannerTradeController = TextEditingController();
 
-
   bool load = false;
   bool isDomainValid = false;
   String domainErrorMessage = '';
@@ -47,7 +46,7 @@ class _WalletPageState extends State<WalletPage> {
   Map<String, dynamic>? domainData;
 
   String btcConversionPrice = '0';
-  getPrice() async{
+  getPrice() async {
     setState(() {
       load = true;
     });
@@ -66,6 +65,7 @@ class _WalletPageState extends State<WalletPage> {
     getPrice();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,341 +77,440 @@ class _WalletPageState extends State<WalletPage> {
         implyLeading: false,
         titleColor: MyColors.primaryColor,
       ),
-      body:load?CustomLoader(): Container(
-        margin: EdgeInsets.symmetric(horizontal: 16),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                decoration: BoxDecoration(
-                    color: MyColors.whiteColor,
-                    borderRadius: BorderRadius.circular(16)),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SubHeadingText(text: 'Wallet Balance'),
-                        SubHeadingText(text: '${double.parse(userData!['btc_wallet'].toString()).toStringAsFixed(2)} BTC', color: MyColors.primaryColor,),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              if(serverStatus==1)
-              Column(
-                children: [
-                  CustomDivider(),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                    decoration: BoxDecoration(
-                        color: Colors.white, borderRadius: BorderRadius.circular(16)),
-                    child: Column(
-                      children: [
-
-                        Row(
-                          children: [
-                            Expanded(
-                              flex: 2,
-                              child: Image.asset(
-                                MyImages.jinLogo,
-                                fit: BoxFit.fitHeight,
-                                height: 40,
-                              ),
-                            ),
-                            hSizedBox,
-                            Expanded(
-                                flex: 12,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SubHeadingText(text: 'JIN'),
-                                    vSizedBox05,
-                                    ParagraphText(text: '${double.parse(userData!['jin_wallet'].toString()).toStringAsFixed(0)} JIN', color: MyColors.black54Color,),
-                                  ],
-                                )
-                            ),
-                            Expanded(
-                                flex: 5,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    SubHeadingText(text: '1.00 BTC'),
-                                    vSizedBox05,
-                                    ParagraphText(text: '≈${(double.parse(btcConversionPrice)/6).toStringAsFixed(2)} JIN', color: MyColors.black54Color,),
-                                  ],
-                                )
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  CustomDivider(),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                    decoration: BoxDecoration(
-                        color: Colors.white, borderRadius: BorderRadius.circular(16)),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              flex: 2,
-                              child: Image.asset(
-                                MyImages.logo_hori,
-                                fit: BoxFit.fill,
-                                height: 40,
-                                width: 40,
-                              ),
-                            ),
-                            hSizedBox,
-                            Expanded(
-                              flex: 12,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SubHeadingText(text: 'Points'),
-                                  vSizedBox05,
-                                  ParagraphText(text: '${userData!['points']}', color: MyColors.black54Color,),
-                                ],
-                              )
-                            ),
-                            Expanded(
-                                flex: 3,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SubHeadingText(text: '1.00 USD'),
-                                    vSizedBox05,
-                                    ParagraphText(text: '≈3600/15 Points', color: MyColors.black54Color,),
-                                  ],
-                                )
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              if(serverStatus==1)
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                decoration: BoxDecoration(
-                    color: Colors.white, borderRadius: BorderRadius.circular(16)),
+      body: load
+          ? CustomLoader()
+          : Container(
+              margin: EdgeInsets.symmetric(horizontal: 16),
+              child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomDivider(),
-                    SubHeadingText(text: 'Deposit BTC'),
-                    vSizedBox2,
-                    ParagraphText(text: '11PEEokWFSFNYshLfuLvZfMuPE93aMJd4'),
-                    vSizedBox2,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-
-                        Expanded(
-                            child: Column(
+                    if (serverStatus == 1)
+                      Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                        decoration: BoxDecoration(
+                            color: MyColors.whiteColor,
+                            borderRadius: BorderRadius.circular(16)),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                RoundEdgedButton(
-                                  text: 'Deposit BTC',
-                                  color: MyColors.secondary,
-                                  textColor: Colors.white,
-                                  fontSize: 11,
-                                  borderRadius: 8,
-                                  height: 40,
-                                  fontfamily: 'medium',
-                                  width: 150,
-                                  onTap: ()async{
-                                    setState(() {
-                                      load  = true;
-                                    });
-                                    List data = await Webservices.getList(ApiUrls.checkPendingDepositOrders + userId);
-                                    if(data.length==0){
-                                      await push(context: context, screen: DepositBtcPage());
-                                    }else{
-                                      await push(context: context, screen: DepositBTCQRPage(purchaseData: data[0]));
-                                    }
-                                    setState(() {
-                                      load = false;
-                                    });
-                                  },
-                        ),
+                                SubHeadingText(text: 'Wallet Balance'),
+                                SubHeadingText(
+                                  text:
+                                      '${double.parse(userData!['btc_wallet'].toString()).toStringAsFixed(2)} BTC',
+                                  color: MyColors.primaryColor,
+                                ),
                               ],
-                            )),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              
-              if(serverStatus==1)
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                decoration: BoxDecoration(
-                    color: Colors.white, borderRadius: BorderRadius.circular(16)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomDivider(),
-                    SubHeadingText(text: 'Domain Trade'),
-                    vSizedBox,
-                    CustomTextFieldlabel(
-                      controller: searchDomainController,
-                      hintText: 'Search Domain',
-                      labeltext: 'Search Domain',
-                      icon: Icons.search,
-                      suffixIconButton:!domainSearchLoad?
-                      null
-                          : IconButton(
-                        onPressed: (){},
-                        icon: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: CustomLoader(),
+                            )
+                          ],
                         ),
                       ),
-                      onChanged: (val)async{
 
-                        print(val);
-                        setState(() {
-                          domainSearchLoad = true;
-                        });
-                        var response =  await Webservices.getData(ApiUrls.checkDomain + 'domain=$val&user_id=$userId');
-                        print('step 1');
-                        print(' I am here with Stcode ${response.statusCode}');
-                        if(response.statusCode==200){
-
-                          var jsonResponse = jsonDecode(response.body);
-
-                          print('the jsonResponse is $jsonResponse');
-                          if(jsonResponse['status']==1){
-                            domainErrorMessage = 'This domain is available for Exchange';
-                            isDomainValid = true;
-                            domainData = jsonResponse['data'];
-                            // domainErrorMessage = jsonResponse['message'];
-                          }
-                          else{
-                            print('imhere');
-                            domainErrorMessage = jsonResponse['message'];
-                            isDomainValid = false;
-                            domainData = null;
-                          }
-                          print(jsonResponse);
-                          print('hellooo world');
-                        }else if(response.statusCode==500){
-                          try{
-                            var jsonResponse = jsonDecode(response.body);
-                            domainErrorMessage = jsonResponse['message'];
-                            isDomainValid = false;
-                            domainData = null;
-                          }catch(e){
-                            print('Error in catch block 453 $e');
-                            domainErrorMessage = 'Something went wrong.';
-                          }
-
-                        }else{
-                          domainErrorMessage = 'Something went wrong.';
-                        }
-                        setState(() {
-                          domainSearchLoad = false;
-                        });
-                      },
-                    ),
-                    // vSizedBox,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                    Column(
                       children: [
-                        ParagraphText(text: domainErrorMessage, color: isDomainValid?MyColors.green:MyColors.redColor,),
-                      ],
-                    ),
-                    vSizedBox,
-                    Row(
-                      children: [
-                        Expanded(
-                            child: RoundEdgedButton(text:!(isDomainValid && domainData!=null)? 'Exchange Domain':'Exchange Domain with ${domainData!['jinCost']} JIN',
-                             color:!(isDomainValid && domainData!=null)?MyColors.grey.withOpacity(0.2): MyColors.secondary,
-                              textColor: Colors.white,
-                              fontSize: 12,
-                              fontfamily: 'medium',
-                              borderRadius: 8,
-                              height: 40,
-                              onTap:!(isDomainValid && domainData!=null)?null: ()async{
-                              // Navigator.pushNamed(context, SearchDomainPage.id);
-                                FocusScope.of(context).requestFocus(new FocusNode());
-                              await push(context: context, screen: SearchDomainPage(domainData: domainData!,));
-                              searchDomainController.clear();
-                              },
-                              // verticalPadding: 4,
-                            )
+                        if (serverStatus == 1) CustomDivider(),
+                        if (serverStatus == 1)
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 10),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(16)),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      flex: 2,
+                                      child: Image.asset(
+                                        MyImages.jinLogo,
+                                        fit: BoxFit.fitHeight,
+                                        height: 40,
+                                      ),
+                                    ),
+                                    hSizedBox,
+                                    Expanded(
+                                        flex: 12,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            SubHeadingText(text: 'JIN'),
+                                            vSizedBox05,
+                                            ParagraphText(
+                                              text:
+                                                  '${double.parse(userData!['jin_wallet'].toString()).toStringAsFixed(0)} JIN',
+                                              color: MyColors.black54Color,
+                                            ),
+                                          ],
+                                        )),
+                                    Expanded(
+                                        flex: 5,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            SubHeadingText(text: '1.00 BTC'),
+                                            vSizedBox05,
+                                            ParagraphText(
+                                              text:
+                                                  '≈${(double.parse(btcConversionPrice) / 6).toStringAsFixed(2)} JIN',
+                                              color: MyColors.black54Color,
+                                            ),
+                                          ],
+                                        )),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        if (serverStatus == 1) CustomDivider(),
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 10),
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(16)),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Expanded(
+                                    flex: 2,
+                                    child: Image.asset(
+                                      MyImages.logo_hori,
+                                      fit: BoxFit.fill,
+                                      height: 40,
+                                      width: 40,
+                                    ),
+                                  ),
+                                  hSizedBox,
+                                  Expanded(
+                                      flex: 12,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          SubHeadingText(text: 'Points'),
+                                          vSizedBox05,
+                                          ParagraphText(
+                                            text: '${userData!['points']}',
+                                            color: MyColors.black54Color,
+                                          ),
+                                        ],
+                                      )),
+                                  Expanded(
+                                      flex: 3,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          SubHeadingText(text: '1.00 USD'),
+                                          vSizedBox05,
+                                          ParagraphText(
+                                            text: '≈3600/15 Points',
+                                            color: MyColors.black54Color,
+                                          ),
+                                        ],
+                                      )),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ],
-                    )
-                  ],
-                ),
-              ),
-              CustomDivider(),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                decoration: BoxDecoration(
-                    color: Colors.white, borderRadius: BorderRadius.circular(16)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SubHeadingText(text: 'Top Banner Trade'),
-                    // vSizedBox,
-                    // CustomTextFieldlabel(controller: bannerTradeController, hintText: 'Search Channel', labeltext: 'Search Channel', icon: Icons.search,),
-                    vSizedBox,
-                    Row(
-                      children: [
-                        Expanded(
-                            child: RoundEdgedButton(
-                              text: 'Exchange Top Banner with OX21 Points',
-                              color: MyColors.secondary,
-                              textColor: Colors.white,
-                              fontSize: 12,
-                              verticalPadding: 4,
-                              borderRadius: 8,
-                              height: 40,
-                              fontfamily: 'medium',
-                              onTap: (){
-                         push(context: context, screen: MyPurchasedBanners());
-                        },)),
-                      ],
                     ),
+                    //  && serverStatus == 0
+                    //Add this to if conditions to comment this part
+                    if (serverStatus == 1)
+                      Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(16)),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CustomDivider(),
+                            SubHeadingText(text: 'Deposit BTC'),
+                            vSizedBox2,
+                            ParagraphText(
+                                text: '11PEEokWFSFNYshLfuLvZfMuPE93aMJd4'),
+                            vSizedBox2,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                    child: Column(
+                                  children: [
+                                    RoundEdgedButton(
+                                      text: 'Deposit BTC',
+                                      color: MyColors.secondary,
+                                      textColor: Colors.white,
+                                      fontSize: 11,
+                                      borderRadius: 8,
+                                      height: 40,
+                                      fontfamily: 'medium',
+                                      width: 150,
+                                      onTap: () async {
+                                        setState(() {
+                                          load = true;
+                                        });
+                                        List data = await Webservices.getList(
+                                            ApiUrls.checkPendingDepositOrders +
+                                                userId);
+                                        if (data.length == 0) {
+                                          await push(
+                                              context: context,
+                                              screen: DepositBtcPage());
+                                        } else {
+                                          await push(
+                                              context: context,
+                                              screen: DepositBTCQRPage(
+                                                  purchaseData: data[0]));
+                                        }
+                                        setState(() {
+                                          load = false;
+                                        });
+                                      },
+                                    ),
+                                  ],
+                                )),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    if (serverStatus == 1)
+                      Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(16)),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CustomDivider(),
+                            SubHeadingText(text: 'Domain Trade'),
+                            vSizedBox,
+                            CustomTextFieldlabel(
+                              controller: searchDomainController,
+                              hintText: 'Search Domain',
+                              labeltext: 'Search Domain',
+                              icon: Icons.search,
+                              suffixIconButton: !domainSearchLoad
+                                  ? null
+                                  : IconButton(
+                                      onPressed: () {},
+                                      icon: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: CustomLoader(),
+                                      ),
+                                    ),
+                              onChanged: (val) async {
+                                print(val);
+                                setState(() {
+                                  domainSearchLoad = true;
+                                });
+                                var response = await Webservices.getData(
+                                    ApiUrls.checkDomain +
+                                        'domain=$val&user_id=$userId');
+                                print('step 1');
+                                print(
+                                    ' I am here with Stcode ${response.statusCode}');
+                                if (response.statusCode == 200) {
+                                  var jsonResponse = jsonDecode(response.body);
 
-                    vSizedBox2,
-                    Row(
-                      children: [
-                        Expanded(
-                            child: RoundEdgedButton(
-                              text: 'Exchange Domain with OX21 Points',
-                              color: MyColors.secondary,
-                              textColor: Colors.white,
-                              fontSize: 12,
-                              verticalPadding: 4,
-                              borderRadius: 8,
-                              height: 40,
-                              fontfamily: 'medium',
-                              onTap: (){
-                                push(context: context, screen: MyPurchasedDomains());
-                              },)),
-                      ],
+                                  print('the jsonResponse is $jsonResponse');
+                                  if (jsonResponse['status'] == 1) {
+                                    domainErrorMessage =
+                                        'This domain is available for Exchange';
+                                    isDomainValid = true;
+                                    domainData = jsonResponse['data'];
+                                    // domainErrorMessage = jsonResponse['message'];
+                                  } else {
+                                    print('imhere');
+                                    domainErrorMessage =
+                                        jsonResponse['message'];
+                                    isDomainValid = false;
+                                    domainData = null;
+                                  }
+                                  print(jsonResponse);
+                                  print('hellooo world');
+                                } else if (response.statusCode == 500) {
+                                  try {
+                                    var jsonResponse =
+                                        jsonDecode(response.body);
+                                    domainErrorMessage =
+                                        jsonResponse['message'];
+                                    isDomainValid = false;
+                                    domainData = null;
+                                  } catch (e) {
+                                    print('Error in catch block 453 $e');
+                                    domainErrorMessage =
+                                        'Something went wrong.';
+                                  }
+                                } else {
+                                  domainErrorMessage = 'Something went wrong.';
+                                }
+                                setState(() {
+                                  domainSearchLoad = false;
+                                });
+                              },
+                            ),
+                            // vSizedBox,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                ParagraphText(
+                                  text: domainErrorMessage,
+                                  color: isDomainValid
+                                      ? MyColors.green
+                                      : MyColors.redColor,
+                                ),
+                              ],
+                            ),
+                            vSizedBox,
+                            Row(
+                              children: [
+                                Expanded(
+                                    child: RoundEdgedButton(
+                                  text: !(isDomainValid && domainData != null)
+                                      ? 'Exchange Domain'
+                                      : 'Exchange Domain with ${domainData!['jinCost']} JIN',
+                                  color: !(isDomainValid && domainData != null)
+                                      ? MyColors.grey.withOpacity(0.2)
+                                      : MyColors.secondary,
+                                  textColor: Colors.white,
+                                  fontSize: 12,
+                                  fontfamily: 'medium',
+                                  borderRadius: 8,
+                                  height: 40,
+                                  onTap: !(isDomainValid && domainData != null)
+                                      ? null
+                                      : () async {
+                                          // Navigator.pushNamed(context, SearchDomainPage.id);
+                                          FocusScope.of(context)
+                                              .requestFocus(new FocusNode());
+                                          await push(
+                                              context: context,
+                                              screen: SearchDomainPage(
+                                                domainData: domainData!,
+                                              ));
+                                          searchDomainController.clear();
+                                        },
+                                  // verticalPadding: 4,
+                                )),
+                              ],
+                            ),
+                            vSizedBox,
+                            Row(
+                              children: [
+                                Expanded(
+                                    child: RoundEdgedButton(
+                                  text: !(isDomainValid && domainData != null)
+                                      ? 'Exchange Domain'
+                                      : 'Exchange Domain with ${domainData!['points']} OX21 Points',
+                                  // child: RoundEdgedButton(text:!(isDomainValid && domainData!=null)? 'Exchange Domain':'Exchange Domain with ${domainData!['jinCost']} JIN',
+                                  color: !(isDomainValid && domainData != null)
+                                      ? MyColors.grey.withOpacity(0.2)
+                                      : MyColors.secondary,
+                                  textColor: Colors.white,
+                                  fontSize: 12,
+                                  fontfamily: 'medium',
+                                  borderRadius: 8,
+                                  height: 40,
+                                  onTap: !(isDomainValid && domainData != null)
+                                      ? null
+                                      : () async {
+                                          // Navigator.pushNamed(context, SearchDomainPage.id);
+                                          FocusScope.of(context)
+                                              .requestFocus(new FocusNode());
+                                          await push(
+                                              context: context,
+                                              screen: SearchDomainPage(
+                                                domainData: domainData!,
+                                              ));
+                                          searchDomainController.clear();
+                                        },
+                                  // verticalPadding: 4,
+                                )),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    CustomDivider(),
+                    Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SubHeadingText(text: 'Top Banner Trade'),
+                          // vSizedBox,
+                          // CustomTextFieldlabel(controller: bannerTradeController, hintText: 'Search Channel', labeltext: 'Search Channel', icon: Icons.search,),
+                          vSizedBox,
+                          Row(
+                            children: [
+                              Expanded(
+                                  child: RoundEdgedButton(
+                                text: 'Exchange Top Banner with OX21 Points',
+                                color: MyColors.secondary,
+                                textColor: Colors.white,
+                                fontSize: 12,
+                                verticalPadding: 4,
+                                borderRadius: 8,
+                                height: 40,
+                                fontfamily: 'medium',
+                                onTap: () {
+                                  push(
+                                      context: context,
+                                      screen: TopBannerLanguagePage());
+                                },
+                              )),
+                            ],
+                          ),
+
+                          // vSizedBox2,
+                          // Row(
+                          //   children: [
+                          //     Expanded(
+                          //         child: RoundEdgedButton(
+                          //       text: 'Exchange Domain with OX21 Points',
+                          //       color: MyColors.secondary,
+                          //       textColor: Colors.white,
+                          //       fontSize: 12,
+                          //       verticalPadding: 4,
+                          //       borderRadius: 8,
+                          //       height: 40,
+                          //       fontfamily: 'medium',
+                          //       onTap: () {
+                          //         push(
+                          //             context: context,
+                          //             screen: MyPurchasedDomains());
+                          //       },
+                          //     )),
+                          //   ],
+                          // ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
               ),
-            ],
-          ),
-        ),
-      ),
+            ),
     );
   }
 }
-
 
 // import 'dart:convert';
 

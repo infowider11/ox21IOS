@@ -216,18 +216,19 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
                                 text: 'Pricing ',
                                 color: MyColors.secondary,
                               ),
-                              SubHeadingText(
-                                text: (selectedPricing == null
-                                        ? '0'
-                                        : widget.request['country'] != null
-                                            ? selectedPricing!['local_price']
-                                                .toString()
-                                            : selectedPricing!['global_price']
-                                                .toString()) +
-                                    ' BTC',
-                                color: MyColors.black54Color,
-                                fontSize: 18,
-                              ),
+                              if (serverStatus == 1)
+                                SubHeadingText(
+                                  text: (selectedPricing == null
+                                          ? '0'
+                                          : widget.request['country'] != null
+                                              ? selectedPricing!['local_price']
+                                                  .toString()
+                                              : selectedPricing!['global_price']
+                                                  .toString()) +
+                                      ' BTC',
+                                  color: MyColors.black54Color,
+                                  fontSize: 18,
+                                ),
                             ],
                           ),
                           flex: 2,

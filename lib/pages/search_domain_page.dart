@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ox21/cart.dart';
 import 'package:ox21/constants/colors.dart';
+import 'package:ox21/constants/global_constants.dart';
 import 'package:ox21/constants/image_urls.dart';
 import 'package:ox21/constants/sized_box.dart';
 import 'package:ox21/functions/navigation_functions.dart';
@@ -95,15 +96,16 @@ class _SearchDomainPageState extends State<SearchDomainPage> {
                   ParagraphText(text: 'Name Available to Exchange'),
                   vSizedBox2,
                   RoundEdgedButton(
-                    text: 'Exchange for ${totalCost.toStringAsFixed(0)} OX21 Coin',
+                    text:
+                        'Exchange for ${totalCost.toStringAsFixed(0)} OX21 Coin',
                     textColor: Colors.white,
                     color: MyColors.secondary,
                     fontfamily: 'medium',
                     onTap: () {
-                      if(totalCost>coins){
-                        showSnackbar(context, 'You don\'t have sufficient coins to Exchange this banner.');
-                      }
-                      else{
+                      if (totalCost > coins) {
+                        showSnackbar(context,
+                            'You don\'t have sufficient coins to Exchange this banner.');
+                      } else {
                         push(
                             context: context,
                             screen: Cart(
@@ -119,78 +121,72 @@ class _SearchDomainPageState extends State<SearchDomainPage> {
                     },
                   ),
                   vSizedBox2,
-                  // RoundEdgedButton(
-                  //   text: 'Purchase with BTC',
-                  //   isSolid: false,
-                  //   textColor: Colors.white,
-                  //   color: MyColors.secondary,
-                  //   fontfamily: 'medium',
-                  //   onTap: (){
-                  //     showSnackbar(context, 'Coming Soon');
-                  //   },
-                  // )
-                  RoundEdgedButton(
-                    text: 'Exchange with BTC',
-                    textColor: Colors.white,
-                    isSolid: false,
-                    color: MyColors.secondary,
-                    fontfamily: 'medium',
-                    onTap: () {
-                      push(
-                          context: context,
-                          screen: Cart(
-                            totalCost: totalCost,
-                            domainData: widget.domainData,
-                            purchaseCurrency: PurchaseCurrency.btc,
-                            // coins: coins,
-                            // totalCost: totalCost,
-                          ));
+                  if (serverStatus == 1)
+                    Column(
+                      children: [
+                        RoundEdgedButton(
+                          text: 'Exchange with BTC',
+                          textColor: Colors.white,
+                          isSolid: false,
+                          color: MyColors.secondary,
+                          fontfamily: 'medium',
+                          onTap: () {
+                            push(
+                                context: context,
+                                screen: Cart(
+                                  totalCost: totalCost,
+                                  domainData: widget.domainData,
+                                  purchaseCurrency: PurchaseCurrency.btc,
+                                  // coins: coins,
+                                  // totalCost: totalCost,
+                                ));
 
-                      // Navigator.pushNamed(context, Addtocart.id);
-                    },
-                  ),
+                            // Navigator.pushNamed(context, Addtocart.id);
+                          },
+                        ),
 
-                  // RoundEdgedButton(
-                  //   text: 'Purchase with USD',
-                  //   isSolid: false,
-                  //   textColor: Colors.white,
-                  //   color: MyColors.secondary,
-                  //   fontfamily: 'medium',
-                  //   onTap: (){
-                  //     push(
-                  //         context: context,
-                  //         screen: Cart(
-                  //           totalCost: totalCost,
-                  //           domainData: widget.domainData,
-                  //           purchaseCurrency: PurchaseCurrency.usd,
-                  //           // coins: coins,
-                  //           // totalCost: totalCost,
-                  //         ));
-                  //     // showSnackbar(context, 'Coming Soon');
-                  //   },
-                  // ),
-                  vSizedBox2,
-                  RoundEdgedButton(
-                    text: 'Exchange with JIN',
-                    textColor: Colors.white,
-                    color: MyColors.secondary,
-                    fontfamily: 'medium',
-                    onTap: () {
-                        push(
-                            context: context,
-                            screen: Cart(
-                              totalCost: totalCost,
-                              domainData: widget.domainData,
-                              purchaseCurrency: PurchaseCurrency.jin,
-                              // coins: coins,
-                              // totalCost: totalCost,
-                            ));
+                        // RoundEdgedButton(
+                        //   text: 'Purchase with USD',
+                        //   isSolid: false,
+                        //   textColor: Colors.white,
+                        //   color: MyColors.secondary,
+                        //   fontfamily: 'medium',
+                        //   onTap: (){
+                        //     push(
+                        //         context: context,
+                        //         screen: Cart(
+                        //           totalCost: totalCost,
+                        //           domainData: widget.domainData,
+                        //           purchaseCurrency: PurchaseCurrency.usd,
+                        //           // coins: coins,
+                        //           // totalCost: totalCost,
+                        //         ));
+                        //     // showSnackbar(context, 'Coming Soon');
+                        //   },
+                        // ),
+                        vSizedBox2,
+                        RoundEdgedButton(
+                          text: 'Exchange with JIN',
+                          textColor: Colors.white,
+                          color: MyColors.secondary,
+                          fontfamily: 'medium',
+                          onTap: () {
+                            push(
+                                context: context,
+                                screen: Cart(
+                                  totalCost: totalCost,
+                                  domainData: widget.domainData,
+                                  purchaseCurrency: PurchaseCurrency.jin,
+                                  // coins: coins,
+                                  // totalCost: totalCost,
+                                ));
 
-                      // Navigator.pushNamed(context, Addtocart.id);
-                    },
-                  ),
-                  vSizedBox2,
-
+                            // Navigator.pushNamed(context, Addtocart.id);
+                          },
+                        ),
+                        vSizedBox2,
+                      ],
+                    )
                 ],
               ),
             )
