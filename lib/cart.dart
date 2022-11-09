@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/colors.dart';
 import 'package:ox21/constants/global_constants.dart';
 import 'package:ox21/constants/global_keys.dart';
@@ -52,7 +53,7 @@ class _CartState extends State<Cart> {
       price = ((double.parse(widget.domainData['usdCost'].toString()))/double.parse(conversionRate)).toStringAsFixed(2);
       print('the proce is $price');
       if(price=='0.00'){
-        showSnackbar(context, 'We can\'t process small amount in Btc payments');
+        showSnackbar(context, translate("cart.smallAount"));
         Navigator.pop(context);
       }
     }
@@ -77,7 +78,7 @@ class _CartState extends State<Cart> {
     return Scaffold(
       appBar: appBar(
           context: context,
-          title: 'Your Cart',
+          title: translate("cart.yourCart"),
           titleColor: MyColors.primaryColor),
       body:load?CustomLoader(): Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
@@ -92,13 +93,13 @@ class _CartState extends State<Cart> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       ParagraphText(
-                        text: 'Items',
+                        text: translate("cart.items"),
                         fontFamily: 'bold',
                         fontSize: 12,
                         color: Color(0xFF525252),
                       ),
                       ParagraphText(
-                        text: 'Price',
+                        text: translate("cart.price"),
                         fontFamily: 'bold',
                         fontSize: 12,
                         color: Color(0xFF525252),
@@ -111,8 +112,8 @@ class _CartState extends State<Cart> {
                     children: [
                       Row(
                         children: [
-                          const ParagraphText(
-                            text: 'Domain Name :',
+                           ParagraphText(
+                            text: translate("cart.domainName"),
                             fontFamily: 'medium',
                             fontSize: 14,
                             color: MyColors.primaryColor,
@@ -127,7 +128,7 @@ class _CartState extends State<Cart> {
                       ),
                       ParagraphText(
                           text: widget.purchaseCurrency==PurchaseCurrency.jin?
-                          '${widget.domainData['jinCost']} JIN':widget.purchaseCurrency==PurchaseCurrency.btc?'${price} BTC':'${widget.domainData['usdCost']} USD',
+                          '${widget.domainData['jinCost']} '+translate("cart.jin"):widget.purchaseCurrency==PurchaseCurrency.btc?'${price} BTC':'${widget.domainData['usdCost']} USD',
                           fontFamily: 'bold',
                           fontSize: 14,
                           color: MyColors.primaryColor),
@@ -157,7 +158,7 @@ class _CartState extends State<Cart> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       ParagraphText(
-                        text: 'Total Price  ',
+                        text: translate("cart.totalPrice"),
                         fontFamily: 'bold',
                         fontSize: 14,
                         color: Color(0xFF525252),
@@ -166,7 +167,7 @@ class _CartState extends State<Cart> {
                           text:
                           widget.purchaseCurrency==PurchaseCurrency.btc?'$price BTC':
                               widget.purchaseCurrency==PurchaseCurrency.jin?
-                              '${widget.domainData['jinCost']} JIN':
+                              '${widget.domainData['jinCost']} '+translate("cart.jin"):
                           '${widget.domainData['usdCost']} USD',
                           fontFamily: 'bold',
                           fontSize: 14,
@@ -177,7 +178,7 @@ class _CartState extends State<Cart> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       ParagraphText(
-                        text: 'In MyOX21 Coins: ',
+                        text: translate("cart.myOX21"),
                         fontFamily: 'bold',
                         fontSize: 14,
                         color: Color(0xFF525252),
@@ -243,7 +244,7 @@ class _CartState extends State<Cart> {
                   //   },
                   // ),
                   RoundEdgedButton(
-                    text: 'Confirm',
+                    text: translate("cart.confirm"),
                     textColor: Colors.white,
                     color: MyColors.secondary,
                     fontfamily: 'medium',

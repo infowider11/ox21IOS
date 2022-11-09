@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/colors.dart';
 import 'package:ox21/constants/image_urls.dart';
 import 'package:ox21/constants/sized_box.dart';
@@ -54,7 +55,7 @@ class _UploadPageViewState extends State<UploadPageView> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               RoundEdgedButton(
-                text: 'NEXT',
+                text: translate("upload_video_view.next"),
                 textColor: MyColors.whiteColor,
                 color: MyColors.secondary,
                 width: 65,

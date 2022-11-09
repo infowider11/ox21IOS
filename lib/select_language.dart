@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/dummy_data.dart';
 import 'package:ox21/constants/global_constants.dart';
 import 'package:ox21/constants/global_functions.dart';
@@ -77,7 +78,7 @@ class _Select_languageState extends State<Select_language> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: ParagraphText(
-                        text: 'Select Language',
+                        text: translate("select_language.selectLang"),
                         fontSize: 18,
                         fontFamily: 'bold',
                       ),
@@ -87,7 +88,7 @@ class _Select_languageState extends State<Select_language> {
                       padding:
                           EdgeInsets.symmetric(vertical: 0, horizontal: 16),
                       child: CustomTextFieldlabel(
-                        labeltext: 'Search in languages',
+                        labeltext: translate("select_language.searchInLang"),
                         controller: searchController,
                         hintText: 'labeltext',
                         left: 16,
@@ -120,7 +121,7 @@ class _Select_languageState extends State<Select_language> {
                             ))),
                         child: Container(
                           // height: 400,
-                          child:languages.length==0?Center(child: Text('No Languages Found')): ListView.builder(
+                          child:languages.length==0?Center(child: Text(translate("select_language.noData"))): ListView.builder(
                             itemCount: languages.length,
                             itemBuilder: (context, index) {
                               if(languages[index]['name'].toString().toLowerCase().contains(searchController.text.toLowerCase()))
@@ -194,7 +195,7 @@ class _Select_languageState extends State<Select_language> {
                       // ),
                       vSizedBox2,
                       RoundEdgedButton(
-                        text: 'Continue',
+                        text: translate("select_language.continueBtn"),
                         textColor: Colors.white,
                         color:selectedLanguage==null?Colors.grey.shade300: MyColors.primaryColor,
                         borderRadius: 12,

@@ -33,6 +33,7 @@
     "confirmPassword": "Confirm password",
     "passValidation": "Must be at least 8 characters",
     "signInToggle": "Sign in with Face ID/Touch ID?",
+    "13yearoldertext": "I am 13 years or older to user this app.",
     "checkboxText": "I understand that Ox21 cannot recover this password for me.",
     "learnMore": "Learn more",
     "tipText": "Strong Password Tips",
@@ -44,7 +45,8 @@
     "alertStrongPassword": "Please type the strong password",
     "alertMsgConfrimPass": "The password does not match the original input",
     "alertPass": "Selected Words didn\\'t match. $noOfAttemptsLeft attempts left.",
-    "alert": "The Password must have at least 8 characters"
+    "alert": "The Password must have at least 8 characters",
+    "alert2": "Please confirm that you are 13 years or older."
 
 
   },
@@ -280,10 +282,11 @@
   },
   "deleteAccount": {
     "title": "Delete Account",
-    "": "Enter the 12 Words pass phrase",
+    "placeholder": "Enter the 12 Words pass phrase",
     "alrt1": "Once you delete an account, there is no way to recover it \n Are you sure you want to delete your account?",
     "alrt2": "Once you delete an account, there is no way to recover it.",
-    "alert3": "You have entered wrong Mnemonic phrase"
+    "alert3": "You have entered wrong Mnemonic phrase",
+    "alert4": "Mnemonic phrase must be of 12 words"
   },
   "vmails_page": {
     "title": "VMails",
@@ -540,6 +543,7 @@
     "smallAount": "We can\\'t process small amount in BTC payments",
     "yourCart": "Your Cart",
     "items": "Items",
+    "price": "Price",
     "domainName": "Domain Name:",
     "USD": "USD",
     "totalPrice": "Total Price: ",
@@ -597,11 +601,37 @@
     "btc": "BTC",
     "jin": "JIN",
     "points": "Points",
-    "next": "Next"
+    "next": "Next",
+    "exchangebtn": "Exchange Top Banner with OX21 Points"
   },
   "webservicePage": {
     "postErrorMessage": "Error in uploading. Please re-upload your video"
+  },
+
+  "chat": {
+    "messages": "Messages",
+    "search": "Search",
+    "OX21G": "Ox21 General"
+  },
+
+  "mycoin_screen": {
+    "title": "My OX21 Points",
+    "coins": "Coins",
+    "wallet_balance": "Wallet Balance",
+    "convertbtc": "Convert BTC To JIN",
+    "btcamount": "Enter BTC Amount",
+    "btcavailable": "(Available BTC)",
+    "btcconverinjin": "Enter Btc amount to convert in JIN",
+    "convert": "Convert",
+    "validamount": "Please type valid amount",
+    "oopsalert": "Oops!! You don\\'t have sufficient balance",
+    "btcpoints": "Convert BTC To OX21 Points",
+    "points": "Points",
+    "buyox21": "Buy OX21 Points"
   }
+
+
+
 
 
 

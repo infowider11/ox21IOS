@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/colors.dart';
 import 'package:ox21/constants/image_urls.dart';
 import 'package:ox21/constants/sized_box.dart';
@@ -44,7 +45,7 @@ class _CongratulationsPageState extends State<CongratulationsPage> {
                       child: Image.asset(MyImages.logo_hori, height: 46,)
                   ),
                   vSizedBox4,
-                  ParagraphText(text: 'Congratulations',
+                  ParagraphText(text: translate("Congratulations.title"),
                     fontSize: 24,
                     fontFamily: 'bold',
                   ),
@@ -68,7 +69,7 @@ class _CongratulationsPageState extends State<CongratulationsPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    ParagraphText(text: 'You\'ve successfully secured your account. Remember to keep your mnemonic phrase safe, it\'s your responsibility!',
+                    ParagraphText(text: translate("Congratulations.subTitle"),
                     textAlign: TextAlign.center,
                       color: MyColors.textcolor,
                       fontSize: 14,
@@ -83,7 +84,7 @@ class _CongratulationsPageState extends State<CongratulationsPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           ParagraphText(
-                            text: 'Leave yourself a hint?',
+                            text: translate("Congratulations.hint"),
                             color: MyColors.primaryColor,
                             fontSize: 16,
                             underlined: true,
@@ -93,7 +94,7 @@ class _CongratulationsPageState extends State<CongratulationsPage> {
                       ),
                     ),
                     vSizedBox4,
-                    ParagraphText(text: 'OX21 cannot recover your account should\n you lose it.',
+                    ParagraphText(text: translate("Congratulations.text2"),
                       textAlign: TextAlign.center,
                       color: MyColors.textcolor,
                       fontSize: 14,

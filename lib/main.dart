@@ -120,7 +120,7 @@ class MyApp extends StatelessWidget {
           MyStatefulWidget.id:(context)=> MyStatefulWidget(),
           WalletPage.id:(context)=> WalletPage(),
           SearchPage.id:(context)=> SearchPage(),
-          ChatPage.id:(context)=> ChatPage(),
+          // ChatPage.id:(context)=> ChatPage(),
           BTCSendPage.id:(context)=> BTCSendPage(),
           // SearchDomainPage.id:(context)=> SearchDomainPage(),
           ScanQRCodePage.id:(context)=> ScanQRCodePage(),

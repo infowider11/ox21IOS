@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/colors.dart';
 import 'package:ox21/constants/image_urls.dart';
 import 'package:ox21/constants/sized_box.dart';
@@ -39,14 +40,14 @@ class _WelcomePageState extends State<WelcomePage> {
               Image.asset(MyImages.logowelcom, width: 74,),
               vSizedBox8,
               ParagraphText(
-                text: 'Welcome to a\nDecentralized Future',
+                text: translate("welcome.title"),
                 color: MyColors.heading, fontSize: 32,
                 textAlign: TextAlign.center,
                 fontFamily: 'openextrabold',
               ),
               vSizedBox2,
               ParagraphText(
-                text: 'Enter the World of Internet where you \nutilize it how its meant to be.',
+                text: translate("welcome.subTitle"),
                 color: MyColors.para, fontSize: 16,
                 fontFamily: 'openregular',
                 textAlign: TextAlign.center,

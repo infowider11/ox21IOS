@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/packages/lib/utils/google_search/place_type.dart';
 import 'package:ox21/packages/lib/widget/search_widget.dart';
 import 'package:ox21/select_channels.dart';
@@ -39,7 +40,7 @@ class _TopBannerBidCountryPageState extends State<TopBannerBidCountryPage> {
       appBar: load
           ? null
           :  appBar(context: context,
-         title: 'Top Banner Exchange/Bid', titleColor: MyColors.primaryColor
+         title: translate("top_banner_bid_country.title"), titleColor: MyColors.primaryColor
       ),
       body:load
           ? CustomLoader()
@@ -55,7 +56,7 @@ class _TopBannerBidCountryPageState extends State<TopBannerBidCountryPage> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: ParagraphText(text: 'Select Location',
+                      child: ParagraphText(text: translate("top_banner_bid_country.selectLocation"),
                         fontSize: 18,
                         fontFamily: 'bold',
                       ),
@@ -67,7 +68,7 @@ class _TopBannerBidCountryPageState extends State<TopBannerBidCountryPage> {
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(right: 16),
-                        child: SubHeadingText(text: 'Skip',color: MyColors.primaryColor,),
+                        child: SubHeadingText(text: translate("top_banner_bid_country.skip"),color: MyColors.primaryColor,),
                       ),
                     )
                   ],
@@ -80,7 +81,7 @@ class _TopBannerBidCountryPageState extends State<TopBannerBidCountryPage> {
                     apiKey: MyGlobalConstants.kGoogleApiKey,
                     height: 36,
                     placeType: PlaceType.cities,
-                    placeholder: 'Select City, Province, Country',
+                    placeholder: translate("top_banner_bid_country.selectText"),
                     onSelected: (place) {
                       print('the place is ${place.fullJSON}');
                       List data = place.fullJSON['description']
@@ -166,7 +167,7 @@ class _TopBannerBidCountryPageState extends State<TopBannerBidCountryPage> {
               children: [
 
                 RoundEdgedButton(
-                  text: 'Continue',
+                  text: translate("top_banner_bid_country.continueBtn"),
                   textColor: Colors.white,
                   color:cityValue==null?MyColors.inactiveButtonColor: MyColors.primaryColor,
                   borderRadius: 12,

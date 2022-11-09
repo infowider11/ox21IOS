@@ -450,6 +450,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/global_constants.dart';
 import 'package:ox21/constants/global_keys.dart';
 import 'package:ox21/functions/navigation_functions.dart';
@@ -512,7 +513,7 @@ class _MyCoinsPageState extends State<MyCoinsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: appBar(context: context, title: 'My OX21 Points'),
+      appBar: appBar(context: context, title: translate("mycoin_screen.title")),
       body: load
           ? CustomLoader()
           : Container(
@@ -545,7 +546,7 @@ class _MyCoinsPageState extends State<MyCoinsPage> {
                               ),
                               vSizedBox,
                               ParagraphText(
-                                text: '${userData!['points']} Coins',
+                                text: '${userData!['points']} '+translate("mycoin_screen.coins"),
                                 fontSize: 24,
                                 fontFamily: 'bold',
                                 color: MyColors.primaryColor,
@@ -566,7 +567,7 @@ class _MyCoinsPageState extends State<MyCoinsPage> {
                                           mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                           children: [
-                                            SubHeadingText(text: 'Wallet Balance'),
+                                            SubHeadingText(text: translate("mycoin_screen.wallet_balance")),
                                             SubHeadingText(
                                               text:
                                               '${double.parse(userData!['btc_wallet'].toString()).toStringAsFixed(2)} BTC',
@@ -645,7 +646,7 @@ class _MyCoinsPageState extends State<MyCoinsPage> {
                     vSizedBox2,
                     if(serverStatus==1)
                     RoundEdgedButton(
-                      text: 'Convert BTC To JIN',
+                      text: translate("mycoin_screen.convertbtc"),
                       isSolid: false,
                       textColor: Colors.white,
                       color: MyColors.secondary,
@@ -686,7 +687,7 @@ class _MyCoinsPageState extends State<MyCoinsPage> {
                                   children: [
                                     Center(
                                         child: SubHeadingText(
-                                            text: 'Convert BTC to Jin')),
+                                            text: translate("mycoin_screen.convertbtc"))),
                                     vSizedBox,
                                     Row(
                                       children: [
@@ -740,7 +741,7 @@ class _MyCoinsPageState extends State<MyCoinsPage> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         SubHeadingText(
-                                            text: 'Enter BTC Amount'),
+                                            text: translate("mycoin_screen.btcamount")),
                                         Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.end,
@@ -750,7 +751,7 @@ class _MyCoinsPageState extends State<MyCoinsPage> {
                                                         .toString() +
                                                     ' BTC'),
                                             ParagraphText(
-                                              text: '(Available BTC)',
+                                              text: translate("mycoin_screen.btcavailable"),
                                               color: MyColors.primaryColor,
                                             )
                                           ],
@@ -760,24 +761,24 @@ class _MyCoinsPageState extends State<MyCoinsPage> {
                                     CustomTextField(
                                       controller: amountController,
                                       hintText:
-                                          'Enter Btc amount to convert in JIN',
+                                      translate("mycoin_screen.btcconverinjin"),
                                       keyboardType: TextInputType.number,
                                     ),
                                     vSizedBox2,
                                     RoundEdgedButton(
-                                      text: 'Convert',
+                                      text: translate("mycoin_screen.convert"),
                                       onTap: () async {
                                         FocusScope.of(context)
                                             .requestFocus(new FocusNode());
                                         if (amountController.text == '') {
                                           showSnackbar(context,
-                                              'Please type valid amount');
+                                              translate("mycoin_screen.validamount"));
                                         } else if (double.parse(
                                                 amountController.text) >
                                             double.parse(userData!['btc_wallet']
                                                 .toString())) {
                                           showSnackbar(context,
-                                              'Oops!! You don\'t have sufficient balance');
+                                              translate("mycoin_screen.oopsalert"));
                                         } else {
                                           var request = {
                                             "user_id": userId,
@@ -817,7 +818,7 @@ class _MyCoinsPageState extends State<MyCoinsPage> {
                     vSizedBox,
                     if(serverStatus==1)
                     RoundEdgedButton(
-                      text: 'Convert BTC To OX21 Points',
+                      text: translate("mycoin_screen.btcpoints"),
                       textColor: Colors.white,
                       color: MyColors.secondary,
                       fontfamily: 'medium',
@@ -857,7 +858,7 @@ class _MyCoinsPageState extends State<MyCoinsPage> {
                                     Center(
                                         child: SubHeadingText(
                                             text:
-                                                'Convert BTC to OX21 Points')),
+                                            translate("mycoin_screen.btcpoints"))),
                                     vSizedBox,
                                     Row(
                                       children: [
@@ -877,7 +878,7 @@ class _MyCoinsPageState extends State<MyCoinsPage> {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                SubHeadingText(text: 'Points'),
+                                                SubHeadingText(text: translate("mycoin_screen.points")),
                                                 vSizedBox05,
                                                 ParagraphText(
                                                   text:
@@ -897,7 +898,7 @@ class _MyCoinsPageState extends State<MyCoinsPage> {
                                                 vSizedBox05,
                                                 ParagraphText(
                                                   text:
-                                                      '≈${(240.0 * double.parse(conversionRate)).toStringAsFixed(0)} Points',
+                                                      '≈${(240.0 * double.parse(conversionRate)).toStringAsFixed(0)} '+translate("mycoin_screen.points"),
                                                   color: MyColors.black54Color,
                                                 ),
                                               ],
@@ -912,7 +913,7 @@ class _MyCoinsPageState extends State<MyCoinsPage> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         SubHeadingText(
-                                            text: 'Enter BTC Amount'),
+                                            text: translate("mycoin_screen.btcamount")),
                                         Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.end,
@@ -922,7 +923,7 @@ class _MyCoinsPageState extends State<MyCoinsPage> {
                                                         .toString() +
                                                     ' BTC'),
                                             ParagraphText(
-                                              text: '(Available BTC)',
+                                              text: translate("mycoin_screen.btcavailable"),
                                               color: MyColors.primaryColor,
                                             )
                                           ],
@@ -932,24 +933,24 @@ class _MyCoinsPageState extends State<MyCoinsPage> {
                                     CustomTextField(
                                       controller: amountController,
                                       hintText:
-                                          'Enter Btc amount to convert in JIN',
+                                      translate("mycoin_screen.btcconverinjin"),
                                       keyboardType: TextInputType.number,
                                     ),
                                     vSizedBox2,
                                     RoundEdgedButton(
-                                      text: 'Convert',
+                                      text: translate("mycoin_screen.convert"),
                                       onTap: () async {
                                         FocusScope.of(context)
                                             .requestFocus(new FocusNode());
                                         if (amountController.text == '') {
                                           showSnackbar(context,
-                                              'Please type valid amount');
+                                            translate("mycoin_screen.validamount"));
                                         } else if (double.parse(
                                                 amountController.text) >
                                             double.parse(userData!['btc_wallet']
                                                 .toString())) {
                                           showSnackbar(context,
-                                              'Oops!! You don\'t have sufficient balance');
+                                              translate("mycoin_screen.oopsalert"));
                                         } else {
                                           var request = {
                                             "user_id": userId,
@@ -1019,7 +1020,7 @@ class _MyCoinsPageState extends State<MyCoinsPage> {
                     // ),
                     // vSizedBox,
                     RoundEdgedButton(
-                      text: 'Buy OX21 Points',
+                      text: translate("mycoin_screen.buyox21"),
                       textColor: Colors.white,
                       color: MyColors.secondary,
                       fontfamily: 'medium',

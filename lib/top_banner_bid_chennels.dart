@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/dummy_data.dart';
 import 'package:ox21/pages/select_page_number_page.dart';
 import 'package:ox21/pages/top_banner_bid_page.dart';
@@ -70,7 +71,7 @@ class _top_banner_chennelState extends State<top_banner_chennel> {
           ? null
           : appBar(
               context: context,
-              title: 'Top Banner Bid',
+              title: translate("top_banner_bid_chennels.title"),
               titleColor: MyColors.primaryColor,
             ),
       body: load
@@ -86,9 +87,9 @@ class _top_banner_chennelState extends State<top_banner_chennel> {
                       padding:
                           EdgeInsets.symmetric(vertical: 0, horizontal: 16),
                       child: CustomTextFieldlabel(
-                        labeltext: 'Search in Channels',
+                        labeltext: translate("top_banner_bid_chennels.searchChannel"),
                         controller: searchController,
-                        hintText: 'Search in channels',
+                        hintText: translate("top_banner_bid_chennels.searchChannel"),
                         left: 16,
                         fontsize: 12,
                         hintcolor: MyColors.inputbordercolor,
@@ -127,7 +128,7 @@ class _top_banner_chennelState extends State<top_banner_chennel> {
                         // margin: EdgeInsets.only(bottom: 40),
                         child: tempChannels.length == 0 || lengthisZero
                             ? Text(
-                                'No Channels Found',
+                          translate("top_banner_bid_chennels.noData"),
                                 textAlign: TextAlign.center,
                               )
                             : GridView.builder(
@@ -231,7 +232,7 @@ class _top_banner_chennelState extends State<top_banner_chennel> {
                       ),
                     ),
                     RoundEdgedButton(
-                      text: 'Continue',
+                      text: translate("top_banner_bid_chennels.continue"),
                       horizontalMargin: 16,
                       color: selectedChannels.length==0?MyColors.inactiveButtonColor: MyColors.primaryColor,
                       onTap:  selectedChannels.length==0?null:(){

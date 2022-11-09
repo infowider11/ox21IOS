@@ -44,9 +44,8 @@
     "alertStrongPassword": "请使用强密码",
     "alertMsgConfrimPass": "确认密码与之前的输入不匹配",
     "alertPass": "选择的助记词不匹配. 还有$noOfAttempts 次机会",
-    "alert": "密码至少8位"
-
-
+    "alert": "密码至少8位",
+    "13yearoldertext": "I am 13 years or older to user this app."
   },
   "Congratulations": {
     "title": "恭喜",
@@ -540,6 +539,7 @@
     "smallAount": "我们不能处理太小的BTC支付",
     "yourCart": "你的购物车",
     "items": "物品",
+    "price": "Price",
     "domainName": "域名 :",
     "USD": "USD",
     "totalPrice": "总价  ",
@@ -597,11 +597,28 @@
     "btc": "BTC",
     "jin": "JIN",
     "points":"点数",
-    "next": "下一步"
+    "next": "下一步",
+    "exchangebtn": "Exchange Top Banner with OX21 Points"
 
   },
   "webservicePage": {
     "postErrorMessage": "Error in uploading. Please re-upload your video"
+  },
+
+  "mycoin_screen": {
+    "title": "My OX21 Points",
+    "coins": "Coins",
+    "wallet_balance": "Wallet Balance",
+    "convertbtc": "Convert BTC To JIN",
+    "btcamount": "Enter BTC Amount",
+    "btcavailable": "(Available BTC)",
+    "btcconverinjin": "Enter Btc amount to convert in JIN",
+    "convert": "Convert",
+    "validamount": "Please type valid amount",
+    "oopsalert": "Oops!! You don\\'t have sufficient balance",
+    "btcpoints": "Convert BTC To OX21 Points",
+    "points": "Points",
+    "buyox21": "Buy OX21 Points"
   }
 
 

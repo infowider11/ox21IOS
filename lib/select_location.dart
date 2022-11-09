@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/global_constants.dart';
 import 'package:ox21/packages/lib/search_map_location.dart';
 import 'package:ox21/packages/lib/utils/google_search/place_type.dart';
@@ -67,7 +68,7 @@ class _Select_locationState extends State<Select_location> {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 16.0),
                             child: ParagraphText(
-                              text: 'Select Location',
+                              text: translate("Select_location.selectLocation"),
                               fontSize: 18,
                               fontFamily: 'bold',
                             ),
@@ -81,7 +82,7 @@ class _Select_locationState extends State<Select_location> {
                                 Navigator.pushReplacementNamed(context, SelectChannelPage.id);
                               },
                               child: SubHeadingText(
-                                text: 'Skip',
+                                text: translate("Select_location.skip"),
                               ),
                             ),
                           )
@@ -175,7 +176,7 @@ class _Select_locationState extends State<Select_location> {
                           apiKey: MyGlobalConstants.kGoogleApiKey,
                           height: 36,
                           placeType: PlaceType.cities,
-                          placeholder: 'Select City, Province, Country',
+                          placeholder: translate("Select_location.selectText"),
                           onSelected: (place) {
                             print('the place is ${place.fullJSON}');
                             List data = place.fullJSON['description']
@@ -201,7 +202,7 @@ class _Select_locationState extends State<Select_location> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       RoundEdgedButton(
-                        text: 'Continue',
+                        text: translate("Select_location.continueBtn"),
                         textColor: Colors.white,
                         color: cityValue == null
                             ? Colors.grey.shade300

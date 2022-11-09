@@ -420,7 +420,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   color: MyColors.primaryColor,
                 ),
                 title: Text(
-                  'Community Court',
+                  translate("setting.court"),
                   style: TextStyle(
                     color: MyColors.primaryColor,
                     fontSize: 16,
@@ -444,7 +444,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   color: Colors.red,
                 ),
                 title: Text(
-                  'Delete Account',
+                  translate("setting.deleteAccount"),
                   style: TextStyle(
                     color: MyColors.primaryColor,
                     fontSize: 16,
@@ -471,7 +471,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     leading: Icon(
                       Icons.subscriptions_outlined, color: MyColors.primaryColor,
                     ),
-                    title: Text('Terms & Conditions', style: TextStyle(
+                    title: Text(translate("setting.termsCondition"), style: TextStyle(
                       color: MyColors.primaryColor,
                       fontSize: 16,
                       fontFamily: 'medium',
@@ -493,7 +493,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     leading: Icon(
                       Icons.subscriptions_outlined, color: MyColors.primaryColor,
                     ),
-                    title: Text('Privacy Policy', style: TextStyle(
+                    title: Text(translate("setting.privacy"), style: TextStyle(
                       color: MyColors.primaryColor,
                       fontSize: 16,
                       fontFamily: 'medium',
@@ -515,7 +515,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     leading: Icon(
                       Icons.subscriptions_outlined, color: MyColors.primaryColor,
                     ),
-                    title: Text('Copyrights', style: TextStyle(
+                    title: Text(translate("setting.copyRight"), style: TextStyle(
                       color: MyColors.primaryColor,
                       fontSize: 16,
                       fontFamily: 'medium',

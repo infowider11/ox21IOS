@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/colors.dart';
 import 'package:ox21/constants/global_constants.dart';
 import 'package:ox21/constants/global_keys.dart';
@@ -50,7 +51,7 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
     return Scaffold(
       backgroundColor: MyColors.backcolor,
       appBar: appBar(context: context,
-          title: 'Delete Account',
+          title: translate("deleteAccount.title"),
           titleColor: MyColors.primaryColor,
           actions: [
             IconButton(onPressed: (){}, icon: Image.asset(MyImages.logowelcom, width: 35, height: 40, fit: BoxFit.fitHeight,))
@@ -94,7 +95,7 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
                       child: CustomTextFieldlabel(
                         labeltext: 'Mnemonic phrase',
                         controller: passPhraseController,
-                        hintText: 'Enter the 12 Words pass phrase',
+                        hintText: translate("deleteAccount.placeholder"),
                         left: 16,
                         fontsize: 12,
                         hintcolor: MyColors.inputbordercolor,
@@ -130,7 +131,7 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ParagraphText(
-                      text: 'Once you delete an account, there is no way to recover it\nAre you sure you want to delete your account?',
+                      text: translate("deleteAccount.alrt1"),
                       color: MyColors.lighttext,
                       fontSize: 12,
                       fontFamily: 'regular',
@@ -139,7 +140,7 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
                 ),
                 vSizedBox2,
                 RoundEdgedButton(
-                  text: 'Delete Account',
+                  text: translate("deleteAccount.title"),
                   textColor: Colors.white,
                   color: Color(0xFFDC2430),
                   borderRadius: 12,
@@ -156,12 +157,12 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
                     uuid.v5(Uuid.NAMESPACE_URL, passPhraseController.text);
                     if(words.length!=12){
                       print('the words length is ${words.length}');
-                      showSnackbar(context, 'Mnemonic phrase must be of 12 words');
+                      showSnackbar(context, translate("deleteAccount.alert4"));
                     }else if(typedPhrase!=userData!['uuid']){
-                      showSnackbar(context, 'You have entered wrong Mnemonic phrase');
+                      showSnackbar(context, translate("deleteAccount.alert3"));
                     }else{
                       bool? result = await showCustomConfirmationDialog(
-                          description: 'Once you delete an account, there is no way to recover it.'
+                          description: translate("deleteAccount.alrt2")
                       );
 
                       if(result== true){
