@@ -20,7 +20,13 @@ updateSharedPreference(Map<String,dynamic> userdetail)async{
   sharedPreferences.setString('data', jsonEncode(userdetail));
 }
 
-
+changeUserLanguage(String userId, String languageCode)async{
+  var request = {
+    "id":userId,
+    "lang":languageCode
+  };
+  var jsonResponse = await Webservices.postData(url: ApiUrls.change_my_language, request: request, context: MyGlobalKeys.navigatorKey.currentContext! );
+}
 
 Future<Map<String,dynamic>> updateSharedPreferenceFromServer()async{
 

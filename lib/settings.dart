@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/colors.dart';
 import 'package:ox21/constants/sized_box.dart';
 import 'package:ox21/deleteaccount.dart';
 import 'package:ox21/functions/navigation_functions.dart';
 import 'package:ox21/mycoins.dart';
+import 'package:ox21/pages/add_web_storage_token.dart';
+import 'package:ox21/pages/choose_lang.dart';
 import 'package:ox21/pages/community_court_page.dart';
 import 'package:ox21/pages/friend_and_family/group_list_page.dart';
 import 'package:ox21/pages/make_payment_for_banner_page.dart';
@@ -15,11 +18,13 @@ import 'package:ox21/pages/my_subscribed_channels_page.dart';
 import 'package:ox21/pages/my_video_page.dart';
 import 'package:ox21/pages/rent_banner/my_rented_banners.dart';
 import 'package:ox21/pages/rent_banner/rent_banner_page.dart';
+import 'package:ox21/pages/terms_and_conditions_page.dart';
 import 'package:ox21/pages/vmails_page.dart';
 import 'package:ox21/widgets/appbar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'constants/global_constants.dart';
+import 'make_payment_for_domain_page.dart';
 
 class SettingsPage extends StatefulWidget {
   static const String id = "settings";
@@ -33,7 +38,7 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context: context, title: 'Settings', implyLeading: false),
+      appBar: appBar(context: context, title: translate("setting.title"), implyLeading: false),
       body: Container(
         margin: EdgeInsets.all(16),
         child: SingleChildScrollView(
@@ -96,6 +101,31 @@ class _SettingsPageState extends State<SettingsPage> {
                     thickness: 0.5,
                     color: MyColors.primaryColor,
                   ),
+                  vSizedBox,
+                ],
+              ),
+              if(serverStatus==1)
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ListTile(
+                    leading: Icon(
+                      Icons.subscriptions_outlined, color: MyColors.primaryColor,
+                    ),
+                    title: Text('Add Web Storage Token', style: TextStyle(
+                      color: MyColors.primaryColor,
+                      fontSize: 16,
+                      fontFamily: 'medium',
+                    ),
+                    ),
+                    onTap: (){
+                      push(context: context, screen: AddWebStorageTokenPage(
+
+                      ));
+                    },
+                  ),
+
+                  Divider(indent: 65, height: 10, thickness: 0.5, color: MyColors.primaryColor,),
                   vSizedBox,
                 ],
               ),
@@ -225,6 +255,28 @@ class _SettingsPageState extends State<SettingsPage> {
                     color: MyColors.primaryColor,
                   ),
                   vSizedBox,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ListTile(
+                        leading: Icon(
+                          Icons.subscriptions_outlined, color: MyColors.primaryColor,
+                        ),
+                        title: Text('Make Payment For Domain', style: TextStyle(
+                          color: MyColors.primaryColor,
+                          fontSize: 16,
+                          fontFamily: 'medium',
+                        ),
+                        ),
+                        onTap: (){
+                          push(context: context, screen: MakePaymentForDomainPage());
+                        },
+                      ),
+
+                      Divider(indent: 65, height: 10, thickness: 0.5, color: MyColors.primaryColor,),
+                      vSizedBox,
+                    ],
+                  ),
                   ListTile(
                     leading: Icon(
                       Icons.subscriptions_outlined,
@@ -342,6 +394,26 @@ class _SettingsPageState extends State<SettingsPage> {
                   vSizedBox,
                 ],
               ),
+
+              ListTile(
+                leading: Icon(
+                  Icons.subscriptions_outlined, color: MyColors.primaryColor,
+                ),
+                title: Text(translate("setting.lang"), style: TextStyle(
+                  color: MyColors.primaryColor,
+                  fontSize: 16,
+                  fontFamily: 'medium',
+                ),
+                ),
+                onTap: ()async{
+                  await push(context: context, screen: ChooseLanguage());
+                  setState(() {
+
+                  });
+                },
+              ),
+              Divider(indent: 65, height: 10, thickness: 0.5, color: MyColors.primaryColor,),
+              vSizedBox,
               ListTile(
                 leading: Icon(
                   Icons.subscriptions_outlined,
@@ -392,8 +464,79 @@ class _SettingsPageState extends State<SettingsPage> {
                 thickness: 0.5,
                 color: MyColors.primaryColor,
               ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ListTile(
+                    leading: Icon(
+                      Icons.subscriptions_outlined, color: MyColors.primaryColor,
+                    ),
+                    title: Text('Terms & Conditions', style: TextStyle(
+                      color: MyColors.primaryColor,
+                      fontSize: 16,
+                      fontFamily: 'medium',
+                    ),
+                    ),
+                    onTap: (){
+                      push(context: context, screen: TermsAndConditionsPage());
+                    },
+                  ),
+
+                  Divider(indent: 65, height: 10, thickness: 0.5, color: MyColors.primaryColor,),
+                  vSizedBox,
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ListTile(
+                    leading: Icon(
+                      Icons.subscriptions_outlined, color: MyColors.primaryColor,
+                    ),
+                    title: Text('Privacy Policy', style: TextStyle(
+                      color: MyColors.primaryColor,
+                      fontSize: 16,
+                      fontFamily: 'medium',
+                    ),
+                    ),
+                    onTap: (){
+                      push(context: context, screen: PrivacyPolicyPage());
+                    },
+                  ),
+
+                  Divider(indent: 65, height: 10, thickness: 0.5, color: MyColors.primaryColor,),
+                  vSizedBox,
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ListTile(
+                    leading: Icon(
+                      Icons.subscriptions_outlined, color: MyColors.primaryColor,
+                    ),
+                    title: Text('Copyrights', style: TextStyle(
+                      color: MyColors.primaryColor,
+                      fontSize: 16,
+                      fontFamily: 'medium',
+                    ),
+                    ),
+                    onTap: (){
+
+                      ///TODO: yaha in app purchase ka code he vo remove krna he end me
+
+                      push(context: context, screen: CopyrightPage());
+                      // push(context: context, screen: CopyrightPage());
+                    },
+                  ),
+
+                  Divider(indent: 65, height: 10, thickness: 0.5, color: MyColors.primaryColor,),
+                  vSizedBox,
+                ],
+              ),
             ],
           ),
+
         ),
       ),
     );

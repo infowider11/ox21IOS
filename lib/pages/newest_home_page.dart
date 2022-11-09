@@ -29,6 +29,8 @@ import '../constants/image_urls.dart';
 import '../constants/sized_box.dart';
 import '../custom_dialogs/rent_banner_bottom_sheet.dart';
 import '../widgets/fully_custom_dropdown.dart';
+import '../widgets/show_custom_modal_sheet.dart';
+import 'comments_page_bottom_sheet.dart';
 
 class NewestHomePage extends StatefulWidget {
   static const String id = "newhome";
@@ -1126,53 +1128,202 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                                       ),
                                                     ),
                                                   ),
+                                                  // Flexible(
+                                                  //   flex: 6,
+                                                  //   child: Row(
+                                                  //     mainAxisAlignment:
+                                                  //         MainAxisAlignment.end,
+                                                  //     children: [
+                                                  //       GestureDetector(
+                                                  //         behavior:
+                                                  //             HitTestBehavior
+                                                  //                 .opaque,
+                                                  //         onTap: () async {
+                                                  //           if (items[index][
+                                                  //                   'is_like'] !=
+                                                  //               1) {
+                                                  //             print(
+                                                  //                 '${items[index]['id']} is liked ');
+                                                  //             items[index][
+                                                  //                 'is_like'] = 1;
+                                                  //             setState(() {});
+                                                  //             await Webservices
+                                                  //                 .getData(ApiUrls
+                                                  //                         .likePost +
+                                                  //                     'user_id=$userId&post_id=${items[index]['id']}');
+                                                  //           } else {
+                                                  //             items[index][
+                                                  //                 'is_like'] = 0;
+                                                  //             setState(() {});
+                                                  //             await Webservices
+                                                  //                 .getData(ApiUrls
+                                                  //                         .removelikeDislikePost +
+                                                  //                     'user_id=$userId&post_id=${items[index]['id']}');
+                                                  //           }
+                                                  //         },
+                                                  //         child: Container(
+                                                  //           padding: EdgeInsets
+                                                  //               .symmetric(
+                                                  //                   horizontal:
+                                                  //                       0),
+                                                  //           height: 26,
+                                                  //           width: 80,
+                                                  //           decoration: BoxDecoration(
+                                                  //               color: MyColors
+                                                  //                   .lightblue,
+                                                  //               borderRadius:
+                                                  //                   BorderRadius
+                                                  //                       .circular(
+                                                  //                           4)),
+                                                  //           child: Row(
+                                                  //             // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                  //             children: [
+                                                  //               Image.asset(
+                                                  //                 MyImages
+                                                  //                     .heartfill,
+                                                  //                 width: 16,
+                                                  //                 fit: BoxFit
+                                                  //                     .fitWidth,
+                                                  //                 color: items[index]
+                                                  //                             [
+                                                  //                             'is_like'] ==
+                                                  //                         1
+                                                  //                     ? Colors
+                                                  //                         .red
+                                                  //                     : null,
+                                                  //               ),
+                                                  //               hSizedBox,
+                                                  //               ParagraphText(
+                                                  //                 text: 'Like',
+                                                  //                 color: MyColors
+                                                  //                     .primaryColor,
+                                                  //                 fontSize: 12,
+                                                  //               )
+                                                  //             ],
+                                                  //           ),
+                                                  //         ),
+                                                  //       ),
+                                                  //       hSizedBox,
+                                                  //       GestureDetector(
+                                                  //         behavior:
+                                                  //             HitTestBehavior
+                                                  //                 .opaque,
+                                                  //         onTap: () async {
+                                                  //           if (items[index][
+                                                  //                   'is_like'] !=
+                                                  //               -1) {
+                                                  //             print(
+                                                  //                 '${items[index]['id']} is liked ');
+                                                  //             items[index][
+                                                  //                 'is_like'] = -1;
+                                                  //             setState(() {});
+                                                  //             await Webservices
+                                                  //                 .getData(ApiUrls
+                                                  //                         .dislikePost +
+                                                  //                     'user_id=$userId&post_id=${items[index]['id']}');
+                                                  //           } else {
+                                                  //             items[index][
+                                                  //                 'is_like'] = 0;
+                                                  //             setState(() {});
+                                                  //             await Webservices
+                                                  //                 .getData(ApiUrls
+                                                  //                         .removelikeDislikePost +
+                                                  //                     'user_id=$userId&post_id=${items[index]['id']}');
+                                                  //           }
+                                                  //         },
+                                                  //         child: Container(
+                                                  //           padding: EdgeInsets
+                                                  //               .symmetric(
+                                                  //                   horizontal:
+                                                  //                       8),
+                                                  //           height: 26,
+                                                  //           width: 80,
+                                                  //           decoration: BoxDecoration(
+                                                  //               color: MyColors
+                                                  //                   .lightblue,
+                                                  //               borderRadius:
+                                                  //                   BorderRadius
+                                                  //                       .circular(
+                                                  //                           4)),
+                                                  //           child: Row(
+                                                  //             // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                  //             children: [
+                                                  //               Image.asset(
+                                                  //                 MyImages
+                                                  //                     .dislikefill,
+                                                  //                 width: 11,
+                                                  //                 fit: BoxFit
+                                                  //                     .fitWidth,
+                                                  //                 color: items[index]
+                                                  //                             [
+                                                  //                             'is_like'] ==
+                                                  //                         -1
+                                                  //                     ? Colors
+                                                  //                         .red
+                                                  //                     : null,
+                                                  //               ),
+                                                  //               hSizedBox,
+                                                  //               ParagraphText(
+                                                  //                 text:
+                                                  //                     'Dislike',
+                                                  //                 color: MyColors
+                                                  //                     .primaryColor,
+                                                  //                 fontSize: 12,
+                                                  //               )
+                                                  //             ],
+                                                  //           ),
+                                                  //         ),
+                                                  //       )
+                                                  //     ],
+                                                  //   ),
+                                                  // ),
                                                   Flexible(
                                                     flex: 6,
                                                     child: Row(
                                                       mainAxisAlignment:
-                                                          MainAxisAlignment.end,
+                                                      MainAxisAlignment.end,
                                                       children: [
                                                         GestureDetector(
                                                           behavior:
-                                                              HitTestBehavior
-                                                                  .opaque,
+                                                          HitTestBehavior
+                                                              .opaque,
                                                           onTap: () async {
                                                             if (items[index][
-                                                                    'is_like'] !=
+                                                            'is_like'] !=
                                                                 1) {
                                                               print(
                                                                   '${items[index]['id']} is liked ');
                                                               items[index][
-                                                                  'is_like'] = 1;
+                                                              'is_like'] = 1;
                                                               setState(() {});
                                                               await Webservices
                                                                   .getData(ApiUrls
-                                                                          .likePost +
-                                                                      'user_id=$userId&post_id=${items[index]['id']}');
+                                                                  .likePost +
+                                                                  'user_id=$userId&post_id=${items[index]['id']}');
                                                             } else {
                                                               items[index][
-                                                                  'is_like'] = 0;
+                                                              'is_like'] = 0;
                                                               setState(() {});
                                                               await Webservices
                                                                   .getData(ApiUrls
-                                                                          .removelikeDislikePost +
-                                                                      'user_id=$userId&post_id=${items[index]['id']}');
+                                                                  .removelikeDislikePost +
+                                                                  'user_id=$userId&post_id=${items[index]['id']}');
                                                             }
                                                           },
                                                           child: Container(
                                                             padding: EdgeInsets
                                                                 .symmetric(
-                                                                    horizontal:
-                                                                        0),
-                                                            height: 26,
-                                                            width: 80,
+                                                                horizontal:
+                                                                16),
+                                                            height: 28,
+                                                            // width: 80,
                                                             decoration: BoxDecoration(
                                                                 color: MyColors
                                                                     .lightblue,
                                                                 borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            4)),
+                                                                BorderRadius
+                                                                    .circular(
+                                                                    4)),
                                                             child: Row(
                                                               // mainAxisAlignment: MainAxisAlignment.spaceAround,
                                                               children: [
@@ -1183,20 +1334,20 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                                                   fit: BoxFit
                                                                       .fitWidth,
                                                                   color: items[index]
-                                                                              [
-                                                                              'is_like'] ==
-                                                                          1
+                                                                  [
+                                                                  'is_like'] ==
+                                                                      1
                                                                       ? Colors
-                                                                          .red
+                                                                      .red
                                                                       : null,
                                                                 ),
-                                                                hSizedBox,
-                                                                ParagraphText(
-                                                                  text: 'Like',
-                                                                  color: MyColors
-                                                                      .primaryColor,
-                                                                  fontSize: 12,
-                                                                )
+                                                                // hSizedBox,
+                                                                // ParagraphText(
+                                                                //   text: 'Like',
+                                                                //   color: MyColors
+                                                                //       .primaryColor,
+                                                                //   fontSize: 12,
+                                                                // )
                                                               ],
                                                             ),
                                                           ),
@@ -1204,74 +1355,127 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                                         hSizedBox,
                                                         GestureDetector(
                                                           behavior:
-                                                              HitTestBehavior
-                                                                  .opaque,
+                                                          HitTestBehavior
+                                                              .opaque,
                                                           onTap: () async {
                                                             if (items[index][
-                                                                    'is_like'] !=
+                                                            'is_like'] !=
                                                                 -1) {
                                                               print(
                                                                   '${items[index]['id']} is liked ');
                                                               items[index][
-                                                                  'is_like'] = -1;
+                                                              'is_like'] = -1;
                                                               setState(() {});
                                                               await Webservices
                                                                   .getData(ApiUrls
-                                                                          .dislikePost +
-                                                                      'user_id=$userId&post_id=${items[index]['id']}');
+                                                                  .dislikePost +
+                                                                  'user_id=$userId&post_id=${items[index]['id']}');
                                                             } else {
                                                               items[index][
-                                                                  'is_like'] = 0;
+                                                              'is_like'] = 0;
                                                               setState(() {});
                                                               await Webservices
                                                                   .getData(ApiUrls
-                                                                          .removelikeDislikePost +
-                                                                      'user_id=$userId&post_id=${items[index]['id']}');
+                                                                  .removelikeDislikePost +
+                                                                  'user_id=$userId&post_id=${items[index]['id']}');
                                                             }
                                                           },
                                                           child: Container(
                                                             padding: EdgeInsets
                                                                 .symmetric(
-                                                                    horizontal:
-                                                                        8),
-                                                            height: 26,
-                                                            width: 80,
+                                                                horizontal:
+                                                                8),
+                                                            height: 28,
+                                                            // width: 40,
                                                             decoration: BoxDecoration(
                                                                 color: MyColors
                                                                     .lightblue,
                                                                 borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            4)),
+                                                                BorderRadius
+                                                                    .circular(
+                                                                    4)),
                                                             child: Row(
                                                               // mainAxisAlignment: MainAxisAlignment.spaceAround,
                                                               children: [
                                                                 Image.asset(
                                                                   MyImages
                                                                       .dislikefill,
-                                                                  width: 11,
+                                                                  width: 14,
                                                                   fit: BoxFit
                                                                       .fitWidth,
                                                                   color: items[index]
-                                                                              [
-                                                                              'is_like'] ==
-                                                                          -1
+                                                                  [
+                                                                  'is_like'] ==
+                                                                      -1
                                                                       ? Colors
-                                                                          .red
+                                                                      .red
                                                                       : null,
                                                                 ),
-                                                                hSizedBox,
-                                                                ParagraphText(
-                                                                  text:
-                                                                      'Dislike',
-                                                                  color: MyColors
-                                                                      .primaryColor,
-                                                                  fontSize: 12,
-                                                                )
+                                                                // hSizedBox,
+                                                                // ParagraphText(
+                                                                //   text:
+                                                                //       'Dislike',
+                                                                //   color: MyColors
+                                                                //       .primaryColor,
+                                                                //   fontSize: 12,
+                                                                // )
                                                               ],
                                                             ),
                                                           ),
-                                                        )
+                                                        ),
+                                                        hSizedBox,
+                                                        GestureDetector(
+                                                          behavior:
+                                                          HitTestBehavior
+                                                              .opaque,
+                                                          onTap: () async {
+                                                            showCustomBottomSheet(
+
+                                                                context,
+                                                                child:
+                                                                CommentsPageInHomeFeed(postId: items[index]['id'].toString(),),
+                                                                height: 400
+                                                            );
+                                                          },
+                                                          child: Container(
+                                                            padding: EdgeInsets
+                                                                .symmetric(
+                                                                horizontal:
+                                                                16),
+                                                            height: 28,
+                                                            // width: 80,
+                                                            decoration: BoxDecoration(
+                                                                color: MyColors
+                                                                    .lightblue,
+                                                                borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                    4)),
+                                                            child: Row(
+                                                              // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                              children: [
+                                                                Image.asset(
+                                                                  MyImages
+                                                                      .comment_video,
+                                                                  width: 14,
+                                                                  fit: BoxFit
+                                                                      .fitWidth,
+                                                                  color: MyColors
+                                                                      .primaryColor
+                                                                      .withAlpha(
+                                                                      92),
+                                                                ),
+                                                                // hSizedBox,
+                                                                // ParagraphText(
+                                                                //   text: 'Like',
+                                                                //   color: MyColors
+                                                                //       .primaryColor,
+                                                                //   fontSize: 12,
+                                                                // )
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
                                                       ],
                                                     ),
                                                   ),

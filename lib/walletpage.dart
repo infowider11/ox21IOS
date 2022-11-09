@@ -7,6 +7,7 @@ import 'package:ox21/constants/global_functions.dart';
 import 'package:ox21/constants/sized_box.dart';
 import 'package:ox21/functions/navigation_functions.dart';
 import 'package:ox21/pages/btc_send_page.dart';
+import 'package:ox21/pages/complete_domain_purchase_page.dart';
 import 'package:ox21/pages/deposit_btc_page.dart';
 import 'package:ox21/pages/deposit_btc_qr_page.dart';
 import 'package:ox21/pages/my_purchased_banners.dart';
@@ -41,6 +42,7 @@ class _WalletPageState extends State<WalletPage> {
 
   bool load = false;
   bool isDomainValid = false;
+  bool isDomainPaymentPending = false;
   String domainErrorMessage = '';
   bool domainSearchLoad = false;
   Map<String, dynamic>? domainData;
@@ -296,7 +298,7 @@ class _WalletPageState extends State<WalletPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             CustomDivider(),
-                            SubHeadingText(text: 'Domain Trade'),
+                            SubHeadingText(text: 'Domain Exchange'),
                             vSizedBox,
                             CustomTextFieldlabel(
                               controller: searchDomainController,
@@ -312,56 +314,62 @@ class _WalletPageState extends State<WalletPage> {
                                         child: CustomLoader(),
                                       ),
                                     ),
-                              onChanged: (val) async {
+                              onChanged: (val)async{
+
                                 print(val);
                                 setState(() {
                                   domainSearchLoad = true;
                                 });
-                                var response = await Webservices.getData(
-                                    ApiUrls.checkDomain +
-                                        'domain=$val&user_id=$userId');
+                                var response =  await Webservices.getData(ApiUrls.checkDomain + 'domain=$val&user_id=$userId');
                                 print('step 1');
-                                print(
-                                    ' I am here with Stcode ${response.statusCode}');
-                                if (response.statusCode == 200) {
+                                print(' I am here with Stcode ${response.statusCode}');
+                                if(response.statusCode==200){
+
                                   var jsonResponse = jsonDecode(response.body);
 
                                   print('the jsonResponse is $jsonResponse');
-                                  if (jsonResponse['status'] == 1) {
-                                    domainErrorMessage =
-                                        'This domain is available for Exchange';
+                                  if(jsonResponse['status']==1){
+                                    domainErrorMessage = 'This domain is available for purchase';
                                     isDomainValid = true;
                                     domainData = jsonResponse['data'];
+                                    isDomainPaymentPending= false;
                                     // domainErrorMessage = jsonResponse['message'];
-                                  } else {
-                                    print('imhere');
-                                    domainErrorMessage =
-                                        jsonResponse['message'];
-                                    isDomainValid = false;
+                                  }
+                                  else{
+                                    isDomainPaymentPending= false;
                                     domainData = null;
+                                    domainErrorMessage = jsonResponse['message'];
+                                    isDomainValid = false;
+                                    if(jsonResponse['status']==2){
+                                      isDomainPaymentPending= true;
+                                      domainData = jsonResponse['data'];
+                                    }
+                                    print('imhere');
+
+
                                   }
                                   print(jsonResponse);
                                   print('hellooo world');
-                                } else if (response.statusCode == 500) {
-                                  try {
-                                    var jsonResponse =
-                                        jsonDecode(response.body);
-                                    domainErrorMessage =
-                                        jsonResponse['message'];
+                                }else if(response.statusCode==500){
+                                  try{
+                                    var jsonResponse = jsonDecode(response.body);
+                                    domainErrorMessage = jsonResponse['message'];
                                     isDomainValid = false;
                                     domainData = null;
-                                  } catch (e) {
+                                  }catch(e){
                                     print('Error in catch block 453 $e');
-                                    domainErrorMessage =
-                                        'Something went wrong.';
+                                    domainErrorMessage = 'Something went wrong.';
                                   }
-                                } else {
+
+                                }else{
                                   domainErrorMessage = 'Something went wrong.';
                                 }
                                 setState(() {
                                   domainSearchLoad = false;
                                 });
                               },
+
+
                             ),
                             // vSizedBox,
                             Row(
@@ -379,33 +387,52 @@ class _WalletPageState extends State<WalletPage> {
                             Row(
                               children: [
                                 Expanded(
-                                    child: RoundEdgedButton(
-                                  text: !(isDomainValid && domainData != null)
-                                      ? 'Exchange Domain'
-                                      : 'Exchange Domain with ${domainData!['jinCost']} JIN',
-                                  color: !(isDomainValid && domainData != null)
-                                      ? MyColors.grey.withOpacity(0.2)
-                                      : MyColors.secondary,
-                                  textColor: Colors.white,
-                                  fontSize: 12,
-                                  fontfamily: 'medium',
-                                  borderRadius: 8,
-                                  height: 40,
-                                  onTap: !(isDomainValid && domainData != null)
-                                      ? null
-                                      : () async {
-                                          // Navigator.pushNamed(context, SearchDomainPage.id);
-                                          FocusScope.of(context)
-                                              .requestFocus(new FocusNode());
-                                          await push(
-                                              context: context,
-                                              screen: SearchDomainPage(
-                                                domainData: domainData!,
-                                              ));
-                                          searchDomainController.clear();
-                                        },
-                                  // verticalPadding: 4,
-                                )),
+                            child: RoundEdgedButton(text:!(isDomainValid && domainData!=null)? 'Exchange Domain':'Exchange Domain with ${domainData!['jinCost']} JIN',
+    color:!(isDomainValid && domainData!=null)?isDomainPaymentPending?MyColors.secondary: MyColors.grey.withOpacity(0.2): MyColors.secondary,
+    textColor: Colors.white,
+    fontSize: 12,
+    fontfamily: 'medium',
+    borderRadius: 8,
+    height: 40,
+    onTap:!(isDomainValid && domainData!=null)?isDomainPaymentPending?(){
+    FocusScope.of(context).requestFocus(new FocusNode());
+    push(context: context, screen: CompleteDomainPaymentPage(purchaseData: domainData!));
+    }:null: ()async{
+    // Navigator.pushNamed(context, SearchDomainPage.id);
+    FocusScope.of(context).requestFocus(new FocusNode());
+    await push(context: context, screen: SearchDomainPage(domainData: domainData!,));
+    searchDomainController.clear();
+    },
+    // verticalPadding: 4,
+    ),
+                                //     child: RoundEdgedButton(
+                                //   text: !(isDomainValid && domainData != null)
+                                //       ? 'Exchange Domain'
+                                //       : 'Exchange Domain with ${domainData!['jinCost']} JIN',
+                                //   color: !(isDomainValid && domainData != null)
+                                //       ? MyColors.grey.withOpacity(0.2)
+                                //       : MyColors.secondary,
+                                //   textColor: Colors.white,
+                                //   fontSize: 12,
+                                //   fontfamily: 'medium',
+                                //   borderRadius: 8,
+                                //   height: 40,
+                                //   onTap: !(isDomainValid && domainData != null)
+                                //       ? null
+                                //       : () async {
+                                //           // Navigator.pushNamed(context, SearchDomainPage.id);
+                                //           FocusScope.of(context)
+                                //               .requestFocus(new FocusNode());
+                                //           await push(
+                                //               context: context,
+                                //               screen: SearchDomainPage(
+                                //                 domainData: domainData!,
+                                //               ));
+                                //           searchDomainController.clear();
+                                //         },
+                                //   // verticalPadding: 4,
+                                // ),
+                                ),
                               ],
                             ),
                             vSizedBox,
@@ -455,7 +482,7 @@ class _WalletPageState extends State<WalletPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SubHeadingText(text: 'Top Banner Trade'),
+                          SubHeadingText(text: 'Top Banner Exchange'),
                           // vSizedBox,
                           // CustomTextFieldlabel(controller: bannerTradeController, hintText: 'Search Channel', labeltext: 'Search Channel', icon: Icons.search,),
                           vSizedBox,

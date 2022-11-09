@@ -2,8 +2,8 @@ class ApiUrls{
 
     static const String baseUrl = "http://ox21nft.xyz/api/";
     static const String bitcoinConversionKey = '511a9e6ffef230c10afb57f286dae642831f3fcd';
-    static const String bitcoinConversionUrl = 'https://api.nomics.com/v1/currencies/ticker?key=a854281e5a8e2a592ec80e3ce03c2fc1688f4f33&ids=BTC&interval=1d,30d&per-page=100&page=1';
-
+    // static const String bitcoinConversionUrl = 'https://api.nomics.com/v1/currencies/ticker?key=a854281e5a8e2a592ec80e3ce03c2fc1688f4f33&ids=BTC&interval=1d,30d&per-page=100&page=1';
+    static const String bitcoinConversionUrl = baseUrl + 'live_btc_api';
   // a854281e5a8e2a592ec80e3ce03c2fc1688f4f33
 
   static const String signUpUrl =baseUrl+  'signup';
@@ -89,7 +89,15 @@ class ApiUrls{
     static const String leave_group = baseUrl + 'leave_group'; //?group_id=5&user_id=4
     static const String getServerStatus = baseUrl + 'getServerStatus';
     static const String delete_account = baseUrl + 'delete_account'; //?group_id=5&user_id=4
-    // static const String checkgroup = baseUrl + 'check_group'; //?user_id=4&type=all
+    static const String payment_for_domain = baseUrl + 'payment_for_domain_by_oderID';
+    static const String checkAmountForOrderIdInDomain = baseUrl + 'check_domain_order_id';
+    static const String getPostComments = baseUrl + 'get_post_comment_list'; //?user_id=1&post_id=22
+    static const String comment_on_post = baseUrl + 'comment_on_post';
+    static const String uploadWebToken = baseUrl + 'upload-web-token';
+    static const String change_my_language = baseUrl + 'change_my_language';
+
+
+// static const String checkgroup = baseUrl + 'check_group'; //?user_id=4&type=all
 
 
 

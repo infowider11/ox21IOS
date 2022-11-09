@@ -201,6 +201,47 @@ class _CartState extends State<Cart> {
               child: Column(
                 children: [
                   if(widget.purchaseCurrency!=PurchaseCurrency.usd)
+                  // RoundEdgedButton(
+                  //   text: 'Confirm',
+                  //   textColor: Colors.white,
+                  //   color: MyColors.secondary,
+                  //   fontfamily: 'medium',
+                  //   onTap: ()async{
+                  //     setState(() {
+                  //       load = true;
+                  //     });
+                  //
+                  //     int randomId = Random().nextInt(999999);
+                  //     print(randomId);
+                  //     Map<String,dynamic> request = {
+                  //       "domain":widget.domainData['domain'],
+                  //       // "domain": "qwew",
+                  //       "user_id":userId,
+                  //       "payment_by":widget.purchaseCurrency==PurchaseCurrency.coins?"points":widget.purchaseCurrency==PurchaseCurrency.jin?"jin":widget.purchaseCurrency==PurchaseCurrency.btc?"btc":"usd",
+                  //       "usd_cost":"0",
+                  //       "jin_cost":widget.purchaseCurrency==PurchaseCurrency.jin?"${widget.domainData['jinCost']}":"0",
+                  //       "btc_cost":widget.purchaseCurrency==PurchaseCurrency.btc?price:'0',
+                  //       "orderID":randomId.toString()
+                  //     };
+                  //
+                  //     var response = await Webservices.postData(url: ApiUrls.buyDomain, request: request, context: context);
+                  //     if(response['status']==1){
+                  //       // push(context: context, screen: screen)
+                  //       showSnackbar(context, response['message']);
+                  //       Navigator.popUntil(context, (route) => route.isFirst);
+                  //       if(response['data']['payment_status'].toString()=='1'){
+                  //         push(context: MyGlobalKeys.navigatorKey.currentContext!, screen: DomainPurchaseSuccessfulPage(domainData: response['data']));
+                  //       }else{
+                  //         push(context: context, screen: CompleteDomainPaymentPage(purchaseData: response['data']));
+                  //       }
+                  //
+                  //     }
+                  //
+                  //     setState(() {
+                  //       load = false;
+                  //     });
+                  //   },
+                  // ),
                   RoundEdgedButton(
                     text: 'Confirm',
                     textColor: Colors.white,
@@ -242,7 +283,6 @@ class _CartState extends State<Cart> {
                       });
                     },
                   ),
-
                  
                   // vSizedBox2,
                   // RoundEdgedButton(

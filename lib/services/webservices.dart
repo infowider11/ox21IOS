@@ -577,16 +577,16 @@ class Webservices {
     }
   }
 
-  static Future<String> getLiveConversionRateBTCToUSD() async {
+  static Future<String> getLiveConversionRateBTCToUSD()async{
     String rate = '0';
     print('Calling ${ApiUrls.bitcoinConversionUrl}');
-    var response = await http.get(Uri.parse(ApiUrls.bitcoinConversionUrl));
-    if (response.statusCode == 200) {
-      try {
+    var response =  await http.get(Uri.parse(ApiUrls.bitcoinConversionUrl));
+    if(response.statusCode==200){
+      try{
         var jsonResponse = convert.jsonDecode(response.body);
-        print('the price data is ${jsonResponse[0]}');
-        return jsonResponse[0]['price'];
-      } catch (e) {
+        // print('the price data is ${jsonResponse[0]}');
+        return jsonResponse['data']['rate'].toString();
+      }catch(e){
         print('Error in catch block 423 $e');
       }
     }

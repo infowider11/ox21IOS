@@ -70,7 +70,7 @@ class _CompleteDomainPaymentPageState extends State<CompleteDomainPaymentPage> {
   Widget build(BuildContext context) {
     print('the qr data is : bitcoin:11PEEokWFSFNYshLfuLvZfMuPE93aMJd4?amount=${double.parse(widget.purchaseData['btc_cost'].toString()).toStringAsFixed(2)}${widget.purchaseData['orderID']}}');
     return Scaffold(
-      appBar: appBar(context: context, title: 'Buy Domain'),
+      appBar: appBar(context: context, title: 'Exchange Domain'),
 
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -81,7 +81,8 @@ class _CompleteDomainPaymentPageState extends State<CompleteDomainPaymentPage> {
             children: [
               Center(child: Image.asset(MyImages.buyTopBannerImage, width: MediaQuery.of(context).size.width,)),
               vSizedBox,
-              SubHeadingText(text: 'Complete your payment to Exchange this domain.',),
+              // SubHeadingText(text: 'Complete your payment to Exchange this domain.',),
+        SubHeadingText(text: "You don't have enough Ox21 points to exchange this domain, your orderID is ${widget.purchaseData['orderID']}, you can ask your friends to pay for you within 48 hours.",),
               vSizedBox,
               ParagraphText(text: '  ORDER ID: ${widget.purchaseData['orderID']}', fontSize: 16,),
               vSizedBox05,

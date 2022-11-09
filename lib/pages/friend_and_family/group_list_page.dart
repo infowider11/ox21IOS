@@ -118,6 +118,7 @@ class _FriendsAndFamilyGroupListPageState
                           if (jsonResponse['status'] == 1) {
                             TextEditingController nicknameController =
                                 TextEditingController();
+                            bool dialogLoad = false;
                             await showModalBottomSheet(
                               context:
                                   MyGlobalKeys.navigatorKey.currentContext!,
@@ -126,7 +127,7 @@ class _FriendsAndFamilyGroupListPageState
                               builder: (context) {
                                 return StatefulBuilder(
                                     builder: (context, setState) {
-                                  bool dialogLoad = false;
+
                                   return Container(
                                     height: 300 +
                                         MediaQuery.of(context)
@@ -216,7 +217,11 @@ class _FriendsAndFamilyGroupListPageState
                           // print('${result.format.formatName}');
                           // print('${result.format.name}');
                           // getGroupList();
-                          Navigator.pop(context);
+                          try{
+                            Navigator.pop(MyGlobalKeys.navigatorKey.currentContext!);
+                          }catch(e){
+                            print('Error in catch block 8948 $e');
+                          }
                         }
                       },
                       child: MainHeadingText(text: "Join Group"),

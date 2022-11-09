@@ -10,6 +10,7 @@ Map? userData;
 List languages = [];
 List channels = [];
 int serverStatus = 0;
+String currentLanguage ="zh";
 
 List freshnessList = [
   '0',

@@ -54,6 +54,10 @@ dependencies:
   path_provider: ^2.0.11
   in_app_purchase: ^3.0.6
   qr_code_scanner: ^1.0.1
+  flutter_html:
+  flutter_translate: ^4.0.3
+  flutter_localizations:
+    sdk: flutter
 #flutter_html: ^2.2.1
 
   # The following adds the Cupertino Icons font to your application.
@@ -84,6 +88,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/i18n/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

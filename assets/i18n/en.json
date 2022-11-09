@@ -1,0 +1,611 @@
+{
+  "welcome": {
+    "title": "Welcome to a decentralized future",
+    "subTitle": "Enter the world of the internet where you utilize it how it should be",
+    "Go": "Go"
+  },
+  "intro": {
+    "title1": "Ox21 combines the latest in decentralized communication, payments and file sharing",
+    "title2":"Using a modern blockchain storage technology as it\\’s backbone",
+    "title3":"Ox21 also works through Bluetooth, NFC, and WiFi",
+    "createButton": "Create a New Account",
+    "SignIn": "Sign in to an Existing account"
+  },
+  "secure_account_step_one": {
+    "title": "Back up Mnemonic phrase",
+    "subTitle": "These 12 words are your mnemonic phrase. They are the key to your wallet. Write it down on a paper and keep it in a safe place. You\\'ll be asked to re-enter this phrase (in the order of the words shown before on the previous screen) on the next step.",
+    "tapContainerTitle": "Tap to reveal your seed phrase",
+    "tapContainerSubTitle": "Make sure no one is watching your screen",
+    "continueBtn": "Continue"
+  },
+  "secure_account_step_two": {
+    "title": "Confirm Mnemonic Phrase",
+    "subTitle": "Select each word in the order it was presented to you on the previous screen.",
+    "continueBtn": "Continue",
+    "maximumAttempt": "You have reached the maximum attempts limit",
+    "attemptsLeft.": "Selected Words didn\\'t match. 1 attempt left."
+  },
+  "createPassword": {
+    "title": "Create Password",
+    "subTitle": "This password will unlock your Ox21 account only on this phone.",
+    "newPassword": "New Password",
+    "passStrength": "Password strength:",
+    "confirmPassword": "Confirm password",
+    "passValidation": "Must be at least 8 characters",
+    "signInToggle": "Sign in with Face ID/Touch ID?",
+    "checkboxText": "I understand that Ox21 cannot recover this password for me.",
+    "learnMore": "Learn more",
+    "tipText": "Strong Password Tips",
+    "tip1": "Use at least 8 characters—the more characters, the better.",
+    "tip2": "A mixture of both uppercase and lowercase letters.",
+    "tip3": "A mixture of letters and numbers.",
+    "tip4": "Inclusion of at least one special character, e.g., ! @ # ? ]",
+    "alertMsgTerms": "Please accept terms and conditions",
+    "alertStrongPassword": "Please type the strong password",
+    "alertMsgConfrimPass": "The password does not match the original input",
+    "alertPass": "Selected Words didn\\'t match. $noOfAttemptsLeft attempts left.",
+    "alert": "The Password must have at least 8 characters"
+
+
+  },
+  "Congratulations": {
+    "title": "Congratulations",
+    "subTitle": "You\\'ve successfully secured your account. Remember to keep your mnemonic phrase safe, it\\'s your responsibility!",
+    "hint": "Leave yourself a hint?",
+    "text2":"Ox21 cannot recover your account should you lose it.",
+    "continueBtn": "Continue"
+  },
+  "Select_location": {
+    "selectLocation": "Select Location",
+    "skip": "Skip",
+    "selectText":"Select City, Province, Country",
+    "continueBtn": "Continue"
+  },
+  "select_channels": {
+    "title": "Select Channels",
+    "search": "Search in Channels",
+    "trending": "Trending in Daily Lifestyle",
+    "noData": "No Channels Found",
+    "continueBtn": "Continue"
+  },
+  "signin_mnemonic": {
+    "title": "Sign in using your Mnemonic Phrase",
+    "mnemonic": "Mnemonic phrase",
+    "password": "password",
+    "alert": "Must be at least 8 characters",
+    "forgotPass": "Forgot Password?",
+    "signInToggle": "Sign in with Face ID/Touch ID?",
+    "text": "By proceeding, you agree to these",
+    "terms": "Term and Conditions.",
+    "signInBtn": "Sign in",
+    "alert1": "Mnemonic Phrase must be exactly 12 words",
+    "alert2": "Password must be at least 8 characters"
+  },
+  "forgot": {
+    "forgotPass": "Forgot Password",
+    "send": "Send",
+    "mnemonic": "Mnemonic phrase",
+    "alert1": "Mnemonic phrase must be exactly 12 words"
+  },
+  "setting": {
+    "title": "Settings",
+    "myCoins": "My Coins",
+    "friendFamily": "Friends & Family",
+    "webToken": "Add Web Storage Token",
+    "subscribed": "My Subscribed Channels",
+    "private": "My Private Channels",
+    "domains": "My Purchased Domains",
+    "banners": "My Purchased Banners",
+    "videos": "My Videos",
+    "payBannner": "Make Payment For Banner",
+    "payDomain": "Make Payment For Domain",
+    "rent": "Rent a Banner",
+    "myRent": "My Rented Banners",
+    "vmail": "VMail",
+    "court": "Community Court",
+    "lang": "Language",
+    "deleteAccount": "Delete Account",
+    "termsCondition": "Terms & Conditions",
+    "privacy": "Privacy Policy",
+    "copyRight": "Copyright"
+  },
+  "myCoins": {
+    "title": "My Coins",
+    "coins": "Coins",
+    "walletBal": "Wallet Balance",
+    "jin": "JIN",
+    "convertB2J": "Convert BTC To JIN",
+    "convertB2O": "Convert BTC To Ox21 Points",
+    "convertO2T": "Buy Ox21 Points Test purchase",
+    "buy": "Buy Ox21 Points",
+    "enterAmount": "Enter BTC Amount",
+    "availableBtc": "(Available BTC)",
+    "amountCon": "Enter BTC amount to convert in JIN",
+    "alertValidAmount": "Please enter a valid amount",
+    "alertInsuff": "Oops!! You don\\'t have a sufficient balance",
+    "points": "Points",
+    "1BTC": "1.00 BTC",
+    "convert": "Convert"
+  },
+  "group_list_page": {
+    "title": "Friends & Family",
+    "createGroup": "Create Group",
+    "joinGroup": "Join Group",
+    "join": "Join",
+    "nName": "Nick Name",
+    "text": "This will be displayed as your name in this group",
+    "noData": "No Groups Found"
+  },
+  "scan_qr_to_join_group_page": {
+    "title": "Scan QR Code"
+  },
+  "create_group_page": {
+    "createGroup": "Create Group",
+    "groupTitle": "Group Title",
+    "groupName": "Enter Group Name",
+    "groupDes": "Group Description",
+    "typeSome": "Type something about your group",
+    "nName": "Nick Name",
+    "groupName": "This will be your name for this group",
+    "groupImage": "Group Image",
+    "alertGTitle": "Please enter group title.",
+    "alertGDes": "Please enter group description.",
+    "alertGName": "Please enter your nickname.",
+    "alertGImage": "Please select an image."
+  },
+  "add_web_storage_token": {
+    "title": "Add Web Storage Token",
+    "token": "Token",
+    "tokenPlace": "Enter your token here...",
+    "addToken": "Add Token",
+    "alert": "Please Enter the token"
+
+  },
+  "my_subscribed_channels_page": {
+    "title": "My Subscribed Channels",
+    "createPrivate": "Create Private Channel",
+    "search": "Search in Channels",
+    "noData": "No Channels Found",
+    "update": "Update Channels",
+    "updateMsg": "Channels Updated Successfully"
+  },
+  "create_private_channel": {
+    "createPrivate": "Create Private Channel",
+    "cName": "Channel Name",
+    "cNmaePlace": "Enter Channel Name Here..",
+    "cThumbnail": "Channel Thumbnail",
+    "createChannel": "Create Channel",
+    "alertCNmae": "Please type the channel name.",
+    "alertCThumbnail": "Please upload the channel thumbnail"
+  },
+  "my_private_channels": {
+    "title": "My Private Channels",
+    "createPrivate": "Create Private Channel",
+    "search": "Search in Channels",
+    "noData": "No Channels Found",
+    "update": "Update Channels",
+    "updateMsg": "Channels Updated Successfully"
+  },
+  "my_purchased_domains": {
+    "title": "Your Domains"
+  },
+  "my_purchased_banners": {
+    "yourBanner": "Your Banners",
+    "imgUploaded": "Image Uploaded",
+    "pageNumber": "Page Number",
+    "channel": "Channel",
+    "lang": "Language",
+    "purchased": "Purchased On",
+    "location": "Location",
+    "bannerContent": "Banner Content",
+    "edit": "Edit Resale Price'",
+    "create": "Create Resale Price",
+    "price": "Enter resale price",
+    "edit1": "Edit",
+    "add1": "Add",
+    "validPrice": "Please type valid price.",
+    "Uploaded": "Uploaded",
+    "Upload": "Upload",
+    "uploadBanner": "Upload Banner Image/Video",
+    "uploadImg": "Upload an Image",
+    "uploadVideo": "Upload a Video",
+    "rent": "Open for rent",
+    "banner": "Rent your banner",
+    "noData": "No Banners Found",
+    "global": "Global",
+    "edit2": "Edit Sale Price",
+    "add2": "Add Sale Price"
+  },
+  "my_video_page":{
+    "yourVideos": "Your Videos",
+    "search": "Search by keyword",
+    "videos": "Videos",
+    "shorts": "Shorts",
+    "addFresh": "Add Freshness",
+    "alertFresh": "Please Purchase more points to add freshness",
+    "selectFresh": "Select Freshness that you want to buy",
+    "pointAdded": " freshness points added",
+    "playlist": "Playlist:",
+    "channel": "Channel: ",
+    "noVideos": "No Videos Found",
+    "views": "views",
+    "": "videos"
+  },
+  "make_payment_for_banner_page": {
+    "title": "Make Payment For Banner",
+    "orderID": "Order ID",
+    "orderIDPlace": "Enter order ID here",
+    "pay": "You Have to pay: ",
+    "btc": "BTC",
+    "makePay": "Make Payment From Your BTC Wallet",
+    "enterOrderId": "Please Enter Order ID to pay for",
+    "validorderId": "Order ID must be of exactly 6 digits"
+  },
+  "make_payment_for_domain_page": {
+    "title": "Make Payment For Domain",
+    "orderID": "Order ID",
+    "orderIDPlace": "Enter order ID here",
+    "pay": "You Have to pay: ",
+    "btc": "BTC",
+    "makePay": "Make Payment From Your BTC Wallet",
+    "enterOrderId": "Please Enter Order ID to pay for",
+    "validorderId": "Order ID must be of exactly 6 digits"
+  },
+  "rent_banner": {
+    "title": "Rent a Banner",
+    "pageNumber": "Page Number",
+    "channel": "Channel",
+    "purchased": "Purchased On",
+    "location": "Location",
+    "global": "Global",
+    "rentPerMonth": "Rent Price per month",
+    "rentThisBanner": "Rent This Banner",
+    "selectDate": "Select Date",
+    "selectMonth": "Select Months",
+    "charged": "You will be charged",
+    "btc": "BTC",
+    "rent": "Rent",
+    "noData": "No Banners Found"
+  },
+  "my_rented_banner": {
+    "endDate": "End Date",
+    "payPending": "Payment Pending",
+    "noData": "No Banners Found"
+  },
+  "choose_lang": {
+    "title": "Choose Language",
+    "en": "English",
+    "zh": "Mandarin",
+    "": ""
+  },
+  "deleteAccount": {
+    "title": "Delete Account",
+    "": "Enter the 12 Words pass phrase",
+    "alrt1": "Once you delete an account, there is no way to recover it \n Are you sure you want to delete your account?",
+    "alrt2": "Once you delete an account, there is no way to recover it.",
+    "alert3": "You have entered wrong Mnemonic phrase"
+  },
+  "vmails_page": {
+    "title": "VMails",
+    "received": "Received",
+    "sent": "Sent",
+    "text": "You do not have any purchased domain to send or receive vmail.",
+    "noData": "No Mails Found"
+  },
+  "send_vmail": {
+    "title": "Compose Vmail",
+    "selectDomain": "Select Your Domain",
+    "enterDomain": "Enter the receiver\\'s Domain",
+    "subject": "Subject",
+    "body": "Body",
+    "enterSubject": "Enter Subject",
+    "enterSomthing": "Enter a subject here...",
+    "addImg": "Add Images",
+    "addVideos": "Add Videos",
+    "enterSelectDomain": "Please select your domain",
+    "validType": "Please type a valid domain name"
+  },
+  "newest_home_page": {
+    "createShort": "Create a Short",
+    "reportThis": "Report this post",
+    "report": "Report Post",
+    "text1": "The post will be sent to the community court for investigation. Please tell us why you are reporting this post.",
+    "typeSome": "Type something here...",
+    "no": "No",
+    "yes": "Yes",
+    "alertMsg": "Please type a message",
+    "translate(\"newest_home_page.alertMsg\")": "Are you sure?",
+    "text2": "The post from this user will not be shown if you click on yes.",
+    "block": "Block this user"
+
+
+
+  },
+  "comments_page_bottom_sheet": {
+    "noData": "No Comments Found",
+    "anonymous": "Anonymous",
+    "typeSome": "Type something here"
+  },
+
+  "top_banner_purchase_bid_language": {
+    "title": "Top Banner Purchase/Bid",
+    "selectLang": "Select Language ",
+    "searchInLang": "Search in languages",
+    "noData": "No Languages Found"
+  },
+  "complete_top_banner_payment_page": {
+    "purchaseOut": "Purchase timeout.",
+    "rentBanner": "Rent Top Banner",
+    "text1": "This banner is for rent.",
+    "orderId": "ORDER ID:",
+    "cost": " COST:",
+    "Qrpay": "QR code use for payment",
+    "updateOn": "Updated on",
+    "strongNote": "Strong Note",
+    "text3": "the order ID will expire in 48 hours",
+    "text4": "When the orderID expires, the message will show the QR code is no longer valid.",
+    "close": "Close"
+  },
+  "complete_domain_purchase_page": {
+    "hours": "hours",
+    "minutes": "minutes",
+    "seconds": "seconds left",
+    "day": "day",
+    "buyDomain": "Buy Domain",
+    "text1": "You don\\’t have enough Ox21 points to purchase this domain, your orderID is",
+    "text2": ", you can ask your friends to pay for you within 48 hours.",
+    "text3": "This code will expire on ",
+    "text4": "the order ID will expire in 48 hours",
+    "text5": "When the orderID expires, the message will show the QR code is no longer valid."
+  },
+  "group_members_page": {
+    "update": "Update",
+    "members": "Members",
+    "noMember": "No Members Found",
+    "admin": "Admin",
+    "you": "You",
+    "changeNName": "Change Nickname",
+    "enterNewName": "Enter new name for",
+    "emptyName": "Name cannot be empty",
+    "text": "This user will be removed from your group"
+
+
+  },
+  "GroupPage": {
+    "scan": "Scan this QR code to join this group",
+    "options": "Options",
+    "view": "View Pending request",
+    "remove": "This user will be removed from your group",
+    "delete": "Delete Group",
+    "leave": "Leave Group",
+    "typeMsg": "Type a message to start conversation",
+    "selectImg": "Select Image",
+    "uploadVideo": "Upload Video",
+    "typeHere": "Type Here..",
+    "text": "text"
+
+  },
+  "pending_group_members_page": {
+    "noPendingRequest": "No Pending Request Found"
+
+  },
+  "add_description": {
+    "title": "Add description",
+    "done": "Done"
+
+  },
+  "add_detail": {
+    "title": "Add Details",
+    "next": "NEXT",
+    "alertTitle": "Please enter the title",
+    "alertDes": "Please enter the description",
+    "alertSs": "Please add the screenshots",
+    "alertPlaylist": "Please select the playlist",
+    "alertDomain": "Please select your domain name",
+    "alertChanel": "Please select the channel",
+    "alertPoints": "Please Purchase more points to add freshness",
+    "UnderProcess": "Your video is being processed and will be uploaded soon",
+    "title1": "Title",
+    "enterTitle": "Enter title here",
+    "enterDes": "Description",
+    "visibility": "Visibility",
+    "addSs": "Add Screenshot",
+    "added": "Added",
+    "addPlaylist": "Add to Playlist",
+    "createPlaylist": "Create a Playlist",
+    "enterPlaylist": "Enter playlist name",
+    "create": "Create",
+    "enterName": "Please enter the name of playlist",
+    "createNewPlaylist": "Create a new playlist.",
+    "playlistAdded": "Playlist added",
+    "domainName": "Your Domain Name",
+    "selectDomain": "Select Your Domain",
+    "selectChannel": "Select Channel",
+    "or": "Or",
+    "createPrivateChannel": "Create your Private Channel",
+    "buy": "Buy Freshness Points for your postfreshness",
+    "noFreshness": "No Freshness",
+    "noPlayList": "No Playlist Found"
+  },
+  "community_court_page": {
+    "title": "Community Court",
+    "noData": "No Videos Found",
+    "by": "By",
+    "allow": "Allow",
+    "deny": "Deny",
+    "voted": "You have voted on this post",
+    "giveVote": "Give your vote"
+  },
+  "create_new_password": {
+    "createPass": "Create a new Password",
+    "passStrength": "Password strength: ",
+    "changePass": "Change Password",
+    "typeStrongPass": "Please type the strong password",
+    "confirmPass": "Confirm password does not match",
+    "": ""
+  },
+  "deposit_btc_page": {
+    "depositeBtc": "Deposit BTC",
+    "transferAmonut": "Transfer Amount",
+    "enterAmount": "Enter Amount",
+    "confirm": "Confirm",
+    "typeAmount": "Please type an amount to continue",
+    "btc":"BTC"
+  },
+  "deposit_btc_qr_page": {
+    "scanPay": "Scan this code to complete your Payment",
+    "orderCreated": "Your btc deposit order has been created",
+    "hours": "hours",
+    "minutes": "minutes",
+    "seconds": "seconds left",
+    "day": "day",
+    "purchaseOut": "Purchase timeout.",
+    "orderId": "ORDER ID:",
+    "cost": " COST:",
+    "Qrpay": "QR code use for payment",
+    "btc":"BTC",
+    "strongNote": "Strong Note",
+    "text3": "This code will expire on ",
+    "text4": "the order ID will expire in 48 hours",
+    "text5": "When the orderID expires, the message will show the QR code is no longer valid.",
+    "close": "Close"
+
+  },
+  "domain_purchase_successful": {
+    "domain": "Domain",
+    "domainName": "Domain Name: ",
+    "successfully": "Domain Purchased Successfully",
+    "check": "Check Your Purchased Domains",
+    "goToHome": "Go to Home Page"
+  },
+  "search_domain_page": {
+    "availableName": "Name Available to Purchase",
+    "purchaseFor": "Purchase for",
+    "ox21Coin": "Ox21 Coin",
+    "inSufficient": "You don\\'t have sufficient coins to purchase this banner.",
+    "purchaseBtc": "Purchase with BTC",
+    "purchaseJin": "Purchase with JIN",
+    "domain": "Domain",
+    "domainName":"Domain Name :"
+
+  },
+  "select_audience": {
+    "selectedAudience": "Select audience",
+    "isKids": "Is this video made for kids?",
+    "regardless": "Regardless of your location, you\\'re legally required to comply with the law",
+    "COPPA": "Children\\'s Online Privacy Protection Act (COPPA)",
+    "text2": "and/or other laws. You\\'re required to tell us whether your videos are made for kids",
+    "yesIsKids": "Yes It\\'s made for kids",
+    "noIsKids": "No, It\\'s not made for kids",
+    "age": "Age Restriction (advanced)",
+    "restrict": "Do you want to restrict your video to an adult audience?",
+    "restrictAge": "Age restricted videos are not shown in certain areas of Ox21. these videos may have limited or no ad monetization",
+    "yesAge": "Yes, restrict my video to over 18",
+    "noAge": "No, don\\'t restrict my video to viewers over 18",
+    "upload": "UPLOAD VIDEO"
+
+
+  },
+  "select_page_number_page": {
+    "title": "Top Banner Bid",
+    "selectedChannel": "Channel Selected: ",
+    "mm": "mm",
+    "selectPage": "Select Page Number:",
+    "notAvailable": "This page number is not available in your region.",
+    "pricing": "Pricing ",
+    "purchaseNow": "Purchase Now",
+    "fight": "Fight for privacy! Fight for freedom",
+    "successfully": "Banner Purchased Successfully",
+    "topBidders": "Top Bidders",
+    "noBidder": "There are no bidders yet",
+    "": ""
+
+  },
+  "set_visibility": {
+    "setVisibility": "Set Visibility",
+    "publishNow": "Publish Now",
+    "Public": "Public",
+    "searchView": "Anyone can search for and view",
+    "setPermier": "Set as instant Premier",
+    "Unlisted": "Unlisted",
+    "linkView": "Anyone with the link can view",
+    "private": "Private",
+    "chooseView": "Only people you choose can view",
+    "Schedule": "Schedule",
+    "public": "Publish as public",
+    "privateVideo": "Video is private before publishing",
+    "done":"Done"
+  },
+  "cart": {
+    "smallAount": "We can\\'t process small amount in BTC payments",
+    "yourCart": "Your Cart",
+    "items": "Items",
+    "domainName": "Domain Name:",
+    "USD": "USD",
+    "totalPrice": "Total Price: ",
+    "myOX21": "In MyOx21 Coins: ",
+    "confirm": "Confirm",
+    "jin":"JIN"
+
+  },
+  "vmail_detail_page": {
+    "text": "This domain will not be able to send you mail again.",
+    "attachments": "Attachments",
+    "noAttachments": "No attachments found",
+    "forwarded": "Forwarded",
+    "replied": "Replied To",
+    "vmail": "Vmails",
+    "RUS": "Are you sure?",
+    "no": "NO",
+    "yes": "Yes"
+
+  },
+  "select_language": {
+    "selectLang": "Select Language ",
+    "searchInLang": "Search in languages",
+    "noData": "No Languages Found",
+    "continueBtn": "Continue"
+  },
+  "top_banner_bid_chennels": {
+    "title": "Top Banner Bid",
+    "searchChannel": "Search in Channels",
+    "noData": "No Channels Found",
+    "continue":"Continue"
+  },
+  "top_banner_bid_country": {
+    "title": "Top Banner Purchase/Bid",
+    "selectLocation": "Select Location",
+    "skip": "Skip",
+    "selectText": "Select City, Province, Country",
+    "continueBtn": "Continue"
+  },
+  "upload_video_view": {
+    "next": "Next"
+  },
+  "walletpage": {
+    "investment": "Investment",
+    "depositBTC": "Deposit BTC",
+    "text": "11PEEokWFSFNYshLfuLvZfMuPE93aMJd4",
+    "domainTrade": "Domain Trade",
+    "searchDomain": "Search Domain",
+    "somethingWrong": "Something went wrong.",
+    "tradeDomain": "Trade Domain",
+    "tradeDomainWith": "Trade Domain with",
+    "topBanner": "Top Banner Trade",
+    "tradeTopBanner": "Trade Top Banner with BTC",
+    "walletBalance": "Wallet Balance",
+    "btc": "BTC",
+    "jin": "JIN",
+    "points": "Points",
+    "next": "Next"
+  },
+  "webservicePage": {
+    "postErrorMessage": "Error in uploading. Please re-upload your video"
+  }
+
+
+
+
+
+}
+

@@ -1,0 +1,611 @@
+{
+  "welcome": {
+    "title": "欢迎进入去中心化的未来",
+    "subTitle": "拥抱一个你值得拥有的网络",
+    "Go": "Go"
+  },
+  "intro": {
+    "title1": "Ox21结合了去中心化通讯，支付和视频分享",
+    "title2":"使用现代IPFS存储技术",
+    "title3":"Ox21将于蓝牙，NFC和WiFi结合",
+    "createButton": "创建新帐号",
+    "SignIn": "登录现有的帐号"
+  },
+  "secure_account_step_one": {
+    "title": "备份助记词",
+    "subTitle": "请抄录这12个助记词及相应的序号，并妥善保管，这是你财富的钥匙。下一步要用到这些助记词。比如， 1 we 2 that 3 care 4 privacy",
+    "tapContainerTitle": "轻触揭开面纱",
+    "tapContainerSubTitle": "不要让别人看到",
+    "continueBtn": "继续"
+  },
+  "secure_account_step_two": {
+    "title": "确认助记词",
+    "subTitle": "按前一屏的助记词序号找到相应的词，并轻触。比如出现数字1，3，4， 就轻触we，care privacy",
+    "continueBtn": "继续",
+    "maximumAttempt": "你已经达到了尝试的上限",
+    "attemptsLeft.": "所选词不匹配，还有一次机会"
+  },
+  "createPassword": {
+    "title": "创建密码",
+    "subTitle": "这个密码将解锁Ox21的服务",
+    "newPassword": "新密码",
+    "passStrength": "密码强度:",
+    "confirmPassword": "确认密码",
+    "passValidation": "必须8个字符或以上",
+    "signInToggle": "支持手机面部解锁或指纹解锁?",
+    "checkboxText": "Ox21不能找回密码.",
+    "learnMore": "了解更多",
+    "tipText": "强密码的关键",
+    "tip1": "使用至少8个字符，越长越好",
+    "tip2": "大小写字符",
+    "tip3": "数字与字母组合",
+    "tip4": "包含至少1位特殊字符 ! @ # ? ]",
+    "alertMsgTerms": "请接受使用条款",
+    "alertStrongPassword": "请使用强密码",
+    "alertMsgConfrimPass": "确认密码与之前的输入不匹配",
+    "alertPass": "选择的助记词不匹配. 还有$noOfAttempts 次机会",
+    "alert": "密码至少8位"
+
+
+  },
+  "Congratulations": {
+    "title": "恭喜",
+    "subTitle": "你的帐号已经开通，请妥善保管你的助记词，那是你财富的钥匙。",
+    "hint": "需要给自己一个提示吗?",
+    "text2":"OX21不能恢复你的帐号，如果你遗失了助记词.",
+    "continueBtn": "继续"
+  },
+  "Select_location": {
+    "selectLocation": "选择地点",
+    "skip": "跳过",
+    "selectText":"选城市，省和国家",
+    "continueBtn": "继续"
+  },
+  "select_channels": {
+    "title": "选频道",
+    "search": "查询频道",
+    "trending": "日常生活的趋势",
+    "noData": "没找到相关频道",
+    "continueBtn": "继续"
+  },
+  "signin_mnemonic": {
+    "title": "用助记词登录",
+    "mnemonic": "助记词",
+    "password": "密码",
+    "alert": "必须8个字符或以上",
+    "forgotPass": "忘记密码?",
+    "signInToggle": "用面容识别或指纹?",
+    "text": "如果继续，表示你同意我们的",
+    "terms": "使用条款.",
+    "signInBtn": "登录",
+    "alert1": "助记词必须是12个",
+    "alert2": "密码必须是8位或以上"
+  },
+  "forgot": {
+    "forgotPass": "忘记密码",
+    "send": "发送",
+    "mnemonic": "助记词",
+    "alert1": "助记词必须是12个"
+  },
+  "setting": {
+    "title": "设置",
+    "myCoins": "我的资产",
+    "friendFamily": "朋友和家人",
+    "webToken": "提交存储空间证明",
+    "subscribed": "我订阅的频道",
+    "private": "我创建的频道",
+    "domains": "我拥有的域名",
+    "banners": "我拥有的广告位",
+    "videos": "我的视频",
+    "payBannner": "支付广告位",
+    "payDomain": "支付域名",
+    "rent": "出租广告位",
+    "myRent": "已出租的广告位",
+    "vmail": "视频邮件",
+    "court": "社区法庭",
+    "lang": "语言",
+    "deleteAccount": "删除帐号",
+    "termsCondition": "使用条款",
+    "privacy": "隐私政策",
+    "copyRight": "版权"
+  },
+  "myCoins": {
+    "title": "我的资产",
+    "coins": "资产",
+    "walletBal": "账户余额",
+    "jin": "JIN",
+    "convertB2J": "BTC换JIN",
+    "convertB2O": "BTC换Ox21点数",
+    "convertO2T": "Buy OX21 Points Test purchase",
+    "buy": "购买Ox21点数",
+    "enterAmount": "输入BTC数量",
+    "availableBtc": "(可用的BTC)",
+    "amountCon": "输入BTC数量（换JIN）",
+    "alertValidAmount": "请输入正确的数量",
+    "alertInsuff": "抱歉，你没有足够的余额",
+    "points": "点数",
+    "1BTC": "1.00 BTC",
+    "convert": "转换"
+  },
+  "group_list_page": {
+    "title": "朋友和家人",
+    "createGroup": "创建群",
+    "joinGroup": "加入群",
+    "join": "加入",
+    "nName": "群内用名",
+    "text": "显示为你在群内的称呼",
+    "noData": "没有发现相关群"
+  },
+  "scan_qr_to_join_group_page": {
+    "title": "扫描二维码"
+  },
+  "create_group_page": {
+    "createGroup": "创建群",
+    "groupTitle": "群名",
+    "groupName": "输入群名",
+    "groupDes": "群介绍",
+    "typeSome": "介绍你的群",
+    "nName": "群内用名",
+    "groupName": "这是你在群内的称呼",
+    "groupImage": "群图片",
+    "alertGTitle": "请输入群名.",
+    "alertGDes": "请输入群介绍.",
+    "alertGName": "请输入群内用名.",
+    "alertGImage": "请选择图片."
+  },
+  "add_web_storage_token": {
+    "title": "添加IPFS Token",
+    "token": "Token",
+    "tokenPlace": "请输入 token...",
+    "addToken": "添加 Token",
+    "alert": "请输入token"
+
+  },
+  "my_subscribed_channels_page": {
+    "title": "我订阅的频道",
+    "createPrivate": "创建私有频道",
+    "search": "查找频道",
+    "noData": "没找到相关频道",
+    "update": "更新频道",
+    "updateMsg": "成功更新频道"
+  },
+  "create_private_channel": {
+    "createPrivate": "创建私有频道",
+    "cName": "频道名",
+    "cNmaePlace": "在此输入频道名..",
+    "cThumbnail": "频道缩略图",
+    "createChannel": "创建频道",
+    "alertCNmae": "请输入频道名称.",
+    "alertCThumbnail": "请上传频道缩略图"
+  },
+  "my_private_channels": {
+    "title": "我的私有频道",
+    "createPrivate": "创建私有频道",
+    "search": "查找频道",
+    "noData": "没找到相关频道",
+    "update": "更新频道",
+    "updateMsg": "成功更新频道"
+  },
+  "my_purchased_domains": {
+    "title": "你的域名"
+  },
+  "my_purchased_banners": {
+    "yourBanner": "你的广告位",
+    "imgUploaded": "图片上传成功",
+    "pageNumber": "页数",
+    "channel": "频道",
+    "lang": "语言",
+    "purchased": "购买了",
+    "location": "地点",
+    "bannerContent": "广告位内容",
+    "edit": "输入零售价格'",
+    "create":"创建零售价格",
+    "price": "输入零售价格",
+    "edit1": "修改",
+    "add1": "添加",
+    "validPrice": "请输入正确的价格.",
+    "Uploaded": "上传成功",
+    "Upload": "上传",
+    "uploadBanner": "上传广告位图片/视频",
+    "uploadImg": "上传图片",
+    "uploadVideo": "上传视频",
+    "rent": "开放出租",
+    "banner": "出租广告位",
+    "noData": "没找到相应广告位",
+    "global": "全球",
+    "edit2": "修改售价",
+    "add2": "添加价格"
+  },
+  "my_video_page":{
+    "yourVideos": "你的视频",
+    "search": "关键字查找",
+    "videos": "视频",
+    "shorts": "短视频",
+    "addFresh": "添加新鲜度",
+    "alertFresh": "请购买更多的点数来提高视频的新鲜度",
+    "selectFresh": "请选择要购买的新鲜度",
+    "pointAdded": " 已经提高新鲜度",
+    "playlist": "播放清单:",
+    "channel": "频道: ",
+    "noVideos": "没找到相关视频",
+    "views": "观看",
+    "": "视频"
+  },
+  "make_payment_for_banner_page": {
+    "title": "广告位支付",
+    "orderID": "订单号",
+    "orderIDPlace": "请输入订单号",
+    "pay": "你需要支付: ",
+    "btc": "BTC",
+    "makePay": "从BTC钱包支付",
+    "enterOrderId": "请输入需要支付的订单号",
+    "validorderId": "订单号必须是6位数字"
+  },
+  "make_payment_for_domain_page": {
+    "title": "域名支付",
+    "orderID": "订单号",
+    "orderIDPlace": "输入订单号",
+    "pay": "你需要支付: ",
+    "btc": "BTC",
+    "makePay": "从BTC钱包支付",
+    "enterOrderId": "请输入需要支付的订单号",
+    "validorderId": "订单号必须是6位数字"
+  },
+  "rent_banner": {
+    "title": "出租广告位",
+    "pageNumber": "页数",
+    "channel": "频道",
+    "purchased": "购买于",
+    "location": "地点",
+    "global": "全球",
+    "rentPerMonth": "每月租金",
+    "rentThisBanner": "租用这个广告位",
+    "selectDate": "选择日期",
+    "selectMonth": "选择月数",
+    "charged": "你需要支付",
+    "btc": "BTC",
+    "rent": "租金",
+    "noData": "没找到相应广告位"
+  },
+  "my_rented_banner": {
+    "endDate": "结束日期",
+    "payPending": "延迟付款",
+    "noData": "没有找到广告位"
+  },
+  "choose_lang": {
+    "title": "选择语言",
+    "en": "英语",
+    "zh": "中文",
+    "": ""
+  },
+  "deleteAccount": {
+    "title": "删除帐号",
+    "": "请按顺序输入12个助记词",
+    "alrt1": "一旦账号删除之后，就是永久删除，无法恢复。你确定删除帐号吗?",
+    "alrt2": "帐号删除之后，永远无法恢复.",
+    "alert3": "助记词错误"
+  },
+  "vmails_page": {
+    "title": "视频邮件",
+    "received": "收到",
+    "sent": "发送",
+    "text": "你还没有域名用于收发视频邮件.",
+    "noData": "没有邮件"
+  },
+  "send_vmail": {
+    "title": "写视频邮件",
+    "selectDomain": "选择域名",
+    "enterDomain": "输入收件人的域名",
+    "subject": "标题",
+    "body": "主体",
+    "enterSubject": "输入标题",
+    "enterSomthing": "输入...",
+    "addImg": "添加图片",
+    "addVideos": "添加视频",
+    "enterSelectDomain": "请选择域名",
+    "validType": "请输入正确的域名"
+  },
+  "newest_home_page": {
+    "createShort": "创建短视频",
+    "reportThis": "举报",
+    "report": "举报",
+    "text1": "这个视频将被提交到社区法庭进行调查。请告诉我们你举报的原因.",
+    "typeSome": "举报原因...",
+    "no": "不",
+    "yes": "是",
+    "alertMsg": "请输入原因",
+    "translate(\"newest_home_page.alertMsg\")": "你确定吗?",
+    "text2": "确定之后，你将不再看到这个用户的视频.",
+    "block": "不看这个用户的视频"
+
+
+
+  },
+  "comments_page_bottom_sheet": {
+    "noData": "没有评论",
+    "anonymous": "匿名",
+    "typeSome": "请输入"
+  },
+
+  "top_banner_purchase_bid_language": {
+    "title": "广告位竞价/购买",
+    "selectLang": "选择语言 ",
+    "searchInLang": "查询语言",
+    "noData": "没有找到相关语言"
+  },
+  "complete_top_banner_payment_page": {
+    "purchaseOut": "购买超时.",
+    "rentBanner": "出租广告位",
+    "text1": "这个广告位出租.",
+    "orderId": "订单号:",
+    "cost": " 价格:",
+    "Qrpay": "用二维码付款",
+    "updateOn": "已更新",
+    "strongNote": "强调",
+    "text3": "本订单号将于48小时后过期",
+    "text4": "当订单号过期之后，二维码将不再有效.",
+    "close": "关闭"
+  },
+  "complete_domain_purchase_page": {
+    "hours": "小时",
+    "minutes": "分钟",
+    "seconds": "秒 剩余",
+    "day": "天",
+    "buyDomain": "购买域名",
+    "text1": "你没有足够的Ox21点数支付这个域名，你的订单号是",
+    "text2": ", 你可以请求你的朋友帮你在48小时内支付.",
+    "text3": "这个订单号将于 ",
+    "text4": "48小时后过期",
+    "text5": "当订单号过期之后，二维码将不再有效."
+  },
+  "group_members_page": {
+    "update": "更新",
+    "members": "会员",
+    "noMember": "没有找到会员",
+    "admin": "管理员",
+    "you": "你",
+    "changeNName": "更换昵称",
+    "enterNewName": "输入新昵称",
+    "emptyName": "昵称不可为空",
+    "text": "用户将被移出群"
+
+
+  },
+  "GroupPage": {
+    "scan": "扫描二维码申请入群",
+    "options": "选项",
+    "view": "待处理申请",
+    "remove": "这个用户将被移出群",
+    "delete": "删除群",
+    "leave": "离开群",
+    "typeMsg": "说点什么",
+    "selectImg": "选图片",
+    "uploadVideo": "上传视频",
+    "typeHere": "输入..",
+    "text": "文字"
+
+  },
+  "pending_group_members_page": {
+    "noPendingRequest": "没有其它请求"
+
+  },
+  "add_description": {
+    "title": "加描述",
+    "done": "完成"
+
+  },
+  "add_detail": {
+    "title": "加入细节",
+    "next": "下一步",
+    "alertTitle": "请输入标题",
+    "alertDes": "请输入描述",
+    "alertSs": "请加入截屏",
+    "alertPlaylist": "请选择播放列表",
+    "alertDomain": "请选择域名",
+    "alertChanel": "请选频道",
+    "alertPoints": "购买更多点数增加新鲜度",
+    "UnderProcess": "视频正在上传",
+    "title1": "标题",
+    "enterTitle": "请输入标题",
+    "enterDes": "描述",
+    "visibility": "可见度",
+    "addSs": "添加截屏",
+    "added": "已添加",
+    "addPlaylist": "加入播放列表",
+    "createPlaylist": "创建播放列表",
+    "enterPlaylist": "输入播放列表名称",
+    "create": "创建",
+    "enterName": "请输入播放列表的名称",
+    "createNewPlaylist": "创建新播放列表.",
+    "playlistAdded": "播放列表已添加",
+    "domainName": "你的域名",
+    "selectDomain": "选择域名",
+    "selectChannel": "选频道",
+    "or": "或者",
+    "createPrivateChannel": "创建私有频道",
+    "buy": "购买点数增加视频新鲜度",
+    "noFreshness": "没有增加新鲜度",
+    "noPlayList": "没找到播放列表"
+  },
+  "community_court_page": {
+    "title": "社区法庭",
+    "noData": "没有视频",
+    "by": "由",
+    "allow": "允许",
+    "deny": "拒绝",
+    "voted": "你已经投票",
+    "giveVote": "请投票"
+  },
+  "create_new_password": {
+    "createPass": "创建新密码",
+    "passStrength": "密码强度: ",
+    "changePass": "修改密码",
+    "typeStrongPass": "请输入强密码",
+    "confirmPass": "确认密码与之前的输入不匹配",
+    "": ""
+  },
+  "deposit_btc_page": {
+    "depositeBtc": "存入BTCBTC",
+    "transferAmonut": "转移数量",
+    "enterAmount": "输入数量",
+    "confirm": "确认",
+    "typeAmount": "请输入数量然后继续",
+    "btc":"BTC"
+  },
+  "deposit_btc_qr_page": {
+    "scanPay": "扫描二维码完成付款",
+    "orderCreated": "BTC存入订单已经创建",
+    "hours": "小时",
+    "minutes": "分",
+    "seconds": "秒 剩余",
+    "day": "天",
+    "purchaseOut": "购买操作超时.",
+    "orderId": "订单号:",
+    "cost": " 费用:",
+    "Qrpay": "付款二维码",
+    "btc":"BTC",
+    "strongNote": "强调",
+    "text3": "二维码将在 ",
+    "text4": "48小时后过期",
+    "text5": "当订单号过期之后，二维码将不再有效.",
+    "close": "关闭"
+
+  },
+  "domain_purchase_successful": {
+    "domain": "域名",
+    "domainName": "域名: ",
+    "successfully": "域名购买成功",
+    "check": "查看你购买的域名",
+    "goToHome": "返回主页"
+  },
+  "search_domain_page": {
+    "availableName": "域名开放购买",
+    "purchaseFor": "购买",
+    "ox21Coin": "Ox21点数",
+    "inSufficient": "抱歉，你没有足够的点数购买这个广告位.",
+    "purchaseBtc": "用BTC购买",
+    "purchaseJin": "用JIN购买",
+    "domain": "域名",
+    "domainName":"域名 :"
+
+  },
+  "select_audience": {
+    "selectedAudience": "选择观众",
+    "isKids": "适合儿童吗?",
+    "regardless": "无论你在哪个区域，你都必须遵守 ",
+    "COPPA": "儿童在线隐私保护法(COPPA)",
+    "text2": "和其它相关法律. 发布者必须声明视频是否适合儿童",
+    "yesIsKids": "是的，适合儿童",
+    "noIsKids": "不适合儿童",
+    "age": "年龄限制",
+    "restrict": "是否限制为成年观众?",
+    "restrictAge": "年龄限制的视频不会在某些频道显示",
+    "yesAge": "是的，只限18岁以上观众",
+    "noAge": "不，不需要限制观众年龄",
+    "upload": "上传视频"
+
+
+  },
+  "select_page_number_page": {
+    "title": "广告位竞价",
+    "selectedChannel": "频道选择: ",
+    "mm": "mm",
+    "selectPage": "选显示页:",
+    "notAvailable": "本页数在你的区域已经占用.",
+    "pricing": "价格 ",
+    "purchaseNow": "现在购买",
+    "fight": "为隐私二战，为自由而战",
+    "successfully": "广告位购买成功",
+    "topBidders": "高价竞标者",
+    "noBidder": "还没有竞标者",
+    "": ""
+
+  },
+  "set_visibility": {
+    "setVisibility": "设置谁可以看",
+    "publishNow": "现在发布",
+    "Public": "公众",
+    "searchView": "任何人都可以查询和观赏",
+    "setPermier": "设置为预订",
+    "Unlisted": "不显示",
+    "linkView": "有链接就能看",
+    "private": "私人",
+    "chooseView": "只有你指定的观众",
+    "Schedule": "预约",
+    "public": "公众观看",
+    "privateVideo": "视频在发布前是私有的",
+    "done":"完成"
+  },
+  "cart": {
+    "smallAount": "我们不能处理太小的BTC支付",
+    "yourCart": "你的购物车",
+    "items": "物品",
+    "domainName": "域名 :",
+    "USD": "USD",
+    "totalPrice": "总价  ",
+    "myOX21": "Ox21点数: ",
+    "confirm": "确认",
+    "jin":"JIN"
+
+  },
+  "vmail_detail_page": {
+    "text": "这个域名将不能再给你发邮件.",
+    "attachments": "附件",
+    "noAttachments": "没有附件",
+    "forwarded": "已转发",
+    "replied": "回复",
+    "vmail":"视频邮件",
+    "RUS":"你确定吗 ?",
+    "no":"不",
+    "yes":"是的"
+
+  },
+  "select_language": {
+    "selectLang": "选择语言 ",
+    "searchInLang": "查询语言",
+    "noData": "没有找到相关语言",
+    "continueBtn": "继续"
+  },
+  "top_banner_bid_chennels": {
+    "title": "广告位竞价",
+    "searchChannel": "查询频道",
+    "noData": "没找到相关频道",
+    "continue":"继续"
+  },
+  "top_banner_bid_country": {
+    "title": "广告位竞价/购买",
+    "selectLocation": "选择地点",
+    "skip": "Skip",
+    "selectText":"选择城市，省，国家",
+    "continueBtn": "继续"
+  },
+  "upload_video_view": {
+    "next": "下一步"
+  },
+  "walletpage": {
+    "investment": "投资",
+    "depositBTC": "存入BTC",
+    "text": "11PEEokWFSFNYshLfuLvZfMuPE93aMJd4",
+    "domainTrade": "域名交易",
+    "searchDomain": "查询域名",
+    "somethingWrong": "发生了错误",
+    "tradeDomain": "域名交易",
+    "tradeDomainWith": "域名交易-",
+    "topBanner": "广告位交易",
+    "tradeTopBanner": "BTC购买广告位",
+    "walletBalance": "账户余额",
+    "btc": "BTC",
+    "jin": "JIN",
+    "points":"点数",
+    "next": "下一步"
+
+  },
+  "webservicePage": {
+    "postErrorMessage": "Error in uploading. Please re-upload your video"
+  }
+
+
+
+
+
+}
