@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/global_constants.dart';
 import 'package:ox21/constants/sized_box.dart';
 import 'package:ox21/services/api_urls.dart';
@@ -66,7 +67,7 @@ class _CommentsPageInHomeFeedState extends State<CommentsPageInHomeFeed> {
       Column(
         children: [
           Expanded(
-            child:load?CustomLoader(): comments.length==0?Center(child: ParagraphText(text: 'No Comments Found',),): ListView.builder(
+            child:load?CustomLoader(): comments.length==0?Center(child: ParagraphText(text: translate('comments_page_bottom_sheet.noData')),): ListView.builder(
               itemCount: comments.length ,
               itemBuilder: (context, index){
                 return Container(
@@ -79,7 +80,7 @@ class _CommentsPageInHomeFeedState extends State<CommentsPageInHomeFeed> {
                             if(comments[index]['createdBy']!=null)
                             SubHeadingText(text: '${comments[index]['createdBy']['domain']??'Anonymous'}')
                             else
-                              SubHeadingText(text: 'Anonymous'),
+                              SubHeadingText(text: translate('comments_page_bottom_sheet.anonymous')),
                             ParagraphText(text: '${comments[index]['message']}'),
                           ],
                         ),
@@ -94,7 +95,7 @@ class _CommentsPageInHomeFeedState extends State<CommentsPageInHomeFeed> {
           ),
           Row(
             children: [
-              Expanded(child: CustomTextField(controller: messageController,hintText: 'Type something here',)),
+              Expanded(child: CustomTextField(controller: messageController,hintText: translate('comments_page_bottom_sheet.typeSome'),)),
               IconButton(
                   onPressed: () async {
                     var request = {

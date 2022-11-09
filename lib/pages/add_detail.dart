@@ -8,6 +8,7 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:http/http.dart';
 import 'package:ox21/constants/global_constants.dart';
 import 'package:ox21/constants/global_functions.dart';
@@ -111,7 +112,7 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
       appBar: appBar(
           context: context,
           toolbarHeight: 50,
-          title: 'Add Details',
+          title: translate("add_detail.title"),
           titleColor: MyColors.secondary,
           actions: [
             Column(
@@ -119,7 +120,7 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 RoundEdgedButton(
-                  text: 'NEXT',
+                  text: translate("add_detail.next"),
                   textColor: MyColors.whiteColor,
                   color: MyColors.secondary,
                   width: 65,
@@ -137,20 +138,20 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
 
                     FocusScope.of(context).requestFocus(new FocusNode());
                     if (titleController.text == '') {
-                      showSnackbar(context, 'Please enter the title');
+                      showSnackbar(context, translate("add_detail.alertTitle"));
                     } else if (descriptionController.text == '') {
-                      showSnackbar(context, 'Please enter the description');
+                      showSnackbar(context, translate("add_detail.alertDes"));
                     } else if (screenshots.length == 0) {
-                      showSnackbar(context, 'Please add the screenshots');
+                      showSnackbar(context, translate("add_detail.alertSs"));
                     } else if (selectedPlayList == '0') {
-                      showSnackbar(context, 'Please select the playlist');
+                      showSnackbar(context, translate("add_detail.alertPlaylist"));
                     }else if(selectedDomain==null && domains.length!=0){
-                      showSnackbar(context, 'Please select your domain name');
+                      showSnackbar(context, translate("add_detail.alertDomain"));
                     } else if (selectedChannel1 == null) {
-                      showSnackbar(context, 'Please select the channel');
+                      showSnackbar(context, translate("add_detail.alertChanel"));
                     }else if(userData!['points']<1000 && isFreshnessPurchased == true){
                       print(userData!['points']);
-                      showSnackbar(context, 'Please Exchange more points to add freshness');
+                      showSnackbar(context, translate("add_detail.alertPoints"));
 
                     } else {
                       List? data = await Navigator.push(
@@ -251,7 +252,7 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                           });
                         });
                         showSnackbar(context,
-                            'Your Video uploading is under progress and will be uploaded soon');
+                            translate("add_detail.UnderProcess"));
                         Navigator.popUntil(context, (route) => route.isFirst);
                         try {
                           Navigator.pushReplacement(
@@ -346,8 +347,8 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                         // initialValue: 'Create a Title',
                         maxLength: 150,
                         decoration: InputDecoration(
-                          labelText: 'Title',
-                          hintText: 'Enter title here',
+                          labelText: translate("add_detail.title1"),
+                          hintText: translate("add_detail.enterTitle"),
                           labelStyle: TextStyle(
                             color: Colors.black,
                           ),
@@ -427,8 +428,8 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                                                   text: descriptionController
                                                               .text ==
                                                           ''
-                                                      ? 'Add Description'
-                                                      : 'Description',
+                                                      ? translate("add_detail.addDes")
+                                                      : translate("add_detail.enterDes"),
                                                   color: MyColors.heading,
                                                   fontSize: 14,
                                                   fontFamily: 'regular',
@@ -520,7 +521,7 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               ParagraphText(
-                                                text: 'Visibility',
+                                                text: translate("add_detail.visibility"),
                                                 color: MyColors.blackColor
                                                     .withOpacity(0.5),
                                                 fontSize: 10,
@@ -606,13 +607,13 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               ParagraphText(
-                                                text: 'Add Screenshot',
+                                                text: translate("add_detail.addSs"),
                                                 color: MyColors.heading,
                                                 fontSize: 14,
                                                 fontFamily: 'regular',
                                               ),
                                               if (screenshots.length != 0)
-                                                ParagraphText(text: 'Added'),
+                                                ParagraphText(text: translate("add_detail.added")),
                                             ],
                                           ),
                                           Icon(
@@ -694,7 +695,7 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                                                                 children: [
                                                                   SubHeadingText(
                                                                       text:
-                                                                          'Add to Playlist'),
+                                                                      translate("add_detail.addPlaylist")),
                                                                   TextButton(
                                                                       onPressed:
                                                                           () async {
@@ -715,17 +716,17 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                                                                                     mainAxisSize: MainAxisSize.min,
                                                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                                                     children: [
-                                                                                      SubHeadingText(text: 'Create a Playlist'),
+                                                                                      SubHeadingText(text: translate("add_detail.createPlaylist")),
                                                                                       vSizedBox2,
-                                                                                      CustomTextField(controller: playListNameController, hintText: 'Enter playlist name'),
+                                                                                      CustomTextField(controller: playListNameController, hintText: translate("add_detail.enterPlaylist")),
                                                                                       vSizedBox2,
                                                                                       RoundEdgedButton(
-                                                                                        text: 'Create',
+                                                                                        text: translate("add_detail.create"),
                                                                                         textColor: Colors.white,
                                                                                         color: MyColors.primaryColor,
                                                                                         onTap: () async {
                                                                                           if (playListNameController.text == '') {
-                                                                                            showSnackbar(context, 'Please enter the name of playlist');
+                                                                                            showSnackbar(context, translate("add_detail.enterName"));
                                                                                           } else {
                                                                                             Navigator.pop(context);
                                                                                             var request = {
@@ -755,7 +756,7 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                                                                       child:
                                                                           ParagraphText(
                                                                         text:
-                                                                            'Add',
+                                                                        translate("add_detail.added"),
                                                                         color: MyColors
                                                                             .secondary,
                                                                         fontSize:
@@ -776,7 +777,7 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                                                                 children: [
                                                                   ParagraphText(
                                                                       text:
-                                                                          'No Playlist Found'),
+                                                                      translate("add_detail.noPlayList")),
                                                                   GestureDetector(
                                                                     onTap:
                                                                         () async {
@@ -796,17 +797,17 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                                                                                   mainAxisSize: MainAxisSize.min,
                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                                                   children: [
-                                                                                    SubHeadingText(text: 'Create a Playlist'),
+                                                                                    SubHeadingText(text: translate("add_detail.createNewPlaylist")),
                                                                                     vSizedBox2,
-                                                                                    CustomTextField(controller: playListNameController, hintText: 'Enter playlist name'),
+                                                                                    CustomTextField(controller: playListNameController, hintText: translate("add_detail.enterPlaylist")),
                                                                                     vSizedBox2,
                                                                                     RoundEdgedButton(
-                                                                                      text: 'Create',
+                                                                                      text: translate("add_detail.create"),
                                                                                       textColor: Colors.white,
                                                                                       color: MyColors.primaryColor,
                                                                                       onTap: () async {
                                                                                         if (playListNameController.text == '') {
-                                                                                          showSnackbar(context, 'Please enter the name of playlist');
+                                                                                          showSnackbar(context, translate("add_detail.enterName"));
                                                                                         } else {
                                                                                           Navigator.pop(context);
                                                                                           var request = {
@@ -833,7 +834,7 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                                                                     child:
                                                                         ParagraphText(
                                                                       text:
-                                                                          'Create a new playlist.',
+                                                                      translate("add_detail.createNewPlaylist"),
                                                                       color: MyColors
                                                                           .primaryColor,
                                                                     ),
@@ -917,14 +918,14 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               ParagraphText(
-                                                text: 'Add to playlist',
+                                                text: translate("add_detail.addPlaylist"),
                                                 color: MyColors.heading,
                                                 fontSize: 14,
                                                 fontFamily: 'regular',
                                               ),
                                               if (selectedPlayList != '0')
                                                 ParagraphText(
-                                                    text: 'Playlist added')
+                                                    text: translate("add_detail.playlistAdded"))
                                             ],
                                           ),
                                           Icon(
@@ -1201,14 +1202,14 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                             child: domains.length==1?Container(
                               padding: EdgeInsets.symmetric(horizontal: 16),
                               child: Text(
-                                '${domains[0]['domain']}(Your Domain Name)'
+                                '${domains[0]['domain']} ' +translate("add_detail.domainName")
                               )
                             ): CustomDropDown(
                               onChanged: (value) {
                                 selectedDomain = value;
                                 setState(() {});
                               },
-                              hint: 'Select Your Domain',
+                              hint: translate("add_detail.selectDomain"),
                               selectedItem: selectedChannel,
                               items: List.generate(
                                 domains.length,
@@ -1267,7 +1268,7 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                              borderradius: 0)
                            ,
                                hSizedBox2,
-                               Text("Select Channel"),
+                               Text(translate("add_detail.selectChannel")),
                              ],
                            );
                          }
@@ -1282,14 +1283,14 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                             contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                             border: InputBorder.none,
                             labelText: "",
-                            hintText: "Select Channel",
+                            hintText: translate("add_detail.selectChannel"),
                           ),
                         ),
                         popupProps: PopupProps.bottomSheet(
                           
                           title: Center(child: Padding(
                             padding: const EdgeInsets.only(top: 10,bottom: 5),
-                            child: Text("Select Channel", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+                            child: Text(translate("add_detail.selectChannel"), style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
                           )),
                           // itemBuilder: channels,
                           itemBuilder: (context,dynamic m, isSelected){
@@ -1343,14 +1344,14 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                     if(!hideCreateChannel)
                     Center(
                       child: ParagraphText(
-                        text: 'Or',
+                        text: translate("add_detail.or"),
                       ),
                     ),
                     if(!hideCreateChannel)
                     vSizedBox2,
                     if(!hideCreateChannel)
                     RoundEdgedButton(
-                      text: 'Create your Private Channel',
+                      text: translate("add_detail.createPrivateChannel"),
                       horizontalMargin: 120,
                       height: null,
                       verticalPadding: 10,
@@ -1407,14 +1408,14 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                                   }
                                   setState(() {});
                                 },
-                                hint: 'Buy Freshness Points for your postfreshness',
+                                hint: translate("add_detail.buy"),
                                 selectedItem: freshness,
                                 items: List.generate(
                                   freshnessList.length,
                                       (index) => DropdownMenuItem(
                                     value: freshnessList[index],
                                     child: Text(
-                                      freshnessList[index]=='0'?'No Freshness':freshnessList[index],
+                                      freshnessList[index]=='0'?translate("add_detail.noFreshness"):freshnessList[index],
                                     ),
                                   ),
                                 ),

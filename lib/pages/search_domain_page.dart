@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/cart.dart';
 import 'package:ox21/constants/colors.dart';
 import 'package:ox21/constants/global_constants.dart';
@@ -52,7 +53,7 @@ class _SearchDomainPageState extends State<SearchDomainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context: context, title: 'Domain'),
+      appBar: appBar(context: context, title: translate("search_domain_page.domain")),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: Column(
@@ -84,7 +85,7 @@ class _SearchDomainPageState extends State<SearchDomainPage> {
               child: Column(
                 children: [
                   SubHeadingText(
-                    text: 'Domain Name: ${widget.domainData['domain']}',
+                    text: translate("search_domain_page.domainName")+'  ${widget.domainData['domain']}',
                   ),
                   vSizedBox,
                   Image.asset(
@@ -93,18 +94,18 @@ class _SearchDomainPageState extends State<SearchDomainPage> {
                     fit: BoxFit.fitHeight,
                   ),
                   vSizedBox,
-                  ParagraphText(text: 'Name Available to Exchange'),
+                  ParagraphText(text: translate("search_domain_page.availableName")),
                   vSizedBox2,
                   RoundEdgedButton(
                     text:
-                        'Exchange for ${totalCost.toStringAsFixed(0)} OX21 Coin',
+                    translate("search_domain_page.purchaseFor")+' ${totalCost.toStringAsFixed(0)} '+translate("search_domain_page.ox21Coin"),
                     textColor: Colors.white,
                     color: MyColors.secondary,
                     fontfamily: 'medium',
                     onTap: () {
                       if (totalCost > coins) {
                         showSnackbar(context,
-                            'You don\'t have sufficient coins to Exchange this banner.');
+                            translate("search_domain_page.inSufficient"));
                       } else {
                         push(
                             context: context,
@@ -125,7 +126,7 @@ class _SearchDomainPageState extends State<SearchDomainPage> {
                     Column(
                       children: [
                         RoundEdgedButton(
-                          text: 'Exchange with BTC',
+                          text: translate("search_domain_page.purchaseBtc"),
                           textColor: Colors.white,
                           isSolid: false,
                           color: MyColors.secondary,
@@ -166,7 +167,7 @@ class _SearchDomainPageState extends State<SearchDomainPage> {
                         // ),
                         vSizedBox2,
                         RoundEdgedButton(
-                          text: 'Exchange with JIN',
+                          text: translate("search_domain_page.purchaseJin"),
                           textColor: Colors.white,
                           color: MyColors.secondary,
                           fontfamily: 'medium',

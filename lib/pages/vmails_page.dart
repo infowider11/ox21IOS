@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:intl/intl.dart';
 import 'package:ox21/constants/colors.dart';
 import 'package:ox21/constants/global_constants.dart';
@@ -43,7 +44,7 @@ class _VMailPageState extends State<VMailPage> {
     if (myDomains.length == 0) {
       Navigator.pop(MyGlobalKeys.navigatorKey.currentContext!);
       showSnackbar(MyGlobalKeys.navigatorKey.currentContext!,
-          'You do not have any exhanged domain to send or receive vmail.');
+          translate("vmails_page.text"));
     }
   }
 
@@ -112,7 +113,7 @@ class _VMailPageState extends State<VMailPage> {
               return true;
             },
             child: sentVMails==0?Center(
-              child: ParagraphText(text:'No Mails Found'),
+              child: ParagraphText(text:translate("vmails_page.noData")),
             ):ListView.builder(
               itemCount: sentVMails.length,
               itemBuilder: (context, index) {
@@ -201,7 +202,7 @@ class _VMailPageState extends State<VMailPage> {
               return true;
             },
             child: receivedVMails==0?Center(
-              child: ParagraphText(text:'No Mails Found'),
+              child: ParagraphText(text:translate("vmails_page.noData")),
             ):ListView.builder(
               itemCount: receivedVMails.length,
               itemBuilder: (context, index) {
@@ -260,7 +261,7 @@ class _VMailPageState extends State<VMailPage> {
   Widget build(BuildContext context) {
     print('the userData is $userData');
     return Scaffold(
-      appBar: appBar(context: context, title: 'VMails'),
+      appBar: appBar(context: context, title: translate("vmails_page.title")),
       floatingActionButton: IconButton(
         icon: Icon(
           Icons.add_box,

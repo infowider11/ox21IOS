@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:intl/intl.dart';
 import 'package:ox21/constants/global_constants.dart';
 import 'package:ox21/constants/global_functions.dart';
@@ -115,7 +116,7 @@ class _NewestHomePageState extends State<NewestHomePage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           ParagraphText(
-                            text: 'Create',
+                            text: translate("newest_home_page.create"),
                             color: MyColors.secondary,
                             fontSize: 16,
                             fontFamily: 'semibold',
@@ -191,7 +192,7 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         ParagraphText(
-                                          text: 'Create a Short',
+                                          text: translate("newest_home_page.createShort"),
                                           color: MyColors.heading,
                                           fontSize: 12,
                                           fontFamily: 'bold',
@@ -267,7 +268,7 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         ParagraphText(
-                                          text: 'Upload a Video',
+                                          text: translate("my_purchased_banners.uploadVideo"),
                                           color: MyColors.heading,
                                           fontSize: 12,
                                           fontFamily: 'bold',
@@ -386,7 +387,7 @@ class _NewestHomePageState extends State<NewestHomePage> {
                           items.length == 0
                               ? Center(
                                   child: ParagraphText(
-                                    text: 'No Videos Found',
+                                    text: translate("community_court_page.noData"),
                                   ),
                                 )
                               : ListView.builder(
@@ -846,7 +847,7 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                                                     child:
                                                                         SubHeadingText(
                                                                       text:
-                                                                          'Report this post',
+                                                                      translate("newest_home_page.report"),
                                                                       color: Colors
                                                                           .red,
                                                                     ),
@@ -869,19 +870,19 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                                                   children: [
                                                                                     SubHeadingText(
-                                                                                      text: 'Report Post',
+                                                                                      text: translate("community_court_page.report"),
                                                                                       color: Colors.red,
                                                                                     ),
                                                                                     vSizedBox05,
-                                                                                    ParagraphText(text: 'The post will be sent to the community court for investigation. Please tell us why you are reporting this post.'),
+                                                                                    ParagraphText(text: translate("newest_home_page.text1")),
                                                                                     vSizedBox2,
-                                                                                    CustomTextField(controller: reportMessageController, hintText: 'Type something here...'),
+                                                                                    CustomTextField(controller: reportMessageController, hintText: translate("newest_home_page.typeSome")),
                                                                                     vSizedBox2,
                                                                                     Row(
                                                                                       mainAxisAlignment: MainAxisAlignment.end,
                                                                                       children: [
                                                                                         RoundEdgedButton(
-                                                                                          text: 'No',
+                                                                                          text: translate("newest_home_page.no"),
                                                                                           verticalPadding: 0,
                                                                                           height: 36,
                                                                                           width: 100,
@@ -891,7 +892,7 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                                                                         ),
                                                                                         hSizedBox,
                                                                                         RoundEdgedButton(
-                                                                                          text: 'Yes',
+                                                                                          text: translate("newest_home_page.yes"),
                                                                                           verticalPadding: 0,
                                                                                           height: 36,
                                                                                           width: 100,
@@ -918,7 +919,7 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                                                             '') {
                                                                           showSnackbar(
                                                                               MyGlobalKeys.navigatorKey.currentContext!,
-                                                                              'Please type a message');
+                                                                              translate("newest_home_page.alertMsg"));
                                                                         } else {
                                                                           var request =
                                                                               {
@@ -975,15 +976,15 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                                                                   mainAxisSize: MainAxisSize.min,
                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                                                   children: [
-                                                                                    SubHeadingText(text: 'Are you sure?'),
+                                                                                    SubHeadingText(text: translate("newest_home_page.areyou")),
                                                                                     vSizedBox05,
-                                                                                    ParagraphText(text: 'The post from this user will not be shown if you click on yes.'),
+                                                                                    ParagraphText(text: translate("newest_home_page.text2")),
                                                                                     vSizedBox2,
                                                                                     Row(
                                                                                       mainAxisAlignment: MainAxisAlignment.end,
                                                                                       children: [
                                                                                         RoundEdgedButton(
-                                                                                          text: 'No',
+                                                                                          text: translate("newest_home_page.no"),
                                                                                           verticalPadding: 0,
                                                                                           height: 36,
                                                                                           width: 100,
@@ -993,7 +994,7 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                                                                         ),
                                                                                         hSizedBox,
                                                                                         RoundEdgedButton(
-                                                                                          text: 'Yes',
+                                                                                          text: translate("newest_home_page.yes"),
                                                                                           verticalPadding: 0,
                                                                                           height: 36,
                                                                                           width: 100,
@@ -1049,7 +1050,7 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                                                     child:
                                                                         SubHeadingText(
                                                                       text:
-                                                                          'Block this user',
+                                                                      translate("newest_home_page.block"),
                                                                       color: Colors
                                                                           .red,
                                                                     ),

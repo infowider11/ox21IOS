@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/global_functions.dart';
 import 'package:ox21/constants/sized_box.dart';
 import 'package:ox21/pages/select_audience.dart';
@@ -34,7 +35,7 @@ class _Add_Screenshot_pageState extends State<Add_Screenshot_page> {
         backgroundColor: Color(0xFFeaedf6),
         appBar: appBar(
             context: context,
-            title: 'Add Screenshot',
+            title: translate('add_detail.addSs'),
             titleColor: MyColors.secondary,
             toolbarHeight: 50,
             actions: [
@@ -44,7 +45,7 @@ class _Add_Screenshot_pageState extends State<Add_Screenshot_page> {
                     Navigator.pop(context,  widget.screenshots);
                   },
                   child: ParagraphText(
-                    text: 'Done',
+                    text: translate('add_description.done'),
                     color: MyColors.secondary,
                     fontSize: 16,
                     fontFamily: 'semibold',
@@ -150,7 +151,7 @@ class _Add_Screenshot_pageState extends State<Add_Screenshot_page> {
                               children: [
                                 Icon(Icons.image, size: 48,),
                                 vSizedBox,
-                                SubHeadingText(text: 'Add', fontSize: 20,)
+                                SubHeadingText(text: translate("add_detail.added"), fontSize: 20,)
                               ],
                             ),
                           ),

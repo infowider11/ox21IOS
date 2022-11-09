@@ -1,5 +1,6 @@
 import 'package:crypt/crypt.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/colors.dart';
 import 'package:ox21/constants/global_constants.dart';
 import 'package:ox21/constants/image_urls.dart';
@@ -65,7 +66,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 vSizedBox4,
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: ParagraphText(text: 'Forgot Password',
+                  child: ParagraphText(text: translate("forgot.forgotPass"),
                     fontSize: 18,
                     fontFamily: 'bold',
                   ),
@@ -86,7 +87,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 0, horizontal: 16),
                       child: CustomTextFieldlabel(
-                        labeltext: 'Mnemonic phrase',
+                        labeltext: translate("forgot.mnemonic"),
                         controller: passPhraseController,
                         hintText: 'Enter the 12 Words pass phrase',
                         left: 16,
@@ -141,7 +142,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 // ),
                 // vSizedBox2,
                 RoundEdgedButton(
-                  text: 'Sign in',
+                  text: translate("forgot.send"),
                   textColor: Colors.white,
                   color:passPhraseController.text.isNotEmpty? MyColors.primaryColor: Colors.grey.shade300,
                   borderRadius: 12,
@@ -155,7 +156,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       // Navigator.push(context, MaterialPageRoute(builder: (context)=>CreateNewPassword(passPhrase: '',)));
                     List words = passPhraseController.text.split(" ");
                     if(words.length!=12){
-                      showSnackbar(context, 'Mnemonic phrase must be of 12 words');
+                      showSnackbar(context, translate("forgot.alert1"));
                     }else{
                       setState(() {
                         load = true;

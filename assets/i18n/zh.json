@@ -189,6 +189,7 @@
     "title": "你的域名"
   },
   "my_purchased_banners": {
+    "resaleprice": "Resale Price",
     "yourBanner": "你的广告位",
     "imgUploaded": "图片上传成功",
     "pageNumber": "页数",
@@ -315,7 +316,7 @@
     "no": "不",
     "yes": "是",
     "alertMsg": "请输入原因",
-    "translate(\"newest_home_page.alertMsg\")": "你确定吗?",
+    "areyou": "你确定吗?",
     "text2": "确定之后，你将不再看到这个用户的视频.",
     "block": "不看这个用户的视频"
 
@@ -451,7 +452,13 @@
     "enterAmount": "输入数量",
     "confirm": "确认",
     "typeAmount": "请输入数量然后继续",
-    "btc":"BTC"
+    "btc":"BTC",
+    "receiving":"Receiving Address",
+    "sending":"Sending Address",
+    "fee":"Minor Fee",
+    "show":"Show",
+    "fast":"Fast",
+    "confirm":"Confirm"
   },
   "deposit_btc_qr_page": {
     "scanPay": "扫描二维码完成付款",
@@ -519,7 +526,7 @@
     "successfully": "广告位购买成功",
     "topBidders": "高价竞标者",
     "noBidder": "还没有竞标者",
-    "": ""
+    "ox21point": "Purchase With Ox21 Points"
 
   },
   "set_visibility": {
@@ -585,6 +592,7 @@
     "next": "下一步"
   },
   "walletpage": {
+    "topbanner": "Top Banner Exchange",
     "investment": "投资",
     "depositBTC": "存入BTC",
     "text": "11PEEokWFSFNYshLfuLvZfMuPE93aMJd4",
@@ -600,7 +608,8 @@
     "jin": "JIN",
     "points":"点数",
     "next": "下一步",
-    "exchangebtn": "Exchange Top Banner with OX21 Points"
+    "exchangebtn": "Exchange Top Banner with OX21 Points",
+    "pointtext": "≈3600/15 Points"
 
   },
   "webservicePage": {

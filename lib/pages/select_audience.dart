@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/widgets/buttons.dart';
 
 import '../constants/colors.dart';
@@ -32,7 +33,7 @@ class _Select_AudienceState extends State<Select_Audience> {
       },
       child: Scaffold(
         backgroundColor: Color(0xFFeaedf6),
-        appBar: appBar(context: context, title: 'Select audience', titleColor: MyColors.secondary, toolbarHeight: 50),
+        appBar: appBar(context: context, title: translate("select_audience.selectedAudience"), titleColor: MyColors.secondary, toolbarHeight: 50),
         body: Container(
           width: MediaQuery.of(context).size.width,
           child: SingleChildScrollView(
@@ -47,11 +48,11 @@ class _Select_AudienceState extends State<Select_Audience> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                        child: ParagraphText(text: 'Is this video made for kids?', fontSize: 16, ),
+                        child: ParagraphText(text: translate("select_audience.isKids"), fontSize: 16, ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15),
-                        child: ParagraphText(text: 'regardless of your location, you\'re legally required to comply with the children\'s Online Privacy Protaction Act (COPPA) and/or other laws. you\'re required to tell us whether your videos are made for kids ',
+                        child: ParagraphText(text: translate("select_audience.regardless"),
                           fontSize: 12, color: Colors.black.withOpacity(0.3), ),
                       ),
                       vSizedBox2,
@@ -78,7 +79,7 @@ class _Select_AudienceState extends State<Select_Audience> {
                           Expanded(
                             flex: 5,
                             child: ParagraphText(
-                              text: 'Yes It\'s made for kids',
+                              text: translate("select_audience.yesIsKids"),
                               color: MyColors.heading, fontSize: 14, fontFamily: 'regular',
                             ),
                           ),
@@ -109,7 +110,7 @@ class _Select_AudienceState extends State<Select_Audience> {
                           Expanded(
                             flex: 5,
                             child: ParagraphText(
-                              text: 'No, It\'s not made for kids',
+                              text: translate("select_audience.noIsKids"),
                               color: MyColors.heading, fontSize: 14, fontFamily: 'regular',
                             ),
                           ),
@@ -126,15 +127,15 @@ class _Select_AudienceState extends State<Select_Audience> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                        child: ParagraphText(text: 'Age Restriction (advanced)', fontSize: 16, ),
+                        child: ParagraphText(text: translate("select_audience.age"), fontSize: 16, ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15),
-                        child: ParagraphText(text: 'Do you want to restrict your video to an adult audience?', fontSize: 16, ),
+                        child: ParagraphText(text: translate("select_audience.restrict"), fontSize: 16, ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15),
-                        child: ParagraphText(text: 'Age restricted videos are not shown in certain areas of youtube. these video may have limited or no ads monetization',
+                        child: ParagraphText(text: translate("select_audience.restrictAge"),
                           fontSize: 12, color: Colors.black.withOpacity(0.3), ),
                       ),
                       vSizedBox2,
@@ -161,7 +162,7 @@ class _Select_AudienceState extends State<Select_Audience> {
                           Expanded(
                             flex: 5,
                             child: ParagraphText(
-                              text: 'Yes, restrict my video to over 18',
+                              text: translate("select_audience.yesAge"),
                               color: MyColors.heading, fontSize: 14, fontFamily: 'regular',
                             ),
                           ),
@@ -194,7 +195,7 @@ class _Select_AudienceState extends State<Select_Audience> {
                             child: Padding(
                               padding: const EdgeInsets.only(right: 16.0),
                               child: ParagraphText(
-                                text: 'No, don\'t restrict my video to viewers over 18',
+                                text: translate("select_audience.noAge"),
                                 color: MyColors.heading, fontSize: 14, fontFamily: 'regular',
                               ),
                             ),
@@ -203,7 +204,7 @@ class _Select_AudienceState extends State<Select_Audience> {
                       ),
                       vSizedBox2,
                       RoundEdgedButton(
-                        text: 'UPLOAD VIDEO',
+                        text: translate("select_audience.upload"),
                         textColor: Colors.white,
                         color: MyColors.secondary,
                         borderRadius: 30,

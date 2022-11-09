@@ -192,6 +192,7 @@
     "title": "Your Domains"
   },
   "my_purchased_banners": {
+    "resaleprice": "Resale Price",
     "yourBanner": "Your Banners",
     "imgUploaded": "Image Uploaded",
     "pageNumber": "Page Number",
@@ -269,7 +270,9 @@
     "charged": "You will be charged",
     "btc": "BTC",
     "rent": "Rent",
-    "noData": "No Banners Found"
+    "noData": "No Banners Found",
+    "youneedbuy": "You need to buy",
+    "firstrest": "first to rent this banner, it will cost you extra"
   },
   "my_rented_banner": {
     "endDate": "End Date",
@@ -294,7 +297,7 @@
     "title": "VMails",
     "received": "Received",
     "sent": "Sent",
-    "text": "You do not have any purchased domain to send or receive vmail.",
+    "text": "You do not have any exhanged domain to send or receive vmail.",
     "noData": "No Mails Found"
   },
   "send_vmail": {
@@ -311,6 +314,7 @@
     "validType": "Please type a valid domain name"
   },
   "newest_home_page": {
+    "create": "Create",
     "createShort": "Create a Short",
     "reportThis": "Report this post",
     "report": "Report Post",
@@ -319,7 +323,7 @@
     "no": "No",
     "yes": "Yes",
     "alertMsg": "Please type a message",
-    "translate(\"newest_home_page.alertMsg\")": "Are you sure?",
+    "areyou": "Are you sure?",
     "text2": "The post from this user will not be shown if you click on yes.",
     "block": "Block this user"
 
@@ -352,6 +356,12 @@
     "close": "Close"
   },
   "complete_domain_purchase_page": {
+    "exchangedomain": "Exchange Domain",
+    "orderid": "Order ID:",
+    "COST": "COST:",
+    "qrpay": "QR code use for payment",
+    "close": "Close",
+    "strongnote": "Strong Note",
     "hours": "hours",
     "minutes": "minutes",
     "seconds": "seconds left",
@@ -413,6 +423,7 @@
     "title1": "Title",
     "enterTitle": "Enter title here",
     "enterDes": "Description",
+    "addDes": "Add Description",
     "visibility": "Visibility",
     "addSs": "Add Screenshot",
     "added": "Added",
@@ -455,7 +466,14 @@
     "enterAmount": "Enter Amount",
     "confirm": "Confirm",
     "typeAmount": "Please type an amount to continue",
-    "btc":"BTC"
+    "btc":"BTC",
+    "receiving":"Receiving Address",
+    "sending":"Sending Address",
+    "text":"13UmrRNW&asdasdkajalsdasdahnfka2141Asafkl",
+    "fee":"Minor Fee",
+    "show":"Show",
+    "fast":"Fast",
+    "confirm":"Confirm"
   },
   "deposit_btc_qr_page": {
     "scanPay": "Scan this code to complete your Payment",
@@ -484,11 +502,11 @@
     "goToHome": "Go to Home Page"
   },
   "search_domain_page": {
-    "availableName": "Name Available to Purchase",
-    "purchaseFor": "Purchase for",
+    "availableName": "Name Available to Exchange",
+    "purchaseFor": "Exchange for",
     "ox21Coin": "Ox21 Coin",
     "inSufficient": "You don\\'t have sufficient coins to purchase this banner.",
-    "purchaseBtc": "Purchase with BTC",
+    "purchaseBtc": "Exchange with BTC",
     "purchaseJin": "Purchase with JIN",
     "domain": "Domain",
     "domainName":"Domain Name :"
@@ -523,7 +541,7 @@
     "successfully": "Banner Purchased Successfully",
     "topBidders": "Top Bidders",
     "noBidder": "There are no bidders yet",
-    "": ""
+    "ox21point": "Purchase With Ox21 Points"
 
   },
   "set_visibility": {
@@ -589,6 +607,7 @@
     "next": "Next"
   },
   "walletpage": {
+    "topbanner": "Top Banner Exchange",
     "investment": "Investment",
     "depositBTC": "Deposit BTC",
     "text": "11PEEokWFSFNYshLfuLvZfMuPE93aMJd4",
@@ -604,7 +623,8 @@
     "jin": "JIN",
     "points": "Points",
     "next": "Next",
-    "exchangebtn": "Exchange Top Banner with OX21 Points"
+    "exchangebtn": "Exchange Top Banner with OX21 Points",
+    "pointtext": "≈3600/15 Points"
   },
   "webservicePage": {
     "postErrorMessage": "Error in uploading. Please re-upload your video"

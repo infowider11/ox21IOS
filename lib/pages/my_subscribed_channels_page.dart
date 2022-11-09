@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/colors.dart';
 import 'package:ox21/constants/dummy_data.dart';
 import 'package:ox21/constants/global_constants.dart';
@@ -74,7 +75,7 @@ class _MySubscribedChannelsState extends State<MySubscribedChannels> {
           ? null
           : appBar(
               context: context,
-              title: 'My Subscribed Channels',
+              title: translate("my_subscribed_channels_page.title"),
               titleColor: MyColors.primaryColor),
       body: load
           ? CustomLoader()
@@ -89,12 +90,12 @@ class _MySubscribedChannelsState extends State<MySubscribedChannels> {
                         // vSizedBox2,
                         Row(
                           children: [
-                            MainHeadingText(text: 'My Subscribed Channels'),
+                            MainHeadingText(text: translate("my_subscribed_channels_page.title")),
                           ],
                         ),
                         vSizedBox2,
                         RoundEdgedButton(
-                          text: 'Create Private Channel',
+                          text: translate("my_subscribed_channels_page.createPrivate"),
                           onTap: () async {
                             await push(
                               context: context,
@@ -109,9 +110,9 @@ class _MySubscribedChannelsState extends State<MySubscribedChannels> {
                           children: [
                             Expanded(
                               child: CustomTextFieldlabel(
-                                labeltext: 'Search in Channels',
+                                labeltext: translate("my_subscribed_channels_page.search"),
                                 controller: searchController,
-                                hintText: 'Search in channels',
+                                hintText: translate("my_subscribed_channels_page.search"),
                                 left: 16,
                                 fontsize: 12,
                                 hintcolor: MyColors.inputbordercolor,
@@ -184,7 +185,7 @@ class _MySubscribedChannelsState extends State<MySubscribedChannels> {
                                 // margin: EdgeInsets.only(bottom: 40),
                                 child: tempChannels.length == 0 || lengthisZero
                                     ? Text(
-                                        'No Channels Found',
+                                  translate("my_subscribed_channels_page.noData"),
                                         textAlign: TextAlign.center,
                                       )
                                     : GridView.builder(
@@ -319,7 +320,7 @@ class _MySubscribedChannelsState extends State<MySubscribedChannels> {
                     ),
                   ),
                   RoundEdgedButton(
-                    text: 'Update Channels',
+                    text: translate("my_subscribed_channels_page.update"),
                     isSolid: false,
                     textColor: MyColors.secondary,
                     color: MyColors.secondary,
@@ -344,7 +345,7 @@ class _MySubscribedChannelsState extends State<MySubscribedChannels> {
                             if (response['status'] == 1) {
                               await updateSharedPreferenceFromServer();
                               showSnackbar(
-                                  context, 'Channels Updated Successfully');
+                                  context, translate("my_subscribed_channels_page.updateMsg"));
                               // await Navigator.pushReplacementNamed(context, MyStatefulWidget.id);
                             }
                             setState(() {

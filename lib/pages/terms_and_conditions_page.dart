@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/colors.dart';
 import 'package:ox21/services/api_urls.dart';
 import 'package:ox21/widgets/appbar.dart';
@@ -36,7 +37,7 @@ class _TermsAndConditionsPageState extends State<TermsAndConditionsPage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Text('Terms And Conditions', style: TextStyle(color: Colors.black),),
+        title: Text(translate("signin_mnemonic.terms"), style: TextStyle(color: Colors.black),),
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black,),
           onPressed: (){

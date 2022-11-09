@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/colors.dart';
 import 'package:ox21/constants/dummy_data.dart';
 import 'package:ox21/constants/global_constants.dart';
@@ -61,7 +62,7 @@ class _MyPrivateChannelsState extends State<MyPrivateChannels> {
           ? null
           : appBar(
           context: context,
-          title: 'My Private Channels',
+          title: translate("my_private_channels.title"),
           titleColor: MyColors.primaryColor),
       body: load
           ? CustomLoader()
@@ -76,11 +77,11 @@ class _MyPrivateChannelsState extends State<MyPrivateChannels> {
                   // vSizedBox2,
                   Row(
                     children: [
-                      MainHeadingText(text: 'My Private Channels'),
+                      MainHeadingText(text: translate("my_private_channels.title")),
                     ],
                   ),
                   vSizedBox2,
-                  RoundEdgedButton(text: 'Create Private Channel', onTap: ()async{
+                  RoundEdgedButton(text:  translate("my_private_channels.createPrivate"), onTap: ()async{
                     await push(context: context, screen: CreatePrivateChannel(),);
                     getChannels();
                   },horizontalMargin: 40,),
@@ -136,7 +137,7 @@ class _MyPrivateChannelsState extends State<MyPrivateChannels> {
                           // height: 600,
                           // margin: EdgeInsets.only(bottom: 40),
                           child: myPrivateChannels.length == 0 ? Text(
-                            'No Channels Found',
+                            translate("my_private_channels.noData"),
                             textAlign: TextAlign.center,
                           )
                               : GridView.builder(

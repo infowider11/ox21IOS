@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/colors.dart';
 import 'package:ox21/constants/image_urls.dart';
 import 'package:ox21/constants/sized_box.dart';
@@ -26,7 +27,7 @@ class _BTCSendPageState extends State<BTCSendPage> {
         actions: [
           GestureDetector(
             onTap: (){
-              Navigator.pushNamed(context, ScanQRCodePage.id);
+              // Navigator.pushNamed(context, ScanQRCodePage.id);
             },
             child: Padding(
               padding: const EdgeInsets.all(24.0),
@@ -46,7 +47,7 @@ class _BTCSendPageState extends State<BTCSendPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SubHeadingText(text: 'Transfer Amount'),
+                      SubHeadingText(text: translate("deposit_btc_page.transferAmonut")),
                       Row(
                         children: [
                           Image.asset(
@@ -54,7 +55,7 @@ class _BTCSendPageState extends State<BTCSendPage> {
                             height: 20,
                             fit: BoxFit.fitHeight,
                           ),
-                          SubHeadingText(text: 'BTC')
+                          SubHeadingText(text: translate("deposit_btc_page.btc"))
                         ],
                       )
                     ],
@@ -81,7 +82,7 @@ class _BTCSendPageState extends State<BTCSendPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SubHeadingText(text: 'Receiving Address'),
+                      SubHeadingText(text: translate("deposit_btc_page.receiving")),
                       Image.asset(
                         MyImages.contactsIcon,
                         height: 26,
@@ -130,12 +131,12 @@ class _BTCSendPageState extends State<BTCSendPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SubHeadingText(
-                            text: 'Sending Address',
+                            text: translate("deposit_btc_page.sending"),
                             color: Colors.grey,
                           ),
                           vSizedBox,
                           ParagraphText(
-                            text: '13UmrRNW&asdasdkajalsdasdahnfka2141Asafkl',
+                            text: translate("deposit_btc_page.text"),
                             color: MyColors.black54Color,
                           )
                         ],
@@ -153,7 +154,7 @@ class _BTCSendPageState extends State<BTCSendPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SubHeadingText(
-                            text: 'Minor Fee',
+                            text: translate("deposit_btc_page.fee"),
                             color: Colors.grey,
                           ),
                           Slider(
@@ -166,11 +167,11 @@ class _BTCSendPageState extends State<BTCSendPage> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 ParagraphText(
-                                  text: 'Slow',
+                                  text: translate("deposit_btc_page.show"),
                                   color: MyColors.black54Color,
                                 ),
                                 ParagraphText(
-                                  text: 'Fast',
+                                  text: translate("deposit_btc_page.fast"),
                                   color: MyColors.black54Color,
                                 ),
                               ],
@@ -184,7 +185,7 @@ class _BTCSendPageState extends State<BTCSendPage> {
                       children: [
                         Expanded(
                             child: RoundEdgedButton(
-                          text: 'Confirm',
+                          text: translate("deposit_btc_page.confirm"),
                           color: MyColors.secondary,
                           // color: Colors.grey.shade300,
                           // textColor: Colors.grey,

@@ -1,5 +1,6 @@
 import 'package:crypt/crypt.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/colors.dart';
 import 'package:ox21/constants/global_constants.dart';
 import 'package:ox21/constants/image_urls.dart';
@@ -69,7 +70,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                 vSizedBox4,
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: ParagraphText(text: 'Create a new Password',
+                  child: ParagraphText(text: translate("create_new_password.createPass"),
                     fontSize: 18,
                     fontFamily: 'bold',
                   ),
@@ -89,7 +90,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 0, horizontal: 16),
                       child: CustomTextFieldlabel(
-                        labeltext: 'New Password',
+                        labeltext: translate("createPassword.newPassword"),
                         controller: passwordController,
                         obscureText: !passVisible,
                         hintText: '********',
@@ -144,7 +145,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           ParagraphText(
-                            text: 'Password strength: ',
+                            text: translate("createPassword.passStrength"),
                             color: MyColors.textcolor,
                             fontSize: 12,
                             fontFamily: 'regular',
@@ -165,7 +166,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 0, horizontal: 16),
                       child: CustomTextFieldlabel(
-                        labeltext: 'Confirm password',
+                        labeltext: translate("createPassword.confirmPassword"),
                         controller: confirmPasswordController,
                         hintText: '********',
                         obscureText: true,
@@ -188,7 +189,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           ParagraphText(
-                            text: 'Must be at least 8 characters',
+                            text: translate("createPassword.passValidation"),
                             color: MyColors.textcolor,
                             fontSize: 12,
                             fontFamily: 'regular',
@@ -235,7 +236,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                 // ),
                 // vSizedBox2,
                 RoundEdgedButton(
-                  text: 'Change Password',
+                  text: translate("create_new_password.changePass"),
                   textColor: Colors.white,
                   color:passwordController.text.isNotEmpty? MyColors.primaryColor: Colors.grey.shade300,
                   borderRadius: 12,
@@ -284,11 +285,11 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                           //   print(response);
                           // }
                         }else{
-                          showSnackbar(context, 'Please type the strong password');
+                          showSnackbar(context, translate("create_new_password.typeStrongPass"));
                         }
                     }
                     else{
-                      showSnackbar(context, 'Confirm password does not match');
+                      showSnackbar(context, translate("create_new_password.confirmPass"));
                     }
                     setState(() {
                       load = false;

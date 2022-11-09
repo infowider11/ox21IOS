@@ -214,7 +214,7 @@ class _WalletPageState extends State<WalletPage> {
                                           SubHeadingText(text: '1.00 USD'),
                                           vSizedBox05,
                                           ParagraphText(
-                                            text: '≈3600/15 Points',
+                                            text: translate("walletpage.pointtext"),
                                             color: MyColors.black54Color,
                                           ),
                                         ],
@@ -483,7 +483,7 @@ class _WalletPageState extends State<WalletPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SubHeadingText(text: 'Top Banner Exchange'),
+                          SubHeadingText(text: translate("walletpage.topbanner")),
                           // vSizedBox,
                           // CustomTextFieldlabel(controller: bannerTradeController, hintText: 'Search Channel', labeltext: 'Search Channel', icon: Icons.search,),
                           vSizedBox,

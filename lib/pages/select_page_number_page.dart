@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:crypt/crypt.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/dummy_data.dart';
 import 'package:ox21/constants/global_constants.dart';
 import 'package:ox21/constants/global_keys.dart';
@@ -62,7 +63,7 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: load ? null : appBar(context: context, title: 'Top Banner Bid'),
+      appBar: load ? null : appBar(context: context, title: translate("select_page_number_page.title")),
       body: load
           ? CustomLoader()
           : Container(
@@ -74,7 +75,7 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
                     vSizedBox2,
                     Row(
                       children: [
-                        ParagraphText(text: 'Channel Selected: '),
+                        ParagraphText(text: translate("select_page_number_page.selectedChannel")),
                         SubHeadingText(
                             text: widget.request['channelName'] ?? 'mm'),
                       ],
@@ -98,7 +99,7 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           SubHeadingText(
-                            text: 'Select Page Number:',
+                            text: translate("select_page_number_page.selectPage"),
                             fontSize: 12,
                           ),
                           hSizedBox,
@@ -169,7 +170,7 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
                                         showSnackbar(
                                             MyGlobalKeys
                                                 .navigatorKey.currentContext!,
-                                            'This page number is not available in your region.');
+                                            translate("select_page_number_page.notAvailable"));
                                       }
                                     }
 
@@ -214,7 +215,7 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
                             children: [
                               if (serverStatus == 1)
                                 MainHeadingText(
-                                  text: 'Pricing ',
+                                  text: translate("select_page_number_page.pricing"),
                                   color: MyColors.secondary,
                                 ),
                               if (serverStatus == 1)
@@ -243,7 +244,7 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
                                   children: [
                                     RoundEdgedButton(
                                       textColor: Colors.white,
-                                      text: 'Purchase Now',
+                                      text: translate("select_page_number_page.purchaseNow"),
                                       color: selectedPricing == null
                                           ? MyColors.inactiveButtonColor
                                           : MyColors.secondary,
@@ -270,7 +271,7 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
 
                                               String typedPhrase = uuid.v5(
                                                   Uuid.NAMESPACE_URL,
-                                                  'Fight for privacy! Fight for freedom');
+                                                  translate("select_page_number_page.fight"));
                                               print(typedPhrase);
                                               var request = {
                                                 "user_id": userId.toString(),
@@ -336,7 +337,7 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
                                                         .toString() ==
                                                     '1') {
                                                   showSnackbar(context,
-                                                      'Banner Purchased Successfully');
+                                                      translate("select_page_number_page.successfully"));
                                                 } else {
                                                   push(
                                                       context: MyGlobalKeys
@@ -364,7 +365,7 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
                                 ),
                               RoundEdgedButton(
                                 textColor: Colors.white,
-                                text: 'Purchase With Ox21 Points',
+                                text: translate("select_page_number_page.ox21point"),
                                 color: selectedPricing == null
                                     ? MyColors.inactiveButtonColor
                                     : MyColors.secondary,
@@ -391,7 +392,7 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
 
                                         String typedPhrase = uuid.v5(
                                             Uuid.NAMESPACE_URL,
-                                            'Fight for privacy! Fight for freedom');
+                                            translate("select_page_number_page.fight"));
                                         print(typedPhrase);
                                         var request = {
                                           "user_id": userId.toString(),
@@ -435,7 +436,7 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
                                                   .toString() ==
                                               '1') {
                                             showSnackbar(context,
-                                                'Banner Purchased Successfully');
+                                                translate("select_page_number_page.successfully"));
                                           } else {
                                             showSnackbar(context,
                                                 jsonResponse['message']);
@@ -463,12 +464,12 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
                     ),
                     vSizedBox2,
                     CustomDivider(),
-                    SubHeadingText(text: 'Top Bidders'),
+                    SubHeadingText(text: translate("select_page_number_page.topBidders")),
                     vSizedBox2,
                     bidders.length == 0
                         ? Center(
                             child: ParagraphText(
-                              text: 'There are no bidders yet',
+                              text: translate("select_page_number_page.noBidder"),
                             ),
                           )
                         : ListView.builder(

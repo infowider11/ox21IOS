@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/colors.dart';
 import 'package:ox21/constants/global_constants.dart';
 import 'package:ox21/constants/global_functions.dart';
@@ -31,7 +32,7 @@ class _CreatePrivateChannelState extends State<CreatePrivateChannel> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:load?null: appBar(context: context, title: 'Create Private Channel'),
+      appBar:load?null: appBar(context: context, title: translate("create_private_channel.createPrivate")),
       body:load?CustomLoader(): Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: Stack(
@@ -41,17 +42,17 @@ class _CreatePrivateChannelState extends State<CreatePrivateChannel> {
               children: [
                 vSizedBox2,
                 SubHeadingText(
-                  text: 'Channel Name',
+                  text: translate("create_private_channel.cName"),
                   color: MyColors.primaryColor,
                 ),
                 vSizedBox05,
                 CustomTextField(
                   controller: channelNameController,
-                  hintText: 'Enter Channel Name Here..',
+                  hintText: translate("create_private_channel.cNmaePlace"),
                 ),
                 vSizedBox2,
                 SubHeadingText(
-                  text: 'Channel Thumbnail',
+                  text: translate("create_private_channel.cThumbnail"),
                   color: MyColors.primaryColor,
                 ),
                 vSizedBox05,
@@ -76,14 +77,14 @@ class _CreatePrivateChannelState extends State<CreatePrivateChannel> {
             Align(
               alignment: Alignment.bottomCenter,
               child: RoundEdgedButton(
-                text: 'Create Channel',
+                text: translate("create_private_channel.createChannel"),
                 verticalMargin: 20,
                 onTap: ()async{
                   // Navigator.pop(context, channelNameController.text);
                   if(channelNameController.text==''){
-                    showSnackbar(context, 'Please type the channel name.');
+                    showSnackbar(context, translate("create_private_channel.alertCNmae"));
                   }else if(thumbnail==null){
-                    showSnackbar(context, 'Please upload the channel thumbnail');
+                    showSnackbar(context, translate("create_private_channel.alertCThumbnail"));
                   }else{
                     setState(() {
                       load = true;

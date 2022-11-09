@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:intl/intl.dart';
 import 'package:ox21/constants/global_keys.dart';
 import 'package:ox21/widgets/custom_snackbar.dart';
@@ -47,7 +48,7 @@ class _RentBannerState extends State<RentBanner> {
             children: [
               Expanded(
                   child: SubHeadingText(
-                text: 'Select Date',
+                text: translate("rent_banner.selectDate"),
               )),
               hSizedBox,
               Expanded(
@@ -69,7 +70,7 @@ class _RentBannerState extends State<RentBanner> {
                 },
                 child: CustomTextField(
                     controller: dateController,
-                    hintText: 'Select Date',
+                    hintText: translate("rent_banner.selectDate"),
                     enabled: false),
               )),
             ],
@@ -81,13 +82,13 @@ class _RentBannerState extends State<RentBanner> {
             children: [
               Expanded(
                 child: SubHeadingText(
-                  text: 'Select Months',
+                  text: translate("rent_banner.selectMonth"),
                 ),
               ),
               hSizedBox,
               Expanded(
                 child: CustomDropDown(
-                  hint: 'Select months',
+                  hint: translate("rent_banner.selectMonth"),
                   onChanged: (val) {
                     selectedMonths = val;
                     setState(() {});
@@ -111,7 +112,7 @@ class _RentBannerState extends State<RentBanner> {
             Wrap(
               crossAxisAlignment: WrapCrossAlignment.end,
               children: [
-                ParagraphText(text: 'You will be charged '),
+                ParagraphText(text: translate("rent_banner.charged")),
                 ParagraphText(
                   text:
                       '${(selectedMonths! * widget.item['total_rent']).toStringAsFixed(2)} BTC',
@@ -168,14 +169,14 @@ class _RentBannerState extends State<RentBanner> {
                             vSizedBox2,
                             ParagraphText(
                               text:
-                                  'You need to buy ${jsonResponse['domain_name']} first to rent this banner, it will cost you extra ${double.parse(jsonResponse['cost'].toString()).toStringAsFixed(4)}BTC. Are you sure?',
+                                  translate("rent_banner.youneedbuy")+'  ${jsonResponse['domain_name']} '+translate("rent_banner.firstrest")+' ${double.parse(jsonResponse['cost'].toString()).toStringAsFixed(4)}BTC. '+translate("newest_home_page.areyou"),
                               textAlign: TextAlign.center,
                             ),
                             vSizedBox2,
                             Row(
                               children: [
                                 RoundEdgedButton(
-                                  text: 'Yes',
+                                  text: translate("newest_home_page.yes"),
                                   width: 120,
                                   onTap: () async {
                                     Map<String, dynamic> domainRequest = {
@@ -198,7 +199,7 @@ class _RentBannerState extends State<RentBanner> {
                                 ),
                                 hSizedBox2,
                                 RoundEdgedButton(
-                                  text: 'No',
+                                  text: translate("newest_home_page.no"),
                                   width: 120,
                                   onTap: () async {
                                     Navigator.pop(context);

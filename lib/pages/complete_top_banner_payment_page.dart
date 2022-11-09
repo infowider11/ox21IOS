@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/global_keys.dart';
 import 'package:ox21/constants/image_urls.dart';
 import 'package:ox21/constants/sized_box.dart';
@@ -68,7 +69,7 @@ class _CompleteTopBannerPaymentPageState extends State<CompleteTopBannerPaymentP
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context: context, title: 'Rent Top Banner'),
+      appBar: appBar(context: context, title: translate('complete_top_banner_payment_page.rentBanner')),
 
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -79,13 +80,13 @@ class _CompleteTopBannerPaymentPageState extends State<CompleteTopBannerPaymentP
             children: [
               Center(child: Image.asset(MyImages.buyTopBannerImage, width: MediaQuery.of(context).size.width,)),
               vSizedBox,
-              SubHeadingText(text: 'This banner is for rent.',),
+              SubHeadingText(text: translate('complete_top_banner_payment_page.text1'),),
               vSizedBox,
-              ParagraphText(text: '  ORDER ID: ${widget.purchaseData['orderID']}', fontSize: 16,),
+              ParagraphText(text: translate('complete_top_banner_payment_page.orderId')+'  ${widget.purchaseData['orderID']}', fontSize: 16,),
               vSizedBox05,
-              ParagraphText(text: '  COST: ${double.parse(widget.purchaseData['price'].toString()).toStringAsFixed(2)}  BTC', fontSize: 16,),
+              ParagraphText(text: translate('complete_top_banner_payment_page.cost')+'   ${double.parse(widget.purchaseData['price'].toString()).toStringAsFixed(2)}  BTC', fontSize: 16,),
               vSizedBox2,
-              SubHeadingText(text: 'QR code use for payment',),
+              SubHeadingText(text: translate('complete_top_banner_payment_page.Qrpay'),),
               vSizedBox4,
               Center(
                 child: Stack(
@@ -108,9 +109,9 @@ class _CompleteTopBannerPaymentPageState extends State<CompleteTopBannerPaymentP
                 ),
               ),
               vSizedBox,
-              Center(child: ParagraphText(text: 'Updated on ${DateTime.parse(widget.purchaseData['updated_at']??'${DateTime.now().toString()}').toString()}', textAlign: TextAlign.center,)),
+              Center(child: ParagraphText(text: translate('complete_top_banner_payment_page.updateOn')+'  ${DateTime.parse(widget.purchaseData['updated_at']??'${DateTime.now().toString()}').toString()}', textAlign: TextAlign.center,)),
               vSizedBox,
-              SubHeadingText(text: 'Strong Note'),
+              SubHeadingText(text: translate('complete_top_banner_payment_page.strongNote')),
               vSizedBox,
               Row(
                 children: [
@@ -122,7 +123,7 @@ class _CompleteTopBannerPaymentPageState extends State<CompleteTopBannerPaymentP
                       shape: BoxShape.circle,
                     ),),
                   hSizedBox,
-                  ParagraphText(text: 'the order id will expire in 48 hours'),
+                  ParagraphText(text: translate('complete_top_banner_payment_page.text3')),
                 ],
               ),
               Row(
@@ -135,11 +136,11 @@ class _CompleteTopBannerPaymentPageState extends State<CompleteTopBannerPaymentP
                       shape: BoxShape.circle,
                     ),),
                   hSizedBox,
-                  Expanded(child: ParagraphText(text: 'When the orderID expires, the message will show the QR code is no longer valid.')),
+                  Expanded(child: ParagraphText(text: translate('complete_top_banner_payment_page.text4'))),
                 ],
               ),
               vSizedBox4,
-              RoundEdgedButton(text: 'Close', onTap: (){
+              RoundEdgedButton(text: translate('complete_top_banner_payment_page.close'), onTap: (){
                 Navigator.pop(context);
               },),
 

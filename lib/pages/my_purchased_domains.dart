@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:intl/intl.dart';
 import 'package:ox21/constants/global_constants.dart';
 import 'package:ox21/constants/image_urls.dart';
@@ -57,7 +58,7 @@ class _MyPurchasedDomainsState extends State<MyPurchasedDomains> {
       backgroundColor: Color(0xFFeaedf6),
       appBar: appBar(
           context: context,
-          title: 'Your Domains',
+          title: translate("my_purchased_domains.title"),
           titleColor: MyColors.secondary,
           // toolbarHeight: 50,
       ),

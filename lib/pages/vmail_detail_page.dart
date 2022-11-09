@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/colors.dart';
 import 'package:ox21/constants/sized_box.dart';
 import 'package:ox21/functions/navigation_functions.dart';
@@ -46,7 +47,7 @@ class _VmailDetailPageState extends State<VmailDetailPage> {
     // print('the ${widget.vmailData['attachments']}');
     log(widget.vmailData.toString());
     return Scaffold(
-      appBar: appBar(context: context, title: 'Vmails'),
+      appBar: appBar(context: context, title: translate("vmails_page.title")),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: SingleChildScrollView(
@@ -113,17 +114,17 @@ class _VmailDetailPageState extends State<VmailDetailPage> {
                                     children: [
                                       vSizedBox,
                                       SubHeadingText(
-                                        text: 'Are you sure?',
+                                        text: translate("newest_home_page.areyou"),
                                         color: Colors.red,
                                       ),
                                       vSizedBox,
-                                      ParagraphText(text: 'This domain will not be able to send you mails again.'),
+                                      ParagraphText(text: translate("vmail_detail_page.text")),
                                       vSizedBox2,
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.end,
                                         children: [
                                           RoundEdgedButton(
-                                            text: 'No',
+                                            text: translate("vmail_detail_page.no"),
                                             verticalPadding: 0,
                                             height: 36,
                                             width: 100,
@@ -133,7 +134,7 @@ class _VmailDetailPageState extends State<VmailDetailPage> {
                                           ),
                                           hSizedBox,
                                           RoundEdgedButton(
-                                            text: 'Yes',
+                                            text: translate("vmail_detail_page.yes"),
                                             verticalPadding: 0,
                                             height: 36,
                                             width: 100,
@@ -192,13 +193,13 @@ class _VmailDetailPageState extends State<VmailDetailPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SubHeadingText(
-                    text: 'Attachments',
+                    text: translate("vmail_detail_page.attachments"),
                     color: MyColors.primaryColor,
 
                   ),
                   vSizedBox,
                   if(widget.vmailData['attachments'].length==0)
-                    ParagraphText(text: 'No attachments found'),
+                    ParagraphText(text: translate("vmail_detail_page.noAttachments")),
                   Wrap(
                     spacing: 8,
                     runSpacing: 20,
@@ -281,7 +282,7 @@ class _VmailDetailPageState extends State<VmailDetailPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SubHeadingText(
-                          text: 'Attachments',
+                          text: translate("vmail_detail_page.attachments"),
                           color: MyColors.primaryColor,
                         ),
                         vSizedBox2,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/cart.dart';
 import 'package:ox21/constants/colors.dart';
 import 'package:ox21/constants/image_urls.dart';
@@ -53,7 +54,7 @@ class _DomainPurchaseSuccessfulPageState extends State<DomainPurchaseSuccessfulP
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context: context, title: 'Domain'),
+      appBar: appBar(context: context, title: translate("domain_purchase_successful.domain")),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: Column(
@@ -88,7 +89,7 @@ class _DomainPurchaseSuccessfulPageState extends State<DomainPurchaseSuccessfulP
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SubHeadingText(
-                    text: 'Domain Name: ${widget.domainData['domain']}',
+                    text: translate("domain_purchase_successful.domainName")+' ${widget.domainData['domain']}',
                   ),
                   vSizedBox,
                   Image.asset(

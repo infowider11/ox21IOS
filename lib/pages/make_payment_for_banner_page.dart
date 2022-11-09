@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/colors.dart';
 import 'package:ox21/constants/global_constants.dart';
 import 'package:ox21/constants/global_keys.dart';
@@ -31,19 +32,19 @@ class _MakePaymentForBannerPageState extends State<MakePaymentForBannerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context: context, title: 'Make Payment For Banner'),
+      appBar: appBar(context: context, title: translate("make_payment_for_banner_page.title")),
       body: load?CustomLoader():Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SubHeadingText(
-              text: 'Order Id',
+              text: translate("make_payment_for_banner_page.orderID"),
               color: MyColors.primaryColor,
             ),
             CustomTextField(
               controller: orderIdController,
-              hintText: 'Enter order id here',
+              hintText: translate("make_payment_for_banner_page.orderIDPlace"),
               onChanged: (val)async{
                 if(orderIdController.text.length==6){
                   var request = {
@@ -77,18 +78,18 @@ class _MakePaymentForBannerPageState extends State<MakePaymentForBannerPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                ParagraphText(text: 'You Have to pay: '),
+                ParagraphText(text: translate("make_payment_for_banner_page.pay")),
                 SubHeadingText(text: '$amountToPay BTC', color: MyColors.primaryColor,),
               ],
             ),
             vSizedBox2,
             RoundEdgedButton(
-              text: 'Make Payment From Your BTC Wallet',
+              text: translate("make_payment_for_banner_page.makePay"),
               onTap: ()async{
                 if(orderIdController.text==''){
-                  showSnackbar(context, 'Please Enter Order Id to pay for');
+                  showSnackbar(context, translate("make_payment_for_banner_page.enterOrderId"));
                 }else if(orderIdController.text.length!=6){
-                  showSnackbar(context, 'Order Id must be of exactly 6 digits');
+                  showSnackbar(context, translate("make_payment_for_banner_page.validorderId"));
                 }else{
                   var request = {
                     "user_id": userId,

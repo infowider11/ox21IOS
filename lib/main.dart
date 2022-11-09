@@ -59,6 +59,7 @@ void main() async{
   // channels = dummyChannels;
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
   currentLanguage = sharedPreferences.getString('lang')??'zh';
+  print('the current lang is $currentLanguage');
 
 // print(sharedPreferences.getString('data'));
 // print('hello');
@@ -123,10 +124,10 @@ class MyApp extends StatelessWidget {
           // ChatPage.id:(context)=> ChatPage(),
           BTCSendPage.id:(context)=> BTCSendPage(),
           // SearchDomainPage.id:(context)=> SearchDomainPage(),
-          ScanQRCodePage.id:(context)=> ScanQRCodePage(),
-          ContentCreatorPage.id:(context)=> ContentCreatorPage(),
-          ContentCreatorPostNowPage.id:(context)=> ContentCreatorPostNowPage(),
-          TopBannerBidPage.id:(context)=> TopBannerBidPage(),
+          // ScanQRCodePage.id:(context)=> ScanQRCodePage(),
+          // ContentCreatorPage.id:(context)=> ContentCreatorPage(),
+          // ContentCreatorPostNowPage.id:(context)=> ContentCreatorPostNowPage(),
+          // TopBannerBidPage.id:(context)=> TopBannerBidPage(),
           MySubscribedChannels.id:(context)=> MySubscribedChannels(),
           MyCoinsPage.id:(context)=> MyCoinsPage(),
           // Step_nextPage.id:(context)=> Step_nextPage(),
@@ -134,12 +135,12 @@ class MyApp extends StatelessWidget {
           // TopBannerBidCountryPage.id:(context)=> TopBannerBidCountryPage(),
           // top_banner_chennel.id:(context)=> top_banner_chennel(),
           // Cart.id:(context)=> Cart(),
-          Addtocart.id:(context)=> Addtocart(),
+          // Addtocart.id:(context)=> Addtocart(),
           SettingsPage.id:(context)=> SettingsPage(),
           DeleteAccountPage.id:(context)=> DeleteAccountPage(),
           SplashScreenPage.id:(context)=> SplashScreenPage(),
           WelcomePage.id:(context)=> WelcomePage(),
-          Upload_Page.id:(context)=> Upload_Page(),
+          // Upload_Page.id:(context)=> Upload_Page(),
           // UploadPageView.id:(context)=> UploadPageView(),
           // Add_Detail_Page.id:(context)=> Add_Detail_Page(),
           // Add_Description_Page.id:(context)=> Add_Description_Page(),

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:intl/intl.dart';
 import 'package:ox21/constants/global_keys.dart';
 import 'package:ox21/constants/image_urls.dart';
@@ -70,7 +71,7 @@ class _CompleteDomainPaymentPageState extends State<CompleteDomainPaymentPage> {
   Widget build(BuildContext context) {
     print('the qr data is : bitcoin:11PEEokWFSFNYshLfuLvZfMuPE93aMJd4?amount=${double.parse(widget.purchaseData['btc_cost'].toString()).toStringAsFixed(2)}${widget.purchaseData['orderID']}}');
     return Scaffold(
-      appBar: appBar(context: context, title: 'Exchange Domain'),
+      appBar: appBar(context: context, title: translate('complete_domain_purchase_page.exchangedomain')),
 
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -82,13 +83,13 @@ class _CompleteDomainPaymentPageState extends State<CompleteDomainPaymentPage> {
               Center(child: Image.asset(MyImages.buyTopBannerImage, width: MediaQuery.of(context).size.width,)),
               vSizedBox,
               // SubHeadingText(text: 'Complete your payment to Exchange this domain.',),
-        SubHeadingText(text: "You don't have enough Ox21 points to exchange this domain, your orderID is ${widget.purchaseData['orderID']}, you can ask your friends to pay for you within 48 hours.",),
+        SubHeadingText(text: translate('complete_domain_purchase_page.text1') + " ${widget.purchaseData['orderID']}, "+translate('complete_domain_purchase_page.text2'),),
               vSizedBox,
-              ParagraphText(text: '  ORDER ID: ${widget.purchaseData['orderID']}', fontSize: 16,),
+              ParagraphText(text: translate('complete_domain_purchase_page.orderid')+'  ${widget.purchaseData['orderID']}', fontSize: 16,),
               vSizedBox05,
-              ParagraphText(text: '  COST: ${double.parse(widget.purchaseData['btc_cost'].toString()).toStringAsFixed(2)}  BTC', fontSize: 16,),
+              ParagraphText(text: translate('complete_domain_purchase_page.COST')+'  ${double.parse(widget.purchaseData['btc_cost'].toString()).toStringAsFixed(2)}  BTC', fontSize: 16,),
               vSizedBox2,
-              SubHeadingText(text: 'QR code use for payment',),
+              SubHeadingText(text: translate('complete_domain_purchase_page.qrpay'),),
               vSizedBox4,
               Center(
                 child: Stack(
@@ -111,9 +112,9 @@ class _CompleteDomainPaymentPageState extends State<CompleteDomainPaymentPage> {
                 ),
               ),
               vSizedBox,
-              Center(child: ParagraphText(text: 'This code will expire on ${DateFormat.yMMMMEEEEd().add_jm().format(DateTime.fromMillisecondsSinceEpoch((widget.purchaseData['expire_time'] * 1000)??'${DateTime.now().toString()}'))}', textAlign: TextAlign.center,)),
+              Center(child: ParagraphText(text: translate('complete_domain_purchase_page.text3')+' ${DateFormat.yMMMMEEEEd().add_jm().format(DateTime.fromMillisecondsSinceEpoch((widget.purchaseData['expire_time'] * 1000)??'${DateTime.now().toString()}'))}', textAlign: TextAlign.center,)),
               vSizedBox,
-              SubHeadingText(text: 'Strong Note'),
+              SubHeadingText(text: translate('complete_domain_purchase_page.strongnote')),
               vSizedBox,
               Row(
                 children: [
@@ -125,7 +126,7 @@ class _CompleteDomainPaymentPageState extends State<CompleteDomainPaymentPage> {
                       shape: BoxShape.circle,
                     ),),
                   hSizedBox,
-                  ParagraphText(text: 'the order id will expire in 48 hours'),
+                  ParagraphText(text: translate('complete_domain_purchase_page.text2')),
                 ],
               ),
               Row(
@@ -138,11 +139,11 @@ class _CompleteDomainPaymentPageState extends State<CompleteDomainPaymentPage> {
                       shape: BoxShape.circle,
                     ),),
                   hSizedBox,
-                  Expanded(child: ParagraphText(text: 'When the orderID expires, the message will show the QR code is no longer valid.')),
+                  Expanded(child: ParagraphText(text: translate('complete_domain_purchase_page.text5'))),
                 ],
               ),
               vSizedBox4,
-              RoundEdgedButton(text: 'Close', onTap: (){
+              RoundEdgedButton(text: translate('complete_domain_purchase_page.close'), onTap: (){
                 Navigator.pop(context);
                 Navigator.pop(MyGlobalKeys.navigatorKey.currentContext!);
               },),

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:intl/intl.dart';
 import 'package:ox21/constants/global_keys.dart';
 import 'package:ox21/constants/image_urls.dart';
@@ -70,7 +71,7 @@ class _DepositBTCQRPageState extends State<DepositBTCQRPage> {
   Widget build(BuildContext context) {
     print('the qr data is : bitcoin:11PEEokWFSFNYshLfuLvZfMuPE93aMJd4?amount=${double.parse(widget.purchaseData['btc_amount'].toString()).toStringAsFixed(2)}${widget.purchaseData['orderID']}}');
     return Scaffold(
-      appBar: appBar(context: context, title: 'Scan this code to complete your Payment'),
+      appBar: appBar(context: context, title:  translate("deposit_btc_qr_page.scanPay")),
       body: Container(
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.all(16.0),
@@ -80,13 +81,13 @@ class _DepositBTCQRPageState extends State<DepositBTCQRPage> {
             children: [
               Center(child: Image.asset(MyImages.logo_hori, width: MediaQuery.of(context).size.width,)),
               vSizedBox,
-              SubHeadingText(text: 'Your btc deposit order has been created',),
+              SubHeadingText(text: translate("deposit_btc_qr_page.orderCreated"),),
               vSizedBox,
-              ParagraphText(text: '  ORDER ID: ${widget.purchaseData['orderID']}', fontSize: 16,),
+              ParagraphText(text: translate("deposit_btc_qr_page.orderId")+'  ${widget.purchaseData['orderID']}', fontSize: 16,),
               vSizedBox05,
-              ParagraphText(text: '  COST: ${double.parse(widget.purchaseData['btc_amount'].toString()).toStringAsFixed(2)}  BTC', fontSize: 16,),
+              ParagraphText(text: translate("deposit_btc_qr_page.cost")+'  ${double.parse(widget.purchaseData['btc_amount'].toString()).toStringAsFixed(2)}  BTC', fontSize: 16,),
               vSizedBox2,
-              SubHeadingText(text: 'QR code use for payment',),
+              SubHeadingText(text: translate("deposit_btc_qr_page.Qrpay"),),
               vSizedBox4,
               Center(
                 child: Stack(
@@ -109,9 +110,9 @@ class _DepositBTCQRPageState extends State<DepositBTCQRPage> {
                 ),
               ),
               vSizedBox,
-              Center(child: ParagraphText(text: 'This code will expire on ${DateFormat.yMMMMEEEEd().add_jm().format(DateTime.fromMillisecondsSinceEpoch((widget.purchaseData['expire_time'] * 1000)??'${DateTime.now().toString()}'))}', textAlign: TextAlign.center,)),
+              Center(child: ParagraphText(text: translate("deposit_btc_qr_page.text3")+' ${DateFormat.yMMMMEEEEd().add_jm().format(DateTime.fromMillisecondsSinceEpoch((widget.purchaseData['expire_time'] * 1000)??'${DateTime.now().toString()}'))}', textAlign: TextAlign.center,)),
               vSizedBox,
-              SubHeadingText(text: 'Strong Note'),
+              SubHeadingText(text:translate("deposit_btc_qr_page.strongNote")),
               vSizedBox,
               Row(
                 children: [
@@ -123,7 +124,7 @@ class _DepositBTCQRPageState extends State<DepositBTCQRPage> {
                       shape: BoxShape.circle,
                     ),),
                   hSizedBox,
-                  ParagraphText(text: 'the order id will expire in 48 hours'),
+                  ParagraphText(text: translate("deposit_btc_qr_page.text4")),
                 ],
               ),
               Row(
@@ -136,11 +137,11 @@ class _DepositBTCQRPageState extends State<DepositBTCQRPage> {
                       shape: BoxShape.circle,
                     ),),
                   hSizedBox,
-                  Expanded(child: ParagraphText(text: 'When the orderID expires, the message will show the QR code is no longer valid.')),
+                  Expanded(child: ParagraphText(text: translate("deposit_btc_qr_page.text5"))),
                 ],
               ),
               vSizedBox4,
-              RoundEdgedButton(text: 'Close', onTap: (){
+              RoundEdgedButton(text: translate("deposit_btc_qr_page.close"), onTap: (){
                 Navigator.pop(context);
               },),
 

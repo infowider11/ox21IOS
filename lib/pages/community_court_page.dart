@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/pages/video_player_essentials/flick_multi_manager.dart';
 import 'package:ox21/widgets/CustomTexts.dart';
 import 'package:ox21/widgets/appbar.dart';
@@ -79,13 +80,13 @@ initializeController(String videoUrl) async {
   Widget build(BuildContext context) {
   log('the dddd is ${items}');
     return Scaffold(
-      appBar: appBar(context: context, title: 'Community Court'),
+      appBar: appBar(context: context, title: translate('community_court_page.title')),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
         child:pageLoad?CustomLoader():  items.length == 0
             ? Center(
           child: ParagraphText(
-            text: 'No Videos Found',
+            text: translate('community_court_page.noData'),
           ),
         )
             :NotificationListener<ScrollUpdateNotification>(
@@ -379,7 +380,7 @@ initializeController(String videoUrl) async {
                                                     4)),
                                             child: Center(
                                               child: ParagraphText(
-                                                text: 'Allow',
+                                                text: translate('community_court_page.allow'),
                                                 textAlign: TextAlign.center,
                                                 color: MyColors
                                                     .whiteColor,
@@ -415,7 +416,7 @@ initializeController(String videoUrl) async {
                                                     4)),
                                             child: Center(
                                               child: ParagraphText(
-                                                text: 'Deny',
+                                                text: translate('community_court_page.deny'),
                                                 textAlign: TextAlign.center,
                                                 color: MyColors
                                                     .whiteColor,
@@ -451,7 +452,7 @@ initializeController(String videoUrl) async {
                             borderRadius:
                             BorderRadius.circular(
                                 4)),
-                        child: Center(child: ParagraphText(text: '${items[index]['is_reported']==1?'You have voted on this post':'Give your vote'}',textAlign: TextAlign.center,color: MyColors.whiteColor,)),
+                        child: Center(child: ParagraphText(text: '${items[index]['is_reported']==1?translate('community_court_page.voted'):translate('community_court_page.giveVote')}',textAlign: TextAlign.center,color: MyColors.whiteColor,)),
                       ),
                     )
                 ],
