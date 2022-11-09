@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/sized_box.dart';
 import 'package:ox21/widgets/CustomTexts.dart';
 import 'package:ox21/widgets/appbar.dart';
@@ -63,10 +64,10 @@ class _PendingGroupMembersState extends State<PendingGroupMembers> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context: context, title: 'Members'),
+      appBar: appBar(context: context, title: translate("group_members_page.members")),
       body:load?CustomLoader(): Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
-        child: pendingMembers.length==0?Center(child: ParagraphText(text: 'No Pending Request Found',),):ListView.builder(
+        child: pendingMembers.length==0?Center(child: ParagraphText(text: translate("pending_group_members_page.noPendingRequest"),),):ListView.builder(
           itemCount: pendingMembers.length,
           itemBuilder: (context, index){
             return Container(

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:intl/intl.dart';
 import 'package:ox21/constants/global_constants.dart';
 import 'package:ox21/services/api_urls.dart';
@@ -51,7 +52,7 @@ class _MyRentedBannersPageState extends State<MyRentedBannersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context: context, title: 'My Rented Banners'),
+      appBar: appBar(context: context, title: translate("rent_banner.title")),
       body: load
           ? CustomLoader()
           : RefreshIndicator(
@@ -86,7 +87,7 @@ class _MyRentedBannersPageState extends State<MyRentedBannersPage> {
                                   MainAxisAlignment.spaceBetween,
                                   children: [
                                     ParagraphText(
-                                      text: 'Page Number',
+                                      text: translate("rent_banner.pageNumber"),
                                     ),
                                     SubHeadingText(
                                       text:
@@ -100,7 +101,7 @@ class _MyRentedBannersPageState extends State<MyRentedBannersPage> {
                                   MainAxisAlignment.spaceBetween,
                                   children: [
                                     ParagraphText(
-                                      text: 'Channel',
+                                      text: translate("rent_banner.channel"),
                                     ),
                                     ParagraphText(
                                       text:
@@ -115,7 +116,7 @@ class _MyRentedBannersPageState extends State<MyRentedBannersPage> {
                                   // crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     ParagraphText(
-                                      text: 'Purchased On',
+                                      text: translate("rent_banner.purchased"),
                                     ),
                                     ParagraphText(
                                       text:
@@ -132,7 +133,7 @@ class _MyRentedBannersPageState extends State<MyRentedBannersPage> {
                                   // crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     ParagraphText(
-                                      text: 'Location',
+                                      text: translate("rent_banner.location"),
                                     ),
                                     if (rentedBanners[index]
                                     ['city'] !=
@@ -146,7 +147,7 @@ class _MyRentedBannersPageState extends State<MyRentedBannersPage> {
                                         textAlign: TextAlign.end,
                                       )
                                     else
-                                      ParagraphText(text: 'Global')
+                                      ParagraphText(text: translate("rent_banner.global"))
                                   ],
                                 ),
                                 vSizedBox05,
@@ -157,7 +158,7 @@ class _MyRentedBannersPageState extends State<MyRentedBannersPage> {
                                   // crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     ParagraphText(
-                                      text: 'Start Date',
+                                      text: translate("rent_banner.startDate"),
                                     ),
                                     ParagraphText(
                                         text:
@@ -172,7 +173,7 @@ class _MyRentedBannersPageState extends State<MyRentedBannersPage> {
                                   // crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     ParagraphText(
-                                      text: 'End Date',
+                                      text: translate("rent_banner.endDate"),
                                     ),
                                     ParagraphText(
                                         text:
@@ -185,7 +186,7 @@ class _MyRentedBannersPageState extends State<MyRentedBannersPage> {
                                 RoundEdgedButton(
                                   isSolid: false,
                                   color: Colors.yellow,
-                                  text: 'Payment Pending',
+                                  text: translate("my_rented_banner.payPending"),
                                   onTap: () async {
                                     bool? result =
                                     await showModalBottomSheet(
@@ -363,7 +364,7 @@ class _MyRentedBannersPageState extends State<MyRentedBannersPage> {
                 else
                   Expanded(
                     child: Center(
-                      child: Text('No Banners Found'),
+                      child: Text(translate("my_rented_banner.noData")),
                     ),
                   ),
                 vSizedBox,

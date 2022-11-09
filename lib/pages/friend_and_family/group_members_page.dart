@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/sized_box.dart';
 import 'package:ox21/widgets/CustomTexts.dart';
 import 'package:ox21/widgets/appbar.dart';
@@ -69,10 +70,10 @@ class _GroupMembersPageState extends State<GroupMembersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context: context, title: 'Members'),
+      appBar: appBar(context: context, title: translate("group_members_page.members")),
       body:load?CustomLoader(): Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
-        child:members.length==0?Center(child: ParagraphText(text: 'No Members Found',),): ListView.builder(
+        child:members.length==0?Center(child: ParagraphText(text: translate("group_members_page.noMember"),),): ListView.builder(
           itemCount: members.length,
           itemBuilder: (context, index){
             return Container(
@@ -121,13 +122,13 @@ class _GroupMembersPageState extends State<GroupMembersPage> {
                                   // mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
 
-                                  SubHeadingText(text: 'Change Nickname'),
+                                  SubHeadingText(text: translate("group_members_page.changeNName")),
                                     vSizedBox2,
-                                    CustomTextField(controller: nicknameController, hintText: 'Enter new name for ${members[index]['nickname']}'),
+                                    CustomTextField(controller: nicknameController, hintText: translate("group_members_page.enterNewName")+'  ${members[index]['nickname']}'),
                                     vSizedBox,
-                                    RoundEdgedButton(text: 'Update', onTap: (){
+                                    RoundEdgedButton(text: translate("group_members_page.update"), onTap: (){
                                       if(nicknameController.text==''){
-                                        showSnackbar(context, 'Name cannot be empty');
+                                        showSnackbar(context, translate("group_members_page.emptyName"));
                                       }else{
                                         Navigator.pop(context, nicknameController.text);
                                       }

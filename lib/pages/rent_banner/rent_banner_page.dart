@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:intl/intl.dart';
 import 'package:ox21/constants/global_constants.dart';
 import 'package:ox21/services/api_urls.dart';
@@ -57,7 +58,7 @@ class _RentBannerPageState extends State<RentBannerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context: context, title: 'Rent a Banner'),
+      appBar: appBar(context: context, title: translate("rent_banner.title")),
       body: load
           ? CustomLoader()
           : RefreshIndicator(
@@ -92,7 +93,7 @@ class _RentBannerPageState extends State<RentBannerPage> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         ParagraphText(
-                                          text: 'Page Number',
+                                          text: translate("rent_banner.pageNumber"),
                                         ),
                                         SubHeadingText(
                                           text:
@@ -106,7 +107,7 @@ class _RentBannerPageState extends State<RentBannerPage> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         ParagraphText(
-                                          text: 'Channel',
+                                          text: translate("rent_banner.channel"),
                                         ),
                                         ParagraphText(
                                           text:
@@ -121,7 +122,7 @@ class _RentBannerPageState extends State<RentBannerPage> {
                                       // crossAxisAlignment: CrossAxisAlignment.end,
                                       children: [
                                         ParagraphText(
-                                          text: 'Purchased On',
+                                          text: translate("rent_banner.purchased"),
                                         ),
                                         ParagraphText(
                                           text:
@@ -138,7 +139,7 @@ class _RentBannerPageState extends State<RentBannerPage> {
                                       // crossAxisAlignment: CrossAxisAlignment.end,
                                       children: [
                                         ParagraphText(
-                                          text: 'Location',
+                                          text: translate("rent_banner.location"),
                                         ),
                                         if (availableBannersForRent[index]
                                                     ['city'] !=
@@ -152,7 +153,7 @@ class _RentBannerPageState extends State<RentBannerPage> {
                                             textAlign: TextAlign.end,
                                           )
                                         else
-                                          ParagraphText(text: 'Global')
+                                          ParagraphText(text: translate("rent_banner.global"))
                                       ],
                                     ),
                                     vSizedBox05,
@@ -163,7 +164,7 @@ class _RentBannerPageState extends State<RentBannerPage> {
                                       // crossAxisAlignment: CrossAxisAlignment.end,
                                       children: [
                                         ParagraphText(
-                                          text: 'Rent Price per month',
+                                          text: translate("rent_banner.rentPerMonth"),
                                         ),
                                         ParagraphText(
                                             text:
@@ -174,7 +175,7 @@ class _RentBannerPageState extends State<RentBannerPage> {
                                     vSizedBox,
                                     // if(myBanners[index]['is_for_rent']==0)
                                     RoundEdgedButton(
-                                      text: 'Rent This Banner',
+                                      text: translate("rent_banner.rentThisBanner"),
                                       onTap: () async {
                                         bool? result =
                                             await showModalBottomSheet(
@@ -206,7 +207,7 @@ class _RentBannerPageState extends State<RentBannerPage> {
                                                             vSizedBox,
                                                             MainHeadingText(
                                                                 text:
-                                                                    'Rent this banner'),
+                                                                translate("rent_banner.rentThisBanner")),
                                                             vSizedBox,
                                                             Row(
                                                               mainAxisAlignment:
@@ -217,7 +218,7 @@ class _RentBannerPageState extends State<RentBannerPage> {
                                                                     child:
                                                                         SubHeadingText(
                                                                   text:
-                                                                      'Select Date',
+                                                                  translate("rent_banner.selectDate"),
                                                                 )),
                                                                 hSizedBox,
                                                                 Expanded(
@@ -258,7 +259,7 @@ class _RentBannerPageState extends State<RentBannerPage> {
                                                                       controller:
                                                                           dateController,
                                                                       hintText:
-                                                                          'Select Date',
+                                                                      translate("rent_banner.selectDate"),
                                                                       enabled:
                                                                           false),
                                                                 )),
@@ -275,7 +276,7 @@ class _RentBannerPageState extends State<RentBannerPage> {
                                                                   child:
                                                                       SubHeadingText(
                                                                     text:
-                                                                        'Select Months',
+                                                                    translate("rent_banner.selectMonth"),
                                                                   ),
                                                                 ),
                                                                 hSizedBox,
@@ -283,7 +284,7 @@ class _RentBannerPageState extends State<RentBannerPage> {
                                                                   child:
                                                                       CustomDropDown(
                                                                     hint:
-                                                                        'Select months',
+                                                                    translate("rent_banner.selectMonth"),
                                                                     onChanged:
                                                                         (val) {
                                                                       selectedMonths = val;
@@ -316,12 +317,12 @@ class _RentBannerPageState extends State<RentBannerPage> {
                                                             Wrap(
                                                               crossAxisAlignment: WrapCrossAlignment.end,
                                                               children: [
-                                                                ParagraphText(text: 'You will be charged '),
-                                                                ParagraphText(text: '${(selectedMonths! * availableBannersForRent[index]['total_rent']).toStringAsFixed(2)} BTC', fontWeight: FontWeight.w700,)
+                                                                ParagraphText(text: translate("rent_banner.charged")),
+                                                                ParagraphText(text: '${(selectedMonths! * availableBannersForRent[index]['total_rent']).toStringAsFixed(2)} '+translate("rent_banner.btc"), fontWeight: FontWeight.w700,)
                                                               ],
                                                             ),
                                                             vSizedBox6,
-                                                            RoundEdgedButton(text: 'Rent', onTap: ()async{
+                                                            RoundEdgedButton(text: translate("rent_banner.rent"), onTap: ()async{
                                                               var request = {
                                                                 "banner_id":availableBannersForRent[index]['id'].toString(),
                                                                 "start_date":selectedDate.toString(),
@@ -369,7 +370,7 @@ class _RentBannerPageState extends State<RentBannerPage> {
                     else
                       Expanded(
                         child: Center(
-                          child: Text('No Banners Found'),
+                          child: Text(translate("rent_banner.noData")),
                         ),
                       ),
                     vSizedBox,

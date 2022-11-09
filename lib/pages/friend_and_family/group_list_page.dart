@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/global_constants.dart';
 import 'package:ox21/constants/global_keys.dart';
 import 'package:ox21/constants/sized_box.dart';
@@ -55,7 +56,7 @@ class _FriendsAndFamilyGroupListPageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context: context, title: 'Friends And Family'),
+      appBar: appBar(context: context, title: translate("group_list_page.title")),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           await showModalBottomSheet(
@@ -89,7 +90,7 @@ class _FriendsAndFamilyGroupListPageState
                           getGroupList();
                         }
                       },
-                      child: MainHeadingText(text: "Create Group"),
+                      child: MainHeadingText(text: translate("group_list_page.createGroup")),
                     ),
                     CustomDivider(),
                     vSizedBox,
@@ -154,16 +155,16 @@ class _FriendsAndFamilyGroupListPageState
                                                 CustomDivider(),
                                                 vSizedBox,
                                                 SubHeadingText(
-                                                    text: 'Nick Name'),
+                                                    text: translate("group_list_page.nName")),
                                                 vSizedBox,
                                                 CustomTextField(
                                                     controller:
                                                         nicknameController,
                                                     hintText:
-                                                        'This will be displayed as your name in this group'),
+                                                    translate("group_list_page.text")),
                                                 vSizedBox,
                                                 RoundEdgedButton(
-                                                  text: 'Join Group',
+                                                  text: translate("group_list_page.joinGroup"),
                                                   onTap: () async {
                                                     var request = {
                                                       'user_id': userId,
@@ -224,7 +225,7 @@ class _FriendsAndFamilyGroupListPageState
                           }
                         }
                       },
-                      child: MainHeadingText(text: "Join Group"),
+                      child: MainHeadingText(text: translate("group_list_page.joinGroup")),
                     ),
                     vSizedBox,
                   ],
@@ -248,7 +249,7 @@ class _FriendsAndFamilyGroupListPageState
               child: groupList.length == 0
                   ? Center(
                       child: ParagraphText(
-                        text: 'No Groups Found',
+                        text: translate("group_list_page.noData"),
                         textAlign: TextAlign.center,
                       ),
                     )

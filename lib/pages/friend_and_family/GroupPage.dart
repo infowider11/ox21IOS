@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/colors.dart';
 import 'package:ox21/constants/global_constants.dart';
 import 'package:ox21/constants/global_functions.dart';
@@ -149,7 +150,7 @@ class _GroupPageState extends State<GroupPage> {
                             children: [
                               vSizedBox2,
                               SubHeadingText(
-                                text: 'Scan this Qr code to join this group',
+                                text: translate("GroupPage.scan"),
                                 color: MyColors.primaryColor,
                               ),
                               vSizedBox,
@@ -200,7 +201,7 @@ class _GroupPageState extends State<GroupPage> {
                           CustomDivider(),
                           vSizedBox,
                           GestureDetector(
-                            child: SubHeadingText(text: 'Members'),
+                            child: SubHeadingText(text: translate("group_members_page.members")),
                             behavior: HitTestBehavior.opaque,
                             onTap: () async {
                               push(
@@ -228,7 +229,7 @@ class _GroupPageState extends State<GroupPage> {
                                             groupDetail: widget.groupDetail));
                                   },
                                   child: SubHeadingText(
-                                      text: 'View Pending request'),
+                                      text: translate("GroupPage.view")),
                                 ),
                               ],
                             ),
@@ -244,7 +245,7 @@ class _GroupPageState extends State<GroupPage> {
                                 onTap: () async {
                                   bool? result = await showCustomConfirmationDialog(
                                       description:
-                                          'This user will be removed from your group');
+                                      translate("GroupPage.remove"));
                                   print('the confirmation result is $result');
                                   if (result == true) {
                                     var request = {
@@ -272,8 +273,8 @@ class _GroupPageState extends State<GroupPage> {
                                   text: widget.groupDetail['owner_id']
                                               .toString() ==
                                           userId
-                                      ? 'Delete Group'
-                                      : 'Leave Group',
+                                      ? translate("GroupPage.delete")
+                                      : translate("GroupPage.leave"),
                                   color: Colors.red,
                                 ),
                               ),
@@ -306,7 +307,7 @@ class _GroupPageState extends State<GroupPage> {
                     child: messages.length == 0
                         ? Center(
                             child: ParagraphText(
-                              text: 'Type a message to start conversation ',
+                              text: translate("GroupPage.typeMsg"),
                             ),
                           )
                         : ListView.builder(
@@ -442,7 +443,7 @@ class _GroupPageState extends State<GroupPage> {
                                             }
                                           },
                                           child: SubHeadingText(
-                                              text: "Select Image"),
+                                              text: translate("GroupPage.selectImg")),
                                         ),
                                         CustomDivider(),
                                         vSizedBox,
@@ -460,7 +461,7 @@ class _GroupPageState extends State<GroupPage> {
                                             }
                                           },
                                           child: SubHeadingText(
-                                              text: 'Upload Video'),
+                                              text: translate("GroupPage.uploadVideo")),
                                         ),
                                         vSizedBox,
                                       ],
@@ -477,7 +478,7 @@ class _GroupPageState extends State<GroupPage> {
                           Expanded(
                             child: CustomTextField(
                               controller: messageController,
-                              hintText: 'Type Here..',
+                              hintText: translate("GroupPage.typeHere"),
                               showBorder: true,
                               bgColor: Colors.white,
                             ),
@@ -485,7 +486,7 @@ class _GroupPageState extends State<GroupPage> {
                           IconButton(
                               onPressed: () async {
                                 sendMessage(
-                                    messageType: 'text',
+                                    messageType: translate("GroupPage.text"),
                                     message: messageController.text);
                                 messageController.clear();
                               },

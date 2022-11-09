@@ -259,6 +259,8 @@
     "global": "全球",
     "rentPerMonth": "每月租金",
     "rentThisBanner": "租用这个广告位",
+    "startDate": "Start Date",
+    "endDate": "End Date",
     "selectDate": "选择日期",
     "selectMonth": "选择月数",
     "charged": "你需要支付",

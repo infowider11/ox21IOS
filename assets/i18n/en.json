@@ -263,6 +263,8 @@
     "rentPerMonth": "Rent Price per month",
     "rentThisBanner": "Rent This Banner",
     "selectDate": "Select Date",
+    "startDate": "Start Date",
+    "endDate": "End Date",
     "selectMonth": "Select Months",
     "charged": "You will be charged",
     "btc": "BTC",
