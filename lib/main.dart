@@ -58,13 +58,13 @@ void main() async{
   channels = await Webservices.getList(ApiUrls.getChannels);
   // channels = dummyChannels;
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  currentLanguage = sharedPreferences.getString('lang')??'zh';
+  currentLanguage = sharedPreferences.getString('lang')??'en';
   print('the current lang is $currentLanguage');
 
 // print(sharedPreferences.getString('data'));
 // print('hello');
   var delegate = await LocalizationDelegate.create(
-      fallbackLocale: currentLanguage, supportedLocales: [currentLanguage]);
+      fallbackLocale: currentLanguage, supportedLocales: ['en', 'zh', 'en_US']);
 //
 
   runApp(LocalizedApp(delegate, MyApp()));
@@ -84,9 +84,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
           localizationsDelegates: [
-            localizationDelegate,
+
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
+            localizationDelegate,
           ],
           supportedLocales: localizationDelegate.supportedLocales,
           locale: localizationDelegate.currentLocale,
@@ -107,8 +108,8 @@ class MyApp extends StatelessWidget {
         home:  SplashScreenPage(),
         routes: {
           EntroPage.id:(context)=> EntroPage(),
-          LoginPage.id:(context)=> LoginPage(),
-          RegisterPage.id:(context)=> RegisterPage(),
+          // LoginPage.id:(context)=> LoginPage(),
+          // RegisterPage.id:(context)=> RegisterPage(),
           CongratulationsPage.id:(context)=> CongratulationsPage(),
           // CreatePassword.id:(context)=> CreatePassword(),
           Step_one.id:(context)=> Step_one(),

@@ -1,4 +1,4 @@
-const List<String> passwordStrength = [
+List<String> passwordStrength = [
   'Weak',
   'Medium',
   'Good',
@@ -10,7 +10,7 @@ Map? userData;
 List languages = [];
 List channels = [];
 int serverStatus = 0;
-String currentLanguage ="zh";
+String currentLanguage ="en";
 
 List freshnessList = [
   '0',

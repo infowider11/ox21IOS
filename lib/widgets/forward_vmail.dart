@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/colors.dart';
 import 'package:ox21/widgets/buttons.dart';
 import 'package:ox21/widgets/customLoader.dart';
@@ -73,15 +74,15 @@ class _ForwardVmailPageState extends State<ForwardVmailPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(child:  MainHeadingText(text: 'Forward Vmail', color: MyColors.primaryColor,)),
+              Center(child:  MainHeadingText(text: translate("send_vmail.title2"), color: MyColors.primaryColor,)),
               vSizedBox2,
-              SubHeadingText(text: 'Select Your Domain'),
+              SubHeadingText(text: translate("send_vmail.selectDomain")),
               vSizedBox05,
               CustomDropDown(
                 onChanged: (val) {
                   selectedDomain = val;
                 },
-                hint: 'Select Domain',
+                hint: translate("send_vmail.selectDomain"),
                 selectedItem: selectedDomain,
                 items: List.generate(
                   widget.myDomains.length,
@@ -94,11 +95,11 @@ class _ForwardVmailPageState extends State<ForwardVmailPage> {
                 ),
               ),
               vSizedBox2,
-              SubHeadingText(text: 'Forward to'),
+              SubHeadingText(text: translate("send_vmail.forwardto")),
               CustomTextField(
                 controller: receiverDomainController,
                 // errorText: errorDomainMessage,
-                hintText: 'Enter receiver\'s Domain',
+                hintText: translate("send_vmail.enterDomain"),
                 onChanged: (val)async{
                   if(val.length!=0){
                     var request = {
@@ -131,7 +132,7 @@ class _ForwardVmailPageState extends State<ForwardVmailPage> {
                 ParagraphText(text: errorDomainMessage!, color: Colors.red,),
 
               vSizedBox4,
-              RoundEdgedButton(text: 'Forward', onTap: ()async{
+              RoundEdgedButton(text: translate("send_vmail.forward"), onTap: ()async{
                 setState(() {
                   load = true;
                 });

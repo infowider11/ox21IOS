@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:ox21/constants/global_constants.dart';
 import 'package:ox21/constants/global_functions.dart';
 import 'package:ox21/constants/image_urls.dart';
@@ -98,15 +99,15 @@ class _SendVmailBottomSheetState extends State<SendVmailBottomSheet> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(child: MainHeadingText(text: 'Compose Vmail')),
+              Center(child: MainHeadingText(text: translate("send_vmail.title"))),
               vSizedBox2,
-              SubHeadingText(text: 'Select Your Domain'),
+              SubHeadingText(text: translate("send_vmail.selectDomain")),
               vSizedBox05,
               CustomDropDown(
                 onChanged: (val) {
                   selectedDomain = val;
                 },
-                hint: 'Select Domain',
+                hint: translate("send_vmail.selectDomain"),
                 selectedItem: selectedDomain,
                 items: List.generate(
                   widget.myDomains.length,
@@ -119,11 +120,11 @@ class _SendVmailBottomSheetState extends State<SendVmailBottomSheet> {
                 ),
               ),
               vSizedBox2,
-              SubHeadingText(text: 'Enter receiver\'s Domain'),
+              SubHeadingText(text: translate("send_vmail.enterDomain")),
               CustomTextField(
                   controller: receiverDomainController,
                   // errorText: errorDomainMessage,
-                  hintText: 'Enter receiver\'s Domain',
+                  hintText:translate("send_vmail.enterDomain"),
                 onChanged: (val)async{
                    if(val.length!=0){
                      var request = {
@@ -156,15 +157,15 @@ class _SendVmailBottomSheetState extends State<SendVmailBottomSheet> {
                 ParagraphText(text: errorDomainMessage!, color: Colors.red,),
 
               vSizedBox2,
-              SubHeadingText(text: 'Subject'),
+              SubHeadingText(text: translate("send_vmail.subject")),
               vSizedBox05,
-              CustomTextField(controller: subjectController, hintText: 'Enter Subject'),
+              CustomTextField(controller: subjectController, hintText: translate("send_vmail.enterSubject")),
               vSizedBox2,
-              SubHeadingText(text: 'Body'),
+              SubHeadingText(text: translate("send_vmail.body")),
               vSizedBox05,
-              CustomTextField(controller: bodyController, hintText: 'Enter something here...', maxLines: 6,),
+              CustomTextField(controller: bodyController, hintText:translate("send_vmail.enterSomthing"), maxLines: 6,),
               vSizedBox2,
-              SubHeadingText(text: 'Add Images'),
+              SubHeadingText(text: translate("send_vmail.addImg")),
               vSizedBox,
               Row(
                 children: [
@@ -240,7 +241,7 @@ class _SendVmailBottomSheetState extends State<SendVmailBottomSheet> {
               ),
               vSizedBox2,
               SubHeadingText(
-                  text: 'Add Videos'
+                  text: translate("send_vmail.addVideos")+
                       ''),
               vSizedBox,
               Row(
@@ -320,11 +321,11 @@ class _SendVmailBottomSheetState extends State<SendVmailBottomSheet> {
                 ],
               ),
               vSizedBox2,
-              RoundEdgedButton(text: widget.replyData==null?'Send Mail':'Reply', onTap: ()async{
+              RoundEdgedButton(text: widget.replyData==null?translate("forgot.send"):'Reply', onTap: ()async{
                 if(selectedDomain==null){
-                  showSnackbar(context, 'Please select your domain');
+                  showSnackbar(context, translate("send_vmail.enterSelectDomain"));
                 }else if(errorDomainMessage!=null || receiverDomainId==null){
-                  showSnackbar(context, 'Please type a valid domain name');
+                  showSnackbar(context, translate("send_vmail.validType"));
                 }else{
                   setState(() {
                     load = true;

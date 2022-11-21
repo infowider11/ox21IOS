@@ -55,7 +55,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         color: MyColors.primaryColor,
                       ),
                       title: Text(
-                        'My OX21 Points',
+                        translate("mycoin_screen.title"),
                         style: TextStyle(
                           color: MyColors.primaryColor,
                           fontSize: 16,
@@ -84,7 +84,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       color: MyColors.primaryColor,
                     ),
                     title: Text(
-                      'Friends & Family',
+                      translate("setting.friendFamily"),
                       style: TextStyle(
                         color: MyColors.primaryColor,
                         fontSize: 16,
@@ -112,7 +112,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     leading: Icon(
                       Icons.subscriptions_outlined, color: MyColors.primaryColor,
                     ),
-                    title: Text('Add Web Storage Token', style: TextStyle(
+                    title: Text(translate("setting.webToken"), style: TextStyle(
                       color: MyColors.primaryColor,
                       fontSize: 16,
                       fontFamily: 'medium',
@@ -135,7 +135,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   color: MyColors.primaryColor,
                 ),
                 title: Text(
-                  'My Subscribed Channels',
+                    translate("setting.subscribed"),
                   style: TextStyle(
                     color: MyColors.primaryColor,
                     fontSize: 16,
@@ -159,7 +159,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   color: MyColors.primaryColor,
                 ),
                 title: Text(
-                  'My Private Channels',
+                  translate("setting.private"),
                   style: TextStyle(
                     color: MyColors.primaryColor,
                     fontSize: 16,
@@ -184,7 +184,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   color: MyColors.primaryColor,
                 ),
                 title: Text(
-                  'My Domains',
+                  translate("setting.domains"),
                   style: TextStyle(
                     color: MyColors.primaryColor,
                     fontSize: 16,
@@ -208,7 +208,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   color: MyColors.primaryColor,
                 ),
                 title: Text(
-                  'My Banners',
+                  translate("setting.banners"),
                   style: TextStyle(
                     color: MyColors.primaryColor,
                     fontSize: 16,
@@ -232,7 +232,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   color: MyColors.primaryColor,
                 ),
                 title: Text(
-                  'My Videos',
+                  translate("setting.videos"),
                   style: TextStyle(
                     color: MyColors.primaryColor,
                     fontSize: 16,
@@ -262,7 +262,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         leading: Icon(
                           Icons.subscriptions_outlined, color: MyColors.primaryColor,
                         ),
-                        title: Text('Make Payment For Domain', style: TextStyle(
+                        title: Text(translate("setting.payDomain"), style: TextStyle(
                           color: MyColors.primaryColor,
                           fontSize: 16,
                           fontFamily: 'medium',
@@ -283,7 +283,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       color: MyColors.primaryColor,
                     ),
                     title: Text(
-                      'Rent a Banner',
+                      translate("setting.rent"),
                       style: TextStyle(
                         color: MyColors.primaryColor,
                         fontSize: 16,
@@ -313,7 +313,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       color: MyColors.primaryColor,
                     ),
                     title: Text(
-                      'My Rented Banners',
+                      translate("setting.myRent"),
                       style: TextStyle(
                         color: MyColors.primaryColor,
                         fontSize: 16,
@@ -343,7 +343,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         color: MyColors.primaryColor,
                       ),
                       title: Text(
-                        'Make Payment For Banner',
+                        translate("setting.payBannner"),
                         style: TextStyle(
                           color: MyColors.primaryColor,
                           fontSize: 16,
@@ -374,7 +374,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       color: MyColors.primaryColor,
                     ),
                     title: Text(
-                      'VMail',
+                      translate("setting.vmail"),
                       style: TextStyle(
                         color: MyColors.primaryColor,
                         fontSize: 16,

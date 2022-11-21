@@ -94,7 +94,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Text('Privacy Policy', style: TextStyle(color: Colors.black),),
+        title: Text(translate("setting.privacy"), style: TextStyle(color: Colors.black),),
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black,),
           onPressed: (){
@@ -149,7 +149,7 @@ class _CopyrightPageState extends State<CopyrightPage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Text('Copyrights', style: TextStyle(color: Colors.black),),
+        title: Text(translate("setting.copyRight"), style: TextStyle(color: Colors.black),),
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black,),
           onPressed: (){

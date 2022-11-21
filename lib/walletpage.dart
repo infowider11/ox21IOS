@@ -330,7 +330,7 @@ class _WalletPageState extends State<WalletPage> {
 
                                   print('the jsonResponse is $jsonResponse');
                                   if(jsonResponse['status']==1){
-                                    domainErrorMessage = 'This domain is available for purchase';
+                                    domainErrorMessage = translate('walletpage.This domain is available for purchase');
                                     isDomainValid = true;
                                     domainData = jsonResponse['data'];
                                     isDomainPaymentPending= false;
@@ -359,11 +359,11 @@ class _WalletPageState extends State<WalletPage> {
                                     domainData = null;
                                   }catch(e){
                                     print('Error in catch block 453 $e');
-                                    domainErrorMessage = 'Something went wrong.';
+                                    domainErrorMessage = translate('walletpage.This domain is available for purchase');
                                   }
 
                                 }else{
-                                  domainErrorMessage = 'Something went wrong.';
+                                  domainErrorMessage = translate('walletpage.This domain is available for purchase');
                                 }
                                 setState(() {
                                   domainSearchLoad = false;
@@ -388,7 +388,7 @@ class _WalletPageState extends State<WalletPage> {
                             Row(
                               children: [
                                 Expanded(
-                            child: RoundEdgedButton(text:!(isDomainValid && domainData!=null)? 'Exchange Domain':'Exchange Domain with ${domainData!['jinCost']} JIN',
+                            child: RoundEdgedButton(text:!(isDomainValid && domainData!=null)?translate('walletpage.Exchange Domain'):'${translate('walletpage.Exchange Domain with')} ${domainData!['jinCost']} JIN',
     color:!(isDomainValid && domainData!=null)?isDomainPaymentPending?MyColors.secondary: MyColors.grey.withOpacity(0.2): MyColors.secondary,
     textColor: Colors.white,
     fontSize: 12,
@@ -442,8 +442,7 @@ class _WalletPageState extends State<WalletPage> {
                                 Expanded(
                                     child: RoundEdgedButton(
                                   text: !(isDomainValid && domainData != null)
-                                      ? 'Exchange Domain'
-                                      : 'Exchange Domain with ${domainData!['points']} OX21 Points',
+                                      ? translate('walletpage.Exchange Domain'):'${translate('walletpage.Exchange Domain with')} ${domainData!['points']} OX21 ${translate('mycoin_screen.points')}',
                                   // child: RoundEdgedButton(text:!(isDomainValid && domainData!=null)? 'Exchange Domain':'Exchange Domain with ${domainData!['jinCost']} JIN',
                                   color: !(isDomainValid && domainData != null)
                                       ? MyColors.grey.withOpacity(0.2)

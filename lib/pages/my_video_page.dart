@@ -13,6 +13,7 @@ import 'package:ox21/widgets/CustomTexts.dart';
 import 'package:ox21/widgets/buttons.dart';
 import 'package:ox21/widgets/customLoader.dart';
 import 'package:ox21/widgets/custom_snackbar.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:video_player/video_player.dart';
 
 import '../constants/colors.dart';
@@ -687,16 +688,72 @@ class _My_Videos_PageState extends State<My_Videos_Page> {
                                                       hSizedBox,
                                                       ParagraphText(
                                                         text: selectedVideoType ==
-                                                                'videos'
+                                                            'videos'
                                                             ? myVideos[index]
-                                                                    ['comments']
-                                                                .toString()
+                                                        ['comments_count']
+                                                            .toString()
                                                             : shorts[index]
-                                                                    ['comments']
-                                                                .toString(),
+                                                        ['comments_count']
+                                                            .toString(),
                                                         fontSize: 12,
                                                         color: Colors.black
                                                             .withOpacity(0.5),
+                                                      ),
+                                                      hSizedBox,
+                                                      GestureDetector(
+                                                        behavior:
+                                                        HitTestBehavior
+                                                            .opaque,
+                                                        onTap: () async {
+                                                          String link =
+                                                              MyGlobalConstants
+                                                                  .ipfsLink;
+                                                          link = link +
+                                                              ( selectedVideoType ==
+                                                                  'videos'
+                                                                  ? myVideos[index]
+                                                              ['video_cid']:shorts[index]
+                                                              ['video_cid']);
+                                                          // link = items[index]
+                                                          // ['video'];
+                                                          Share.share('${link}', subject: 'Look what I made!');
+                                                        },
+                                                        child: Container(
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                              horizontal:
+                                                              8),
+                                                          height: 28,
+                                                          // width: 80,
+                                                          decoration: BoxDecoration(
+                                                              color: MyColors
+                                                                  .lightblue,
+                                                              borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                  4)),
+                                                          child: Row(
+                                                            // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                            children: [
+                                                              Icon(
+                                                                Icons.reply_rounded,
+                                                                textDirection: TextDirection.rtl,
+                                                                size: 16,
+                                                                color: MyColors
+                                                                    .primaryColor
+                                                                    .withAlpha(
+                                                                    92),
+                                                              ),
+                                                              // hSizedBox,
+                                                              // ParagraphText(
+                                                              //   text: 'Like',
+                                                              //   color: MyColors
+                                                              //       .primaryColor,
+                                                              //   fontSize: 12,
+                                                              // )
+                                                            ],
+                                                          ),
+                                                        ),
                                                       ),
                                                     ],
                                                   )

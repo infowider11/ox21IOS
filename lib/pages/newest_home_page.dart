@@ -3,7 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
-import 'package:intl/intl.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:ox21/constants/global_constants.dart';
 import 'package:ox21/constants/global_functions.dart';
 import 'package:ox21/constants/global_keys.dart';
@@ -29,6 +29,7 @@ import '../constants/colors.dart';
 import '../constants/image_urls.dart';
 import '../constants/sized_box.dart';
 import '../custom_dialogs/rent_banner_bottom_sheet.dart';
+import '../widgets/custom_circular_image.dart';
 import '../widgets/fully_custom_dropdown.dart';
 import '../widgets/show_custom_modal_sheet.dart';
 import 'comments_page_bottom_sheet.dart';
@@ -90,8 +91,8 @@ class _NewestHomePageState extends State<NewestHomePage> {
         // backgroundColor: Color(0xFF88E1E5),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
-            items = await Webservices.getList(
-                ApiUrls.getAllPost + 'user_id=$userId');
+            // items = await Webservices.getList(
+            //     ApiUrls.getAllPost + 'user_id=$userId');
             showModalBottomSheet<void>(
               context: context,
               backgroundColor: Colors.transparent,
@@ -781,12 +782,17 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                                           MediaQuery.of(context)
                                                               .size
                                                               .width,
-                                                      child: Image.network(
-                                                        items[index]
-                                                                ['screenshots']
-                                                            [0]['screenshot'],
-                                                        fit: BoxFit.cover,
+                                                      child:  CustomCircularImage(
+                                                        imageUrl: items[index]['thumbnail'],
+                                                        borderRadius: 0,
+
                                                       ),
+                                                      // child: Image.network(
+                                                      //   // items[index]
+                                                      //   //         ['screenshots']
+                                                      //   //     [0]['screenshot'],
+                                                      //   fit: BoxFit.cover,
+                                                      // ),
                                                     ),
                                                   ),
                                                 ),
@@ -870,7 +876,7 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                                                   children: [
                                                                                     SubHeadingText(
-                                                                                      text: translate("community_court_page.report"),
+                                                                                      text: translate("community_court_page.title"),
                                                                                       color: Colors.red,
                                                                                     ),
                                                                                     vSizedBox05,
@@ -1461,6 +1467,59 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                                                   width: 14,
                                                                   fit: BoxFit
                                                                       .fitWidth,
+                                                                  color: MyColors
+                                                                      .primaryColor
+                                                                      .withAlpha(
+                                                                      92),
+                                                                ),
+                                                                // hSizedBox,
+                                                                // ParagraphText(
+                                                                //   text: 'Like',
+                                                                //   color: MyColors
+                                                                //       .primaryColor,
+                                                                //   fontSize: 12,
+                                                                // )
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        hSizedBox,
+                                                        GestureDetector(
+                                                          behavior:
+                                                          HitTestBehavior
+                                                              .opaque,
+                                                          onTap: () async {
+                                                            String link =
+                                                                MyGlobalConstants
+                                                                    .ipfsLink;
+                                                            link = link +
+                                                                items[index]
+                                                                ['video_cid'];
+                                                            // link = items[index]
+                                                            // ['video'];
+                                                            Share.share('${link}', subject: 'Look what I made!');
+                                                          },
+                                                          child: Container(
+                                                            padding: EdgeInsets
+                                                                .symmetric(
+                                                                horizontal:
+                                                                8),
+                                                            height: 28,
+                                                            // width: 80,
+                                                            decoration: BoxDecoration(
+                                                                color: MyColors
+                                                                    .lightblue,
+                                                                borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                    4)),
+                                                            child: Row(
+                                                              // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                              children: [
+                                                                Icon(
+                                                                  Icons.reply_rounded,
+                                                                  textDirection: TextDirection.rtl,
+                                                                  size: 16,
                                                                   color: MyColors
                                                                       .primaryColor
                                                                       .withAlpha(

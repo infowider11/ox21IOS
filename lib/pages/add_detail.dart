@@ -35,6 +35,7 @@ import '../widgets/appbar.dart';
 import '../widgets/avatar.dart';
 import '../widgets/buttons.dart';
 import '../widgets/customLoader.dart';
+import '../widgets/custom_circular_image.dart';
 
 class Add_Detail_Page extends StatefulWidget {
   static const String id = "add_details";
@@ -61,14 +62,15 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
   bool ageRestricted = false;
   bool madeForKids = true;
 
-  String visibility = 'public';
+  String visibility = translate("set_visibility.Public");
   DateTime postingTime = DateTime.now();
   List playList = [];
 
   List domains = [];
   String selectedPlayList = '0';
-  Map? selectedChannel;
-  String? selectedChannel1;
+  // Map? selectedChannel;
+  // String? selectedChannel1;
+  List selectedChannelsList = [];
 
   Map? selectedDomain;
   bool isFreshnessPurchased = false;
@@ -147,7 +149,7 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                       showSnackbar(context, translate("add_detail.alertPlaylist"));
                     }else if(selectedDomain==null && domains.length!=0){
                       showSnackbar(context, translate("add_detail.alertDomain"));
-                    } else if (selectedChannel1 == null) {
+                    } else if (selectedChannelsList.length == 0) {
                       showSnackbar(context, translate("add_detail.alertChanel"));
                     }else if(userData!['points']<1000 && isFreshnessPurchased == true){
                       print(userData!['points']);
@@ -177,7 +179,7 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                           "madeForKids": madeForKids ? '1' : '0',
                           "ageRestricted": ageRestricted ? '1' : '0',
                           "user_id": userId,
-                          "channel_id": selectedChannel1,
+                          "channel_id": List.generate(selectedChannelsList.length, (index) => selectedChannelsList[index]['id']).join(','),
                           // "ageRestricted": "hello",
                         };
 
@@ -1210,7 +1212,7 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                                 setState(() {});
                               },
                               hint: translate("add_detail.selectDomain"),
-                              selectedItem: selectedChannel,
+                              selectedItem: selectedDomain,
                               items: List.generate(
                                 domains.length,
                                     (index) => DropdownMenuItem(
@@ -1225,69 +1227,241 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                         ],
                       ),
                     ),
-                    DropdownSearch<dynamic>(
+                    // DropdownSearch<dynamic>(
+                    //
+                    //     onChanged: (dynamic value){
+                    //       selectedChannel1 = value['id'].toString();
+                    //       selectedChannelImageUrl = value['image'];
+                    //       // print(selectedChannel);
+                    //       setState(() {});
+                    //     },
+                    //    dropdownBuilder: (context,dynamic m){
+                    //
+                    //      print('drowpdown builder---'+m.toString());
+                    //      if(m!=null){
+                    //        return Row(
+                    //          children: [
+                    //              hSizedBox05,
+                    //              Container(
+                    //                height: 20,
+                    //                width: 20,
+                    //                decoration: BoxDecoration(
+                    //                    image: DecorationImage(
+                    //                      image: NetworkImage(
+                    //                        selectedChannelImageUrl!,
+                    //                      ),
+                    //                      fit: BoxFit.fitHeight,
+                    //                    )),
+                    //              ),
+                    //            hSizedBox2,
+                    //            Text(m['name']),
+                    //          ],
+                    //        );
+                    //      }
+                    //      else{
+                    //        return Row(
+                    //          children:[
+                    //            hSizedBox05,
+                    //        CircleAvatarcustom(
+                    //          image: MyImages.add_playlist,
+                    //          width: 20,
+                    //          height: 20,
+                    //          fit: BoxFit.fitWidth,
+                    //          borderradius: 0)
+                    //        ,
+                    //            hSizedBox2,
+                    //            Text(translate("add_detail.selectChannel")),
+                    //          ],
+                    //        );
+                    //      }
+                    //
+                    //    },
+                    //
+                    //     items: channels,
+                    //
+                    //     dropdownDecoratorProps: DropDownDecoratorProps(
+                    //
+                    //       dropdownSearchDecoration: InputDecoration(
+                    //         contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                    //         border: InputBorder.none,
+                    //         labelText: "",
+                    //         hintText: translate("add_detail.selectChannel"),
+                    //       ),
+                    //     ),
+                    //     popupProps: PopupProps.bottomSheet(
+                    //
+                    //       title: Center(child: Padding(
+                    //         padding: const EdgeInsets.only(top: 10,bottom: 5),
+                    //         child: Text(translate("add_detail.selectChannel"), style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+                    //       )),
+                    //       // itemBuilder: channels,
+                    //       itemBuilder: (context,dynamic m, isSelected){
+                    //         return Container(
+                    //             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    //             child: Row(
+                    //               children:
+                    //               [
+                    //
+                    //               Container(
+                    //               height: 40,
+                    //               width: 40,
+                    //               decoration: BoxDecoration(
+                    //                 borderRadius: BorderRadius.circular(5),
+                    //                   image: DecorationImage(
+                    //                     image: NetworkImage(
+                    //                       m['image'],
+                    //                     ),
+                    //                     fit: BoxFit.fitHeight,
+                    //                   )),
+                    //             ),
+                    //               hSizedBox,  Text(m['name']),
+                    //               ],
+                    //             )
+                    //         );
+                    //       },
+                    //       //   title: Text("mizan"),
+                    //         showSearchBox: true,
+                    //         bottomSheetProps: BottomSheetProps(
+                    //             elevation: 16,
+                    //
+                    //             backgroundColor: Colors.white
+                    //         )),
+                    //   ),
+                    if(selectedChannelsList.length!=0)
+                      for(int i =0;i<selectedChannelsList.length;i++)
+                        Container(
+                          padding:
+                          EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                          child: GestureDetector(
+                            behavior: HitTestBehavior.translucent,
 
-                        onChanged: (dynamic value){
-                          selectedChannel1 = value['id'].toString();
-                          selectedChannelImageUrl = value['image'];
-                          // print(selectedChannel);
-                          setState(() {});
-                        },
-                       dropdownBuilder: (context,dynamic m){
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      CustomCircularImage(
+                                        imageUrl: selectedChannelsList[i]['image'],
+                                        height: 30,
+                                        width: 30,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 12,
+                                  child: Container(
+                                    padding: EdgeInsets.only(
+                                        top: 2, bottom: 2, left: 10, right: 0),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Column(
+                                                crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                                children: [
+                                                  ParagraphText(
+                                                    text: '${selectedChannelsList[i]['name']}',
+                                                    color: MyColors.heading,
+                                                    fontSize: 14,
+                                                    fontFamily: 'regular',
+                                                  ),
+                                                  ParagraphText(text: translate("add_detail.added")),
+                                                ],
+                                              ),
+                                              IconButton(onPressed: (){
+                                                selectedChannelsList.removeAt(i);
+                                                setState(() {
 
-                         print('drowpdown builder---'+m.toString());
-                         if(m!=null){
-                           return Row(
-                             children: [
-                                 hSizedBox05,
-                                 Container(
-                                   height: 20,
-                                   width: 20,
-                                   decoration: BoxDecoration(
-                                       image: DecorationImage(
-                                         image: NetworkImage(
-                                           selectedChannelImageUrl!,
-                                         ),
-                                         fit: BoxFit.fitHeight,
-                                       )),
-                                 ),
-                               hSizedBox2,
-                               Text(m['name']),
-                             ],
-                           );
-                         }
-                         else{
-                           return Row(
-                             children:[
-                               hSizedBox05,
-                           CircleAvatarcustom(
-                             image: MyImages.add_playlist,
-                             width: 20,
-                             height: 20,
-                             fit: BoxFit.fitWidth,
-                             borderradius: 0)
-                           ,
-                               hSizedBox2,
-                               Text(translate("add_detail.selectChannel")),
-                             ],
-                           );
-                         }
-
-                       },
-
-                        items: channels,
-
-                        dropdownDecoratorProps: DropDownDecoratorProps(
-
-                          dropdownSearchDecoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                            border: InputBorder.none,
-                            labelText: "",
-                            hintText: translate("add_detail.selectChannel"),
+                                                });
+                                              }, icon: Icon(
+                                                Icons.delete,
+                                                size: 20,
+                                                color: MyColors.blackColor
+                                                    .withOpacity(0.5),
+                                              ),),
+                                            ]),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                        popupProps: PopupProps.bottomSheet(
-                          
+                    DropdownSearch<dynamic>(
+
+                      onChanged: (dynamic value){
+                        // selectedChannel1 = value['id'].toString();
+                        // selectedChannelImageUrl = value['image'];
+                        if(selectedChannelsList.contains(value)){
+                          print('lkdsgkldfslkg');
+                          selectedChannelsList.remove(value);
+                        }
+                        selectedChannelsList.add(value);
+                        // print(selectedChannel);
+                        setState(() {});
+                      },
+                      dropdownBuilder: (context,dynamic m){
+
+                        print('drowpdown builder---'+m.toString());
+                        // if(m!=null){
+                        //   return Row(
+                        //     children: [
+                        //         hSizedBox05,
+                        //         Container(
+                        //           height: 20,
+                        //           width: 20,
+                        //           decoration: BoxDecoration(
+                        //               image: DecorationImage(
+                        //                 image: NetworkImage(
+                        //                   selectedChannelImageUrl!,
+                        //                 ),
+                        //                 fit: BoxFit.fitHeight,
+                        //               )),
+                        //         ),
+                        //       hSizedBox2,
+                        //       Text(m['name']),
+                        //     ],
+                        //   );
+                        // }
+                        // else
+                        return Row(
+                          children:[
+                            hSizedBox05,
+                            CircleAvatarcustom(
+                                image: MyImages.add_playlist,
+                                width: 20,
+                                height: 20,
+                                fit: BoxFit.fitWidth,
+                                borderradius: 0)
+                            ,
+                            hSizedBox2,
+                            Text(translate("add_detail.selectChannel")),
+                          ],
+                        );
+
+                      },
+
+                      items: channels,
+
+                      dropdownDecoratorProps: DropDownDecoratorProps(
+
+                        dropdownSearchDecoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                          border: InputBorder.none,
+                          labelText: "",
+                          hintText:translate("add_detail.selectChannel"),
+                        ),
+                      ),
+                      popupProps: PopupProps.bottomSheet(
+
                           title: Center(child: Padding(
                             padding: const EdgeInsets.only(top: 10,bottom: 5),
                             child: Text(translate("add_detail.selectChannel"), style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
@@ -1300,32 +1474,31 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                                   children:
                                   [
 
-                                  Container(
-                                  height: 40,
-                                  width: 40,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                      image: DecorationImage(
-                                        image: NetworkImage(
-                                          m['image'],
-                                        ),
-                                        fit: BoxFit.fitHeight,
-                                      )),
-                                ),
-                                  hSizedBox,  Text(m['name']),
+                                    Container(
+                                      height: 40,
+                                      width: 40,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(5),
+                                          image: DecorationImage(
+                                            image: NetworkImage(
+                                              m['image'],
+                                            ),
+                                            fit: BoxFit.fitHeight,
+                                          )),
+                                    ),
+                                    hSizedBox,  Text(m['name']),
                                   ],
                                 )
                             );
                           },
                           //   title: Text("mizan"),
-                            showSearchBox: true,
-                            bottomSheetProps: BottomSheetProps(
-                                elevation: 16,
+                          showSearchBox: true,
+                          bottomSheetProps: BottomSheetProps(
+                              elevation: 16,
 
-                                backgroundColor: Colors.white
-                            )),
-                      ),
-
+                              backgroundColor: Colors.white
+                          )),
+                    ),
                     // DropdownSearch<String>(
                     //   popupProps: PopupProps.menu(
                     //     showSelectedItems: true,
@@ -1362,15 +1535,16 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                           channels = await Webservices.getList(ApiUrls.getChannels);
                           channels.forEach((element) {
                             if(element['name']==name){
-                              print('the channel name existsss');
-                              print(selectedChannel1);
-                              print('the channel1');
-                              print(selectedChannel);
-                              print('the channel1');
-                             selectedChannel = element;
-                              selectedChannelImageUrl = element['image'];
-                             selectedChannel1 = element['id'].toString();
-                             hideCreateChannel = true;
+                              selectedChannelsList.add(element);
+                             //  print('the channel name existsss');
+                             //  print(selectedChannel1);
+                             //  print('the channel1');
+                             //  print(selectedChannel);
+                             //  print('the channel1');
+                             // selectedChannel = element;
+                             //  selectedChannelImageUrl = element['image'];
+                             // selectedChannel1 = element['id'].toString();
+                             // hideCreateChannel = true;
                             }
                           });
                           setState(() {

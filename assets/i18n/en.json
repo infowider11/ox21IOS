@@ -302,6 +302,9 @@
   },
   "send_vmail": {
     "title": "Compose Vmail",
+    "title2": "Forward Vmail",
+    "forwardto": "Forward To",
+    "forward": "Forward",
     "selectDomain": "Select Your Domain",
     "enterDomain": "Enter the receiver\\'s Domain",
     "subject": "Subject",
@@ -311,7 +314,9 @@
     "addImg": "Add Images",
     "addVideos": "Add Videos",
     "enterSelectDomain": "Please select your domain",
-    "validType": "Please type a valid domain name"
+    "validType": "Please type a valid domain name",
+    "send": "Send",
+    "reply": "Reply"
   },
   "newest_home_page": {
     "create": "Create",
@@ -619,12 +624,17 @@
     "topBanner": "Top Banner Trade",
     "tradeTopBanner": "Trade Top Banner with BTC",
     "walletBalance": "Wallet Balance",
+    "Exchange Domain": "Exchange Domain",
+    "Exchange Domain with": "Exchange Domain with",
     "btc": "BTC",
     "jin": "JIN",
     "points": "Points",
     "next": "Next",
     "exchangebtn": "Exchange Top Banner with OX21 Points",
-    "pointtext": "≈3600/15 Points"
+    "pointtext": "≈3600/15 Points",
+    "This domain is available for purchase": "This domain is available for purchase",
+    "Something went wrong.": "Something went wrong."
+
   },
   "webservicePage": {
     "postErrorMessage": "Error in uploading. Please re-upload your video"

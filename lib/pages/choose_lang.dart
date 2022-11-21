@@ -59,10 +59,17 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
 
                       currentLanguage="en";
                       sharedPreferences.setString("lang","en");
-                      var delegate = await LocalizationDelegate.create(
-                          fallbackLocale: currentLanguage, supportedLocales: [currentLanguage]);
-                      await LocalizationDelegate.create(
-                          fallbackLocale:currentLanguage, supportedLocales: [currentLanguage]);
+                      var localizationDelegate = LocalizedApp.of(context).delegate;
+                      print('ddddd ${localizationDelegate.supportedLocales}');
+                      // var delegate = await LocalizationDelegate.create(
+                      //     fallbackLocale: currentLanguage, supportedLocales: [currentLanguage]);
+                      // await LocalizationDelegate.create(
+                      //     fallbackLocale:currentLanguage, supportedLocales: [currentLanguage]);
+                         try {
+                        await changeLocale(context, currentLanguage);
+                      }catch(e){
+                           print('hamesha aage khud se');
+                         }
 
                       try{
                         changeUserLanguage(userId, currentLanguage);
@@ -129,10 +136,12 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
 
                       currentLanguage="zh";
                       sharedPreferences.setString("lang",currentLanguage);
-                      var delegate = await LocalizationDelegate.create(
-                          fallbackLocale: currentLanguage, supportedLocales: [currentLanguage]);
-                      await LocalizationDelegate.create(
-                          fallbackLocale:currentLanguage, supportedLocales: [currentLanguage]);
+                      // var delegate = await LocalizationDelegate.create(
+                      //     fallbackLocale: currentLanguage, supportedLocales: [currentLanguage]);
+
+                      // await LocalizationDelegate.create(
+                      //     fallbackLocale:currentLanguage, supportedLocales: [currentLanguage]);
+                      await changeLocale(context, currentLanguage);
                       print("sharedPreferences--$currentLanguage-----------"+sharedPreferences.getString('lang').toString());
                       try{
                         changeUserLanguage(userId, currentLanguage);

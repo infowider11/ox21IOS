@@ -101,7 +101,7 @@ class _CongratulationsPageState extends State<CongratulationsPage> {
                       ),
                     vSizedBox2,
                     RoundEdgedButton(
-                      text: 'Continue',
+                      text: translate("Congratulations.continueBtn"),
                       verticalMargin: 20,
                       textColor: Colors.white,
                       color: MyColors.primaryColor,

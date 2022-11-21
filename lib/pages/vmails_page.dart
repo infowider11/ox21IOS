@@ -21,10 +21,10 @@ class VMailPage extends StatefulWidget {
   @override
   _VMailPageState createState() => _VMailPageState();
 }
-const List<Tab> tabs = <Tab>[
-  Tab(text: 'Received'),
-  Tab(text: 'Sent'),
-];
+//  List<Tab> tabs = <Tab>[
+//   Tab(text: translate("vmails_page.text")),
+//   Tab(text: translate("vmails_page.sent")),
+// ];
 class _VMailPageState extends State<VMailPage> {
   bool load = false;
   bool onLastIndex = true;
@@ -285,7 +285,7 @@ class _VMailPageState extends State<VMailPage> {
         },
       ),
       body: DefaultTabController(
-        length: tabs.length,
+        length: 2,
         // The Builder widget is used to have a different BuildContext to access
         // closest DefaultTabController.
         child: Builder(builder: (BuildContext context) {
@@ -299,7 +299,10 @@ class _VMailPageState extends State<VMailPage> {
           return Column(
             children: [
               TabBar(
-                tabs: tabs,
+                tabs: [
+                  Tab(text: translate("vmails_page.received")),
+                  Tab(text: translate("vmails_page.sent")),
+                ],
                 labelColor: MyColors.primaryColor,
                 indicatorColor: MyColors.primaryColor,
               ),

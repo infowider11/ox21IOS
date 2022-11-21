@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
+import 'package:ox21/constants/global_constants.dart';
 import 'package:ox21/constants/global_keys.dart';
 import 'dart:convert' as convert;
 
@@ -21,6 +22,7 @@ class Webservices {
     var request = {
       "uuid": uuid,
       "password": password,
+      'lang':currentLanguage,
     };
     try {
       print(ApiUrls.signUpUrl + '?t=1');
@@ -68,6 +70,7 @@ class Webservices {
     var request = {
       "uuid": uuid,
       "password": password,
+      'lang':currentLanguage,
     };
     try {
       var response = await http.post(
@@ -111,6 +114,7 @@ class Webservices {
   }) async {
     var request = {
       "uuid": uuid,
+      'lang':currentLanguage,
     };
     try {
       var response = await http.post(
@@ -148,6 +152,11 @@ class Webservices {
   }
 
   static Future<http.Response> getData(String url) async {
+    if(url.contains('?')){
+      url+='&lang='+currentLanguage;
+    } else {
+      url+='?lang='+currentLanguage;
+    }
     http.Response response =
         http.Response('{"message":"failure","status":0}', 404);
     log('called $url');
@@ -173,6 +182,7 @@ class Webservices {
     http.Response response =
         http.Response('{"message":"failure","status":0}', 404);
     try {
+      request['lang']=currentLanguage;
       log('the requesst for $url is $request');
       String tempGetRequest = '?';
       request.forEach((key, value) {
@@ -237,11 +247,14 @@ class Webservices {
       {Map<String, dynamic>? request}) async {
     Map<String, dynamic> tempRequest = {};
     if (request != null) {
+      request['lang']=currentLanguage;
       request.forEach((key, value) {
         if (value != null) {
           tempRequest['$key'] = value;
         }
       });
+    } else {
+      request!['lang']=currentLanguage;
     }
     try {
       log('the request for url $url is $tempRequest');
@@ -273,6 +286,13 @@ class Webservices {
   }
 
   static Future<List> getList(String url) async {
+    print('the url is $url');
+    // if(url.contains('?')){
+    //   url+='&lang='+currentLanguage;
+    // } else {
+    //   url+='?lang='+currentLanguage;
+    // }
+    print('now the url is $url');
     var response = await getData(url);
     if (response.statusCode == 200) {
       var jsonResponse = convert.jsonDecode(response.body);
@@ -287,9 +307,13 @@ class Webservices {
   }
 
   static Future<List> getListFromRequestParameters(
+
       String url, Map<String, dynamic> request,
       {bool isGetMethod = true}) async {
-    Map<String, dynamic> tempRequest = {};
+
+    Map<String, dynamic> tempRequest = {
+      'lang':currentLanguage,
+    };
     request.forEach((key, value) {
       if (value != null) {
         tempRequest['$key'] = value;
@@ -339,6 +363,7 @@ class Webservices {
     bool successAlert = false,
     bool errorAlert = true,
   }) async {
+    body['lang']=currentLanguage;
     print('the request is $body');
     var url = Uri.parse(endPoint);
     //
@@ -408,6 +433,7 @@ class Webservices {
     bool successAlert = false,
     bool errorAlert = true,
   }) async {
+    body['lang']=currentLanguage;
     print('the request is $body');
     var url = Uri.parse(endPoint);
     //
@@ -491,6 +517,7 @@ class Webservices {
     bool showSuccessMessage = false,
     bool showErrorMessage = true,
   }) async {
+    body['lang']=currentLanguage;
     print('the request is $body');
     var url = Uri.parse(apiUrl);
     //
@@ -560,6 +587,11 @@ class Webservices {
   static Future<String> getPoliciesData({
     required String url,
   }) async {
+    if(url.contains("?")){
+      url+='&lang='+currentLanguage;
+    } else {
+      url+='?lang='+currentLanguage;
+    }
     var response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       var jsonResponse = convert.jsonDecode(response.body);
@@ -594,7 +626,7 @@ class Webservices {
   }
 
   static Future<int> getServerStatus() async {
-    // return 1;
+    return 1;
 
     try {
       var response = await http.get(Uri.parse(ApiUrls.getServerStatus));

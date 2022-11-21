@@ -2,7 +2,7 @@
   "welcome": {
     "title": "欢迎进入去中心化的未来",
     "subTitle": "拥抱一个你值得拥有的网络",
-    "Go": "Go"
+    "Go": "去"
   },
   "intro": {
     "title1": "Ox21结合了去中心化通讯，支付和视频分享",
@@ -45,7 +45,8 @@
     "alertMsgConfrimPass": "确认密码与之前的输入不匹配",
     "alertPass": "选择的助记词不匹配. 还有$noOfAttempts 次机会",
     "alert": "密码至少8位",
-    "13yearoldertext": "I am 13 years or older to user this app."
+    "13yearoldertext": "我年满 13 岁才能使用此应用程序。",
+    "alert2": "请确认您已年满 13 岁。"
   },
   "Congratulations": {
     "title": "恭喜",
@@ -154,10 +155,10 @@
   },
   "add_web_storage_token": {
     "title": "添加IPFS Token",
-    "token": "Token",
-    "tokenPlace": "请输入 token...",
-    "addToken": "添加 Token",
-    "alert": "请输入token"
+    "token": "令牌",
+    "tokenPlace": "请输入 令牌...",
+    "addToken": "添加 令牌",
+    "alert": "请输入令牌"
 
   },
   "my_subscribed_channels_page": {
@@ -282,7 +283,8 @@
   },
   "deleteAccount": {
     "title": "删除帐号",
-    "": "请按顺序输入12个助记词",
+    "alert4": "请按顺序输入12个助记词",
+    "placeholder": "输入 12 字密码短语",
     "alrt1": "一旦账号删除之后，就是永久删除，无法恢复。你确定删除帐号吗?",
     "alrt2": "帐号删除之后，永远无法恢复.",
     "alert3": "助记词错误"
@@ -296,6 +298,9 @@
   },
   "send_vmail": {
     "title": "写视频邮件",
+    "title2": "转发 Vmail",
+    "forwardto": "转发",
+    "forward": "向前",
     "selectDomain": "选择域名",
     "enterDomain": "输入收件人的域名",
     "subject": "标题",
@@ -305,9 +310,12 @@
     "addImg": "添加图片",
     "addVideos": "添加视频",
     "enterSelectDomain": "请选择域名",
-    "validType": "请输入正确的域名"
+    "validType": "请输入正确的域名",
+    "send": "发送",
+    "reply": "回复"
   },
   "newest_home_page": {
+    "create": "创造",
     "createShort": "创建短视频",
     "reportThis": "举报",
     "report": "举报",
@@ -410,6 +418,7 @@
     "title1": "标题",
     "enterTitle": "请输入标题",
     "enterDes": "描述",
+    "addDes": "添加说明",
     "visibility": "可见度",
     "addSs": "添加截屏",
     "added": "已添加",
@@ -453,12 +462,12 @@
     "confirm": "确认",
     "typeAmount": "请输入数量然后继续",
     "btc":"BTC",
-    "receiving":"Receiving Address",
-    "sending":"Sending Address",
-    "fee":"Minor Fee",
-    "show":"Show",
-    "fast":"Fast",
-    "confirm":"Confirm"
+    "receiving":"收货地址",
+    "sending":"发送地址",
+    "fee":"小额费用",
+    "show":"节目",
+    "fast":"快速地",
+    "confirm":"确认"
   },
   "deposit_btc_qr_page": {
     "scanPay": "扫描二维码完成付款",
@@ -526,7 +535,7 @@
     "successfully": "广告位购买成功",
     "topBidders": "高价竞标者",
     "noBidder": "还没有竞标者",
-    "ox21point": "Purchase With Ox21 Points"
+    "ox21point": "用 Ox21 积分购买"
 
   },
   "set_visibility": {
@@ -548,7 +557,7 @@
     "smallAount": "我们不能处理太小的BTC支付",
     "yourCart": "你的购物车",
     "items": "物品",
-    "price": "Price",
+    "price": "价格",
     "domainName": "域名 :",
     "USD": "USD",
     "totalPrice": "总价  ",
@@ -584,7 +593,7 @@
   "top_banner_bid_country": {
     "title": "广告位竞价/购买",
     "selectLocation": "选择地点",
-    "skip": "Skip",
+    "skip": "跳过",
     "selectText":"选择城市，省，国家",
     "continueBtn": "继续"
   },
@@ -592,7 +601,7 @@
     "next": "下一步"
   },
   "walletpage": {
-    "topbanner": "Top Banner Exchange",
+    "topbanner": "顶部横幅交换",
     "investment": "投资",
     "depositBTC": "存入BTC",
     "text": "11PEEokWFSFNYshLfuLvZfMuPE93aMJd4",
@@ -608,28 +617,35 @@
     "jin": "JIN",
     "points":"点数",
     "next": "下一步",
-    "exchangebtn": "Exchange Top Banner with OX21 Points",
-    "pointtext": "≈3600/15 Points"
-
+    "exchangebtn": "用 OX21 点数交换顶部横幅",
+    "pointtext": "≈3600/15 积分",
+    "Exchange Domain": "交换域",
+    "Exchange Domain with": "交换域与",
+    "This domain is available for purchase": "此域名可供购买",
+    "Something went wrong.": "出问题了。"
   },
   "webservicePage": {
-    "postErrorMessage": "Error in uploading. Please re-upload your video"
+    "postErrorMessage": "上传错误。请重新上传您的视频"
   },
 
   "mycoin_screen": {
-    "title": "My OX21 Points",
-    "coins": "Coins",
-    "wallet_balance": "Wallet Balance",
-    "convertbtc": "Convert BTC To JIN",
-    "btcamount": "Enter BTC Amount",
-    "btcavailable": "(Available BTC)",
-    "btcconverinjin": "Enter Btc amount to convert in JIN",
-    "convert": "Convert",
-    "validamount": "Please type valid amount",
-    "oopsalert": "Oops!! You don\\'t have sufficient balance",
-    "btcpoints": "Convert BTC To OX21 Points",
-    "points": "Points",
-    "buyox21": "Buy OX21 Points"
+    "title": "我的资产",
+    "coins": "资产",
+    "wallet_balance": "账户余额",
+    "jin": "JIN",
+    "convertbtc": "BTC换JIN",
+    "btcconverinjin": "BTC换Ox21点数",
+    "convertO2T": "购买OX21积分测试购买",
+    "buyox21": "购买Ox21点数",
+    "btcamount": "输入BTC数量",
+    "btcavailable": "(可用的BTC)",
+    "amountCon": "输入BTC数量（换JIN）",
+    "validamount": "请输入正确的数量",
+    "oopsalert": "抱歉，你没有足够的余额",
+    "points": "点数",
+    "1BTC": "1.00 BTC",
+    "convert": "转换"
+
   }
 
 

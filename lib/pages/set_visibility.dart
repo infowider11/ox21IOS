@@ -7,7 +7,8 @@ import 'package:ox21/widgets/CustomTexts.dart';
 import '../constants/colors.dart';
 import '../widgets/appbar.dart';
 
-List visibilityOptions = ['public', 'unlisted', 'private'];
+// List visibilityOptions = ['public', 'unlisted', 'private'];
+// List visibilityOptions = [translate("set_visibility.Public"), translate("set_visibility.Unlisted"),translate("set_visibility.private")];
 
 // enum SingingCharacter{ public, jefferson, hello }
 class Set_visibility_Page extends StatefulWidget {
@@ -24,6 +25,7 @@ class Set_visibility_Page extends StatefulWidget {
 class _Set_visibility_PageState extends State<Set_visibility_Page> {
   bool isChecked1 = false;
   bool isChecked2 = false;
+  List visibilityOptions = [translate("set_visibility.Public"), translate("set_visibility.Unlisted"),translate("set_visibility.private")];
   // SingingCharacter? _character = SingingCharacter.lafayette;
   @override
   Widget build(BuildContext context) {

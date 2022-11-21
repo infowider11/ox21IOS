@@ -411,7 +411,7 @@ class _CreatePasswordState extends State<CreatePassword> {
                             ParagraphText(
                               text: "• ",
                               fontSize: 20,
-                              color: MyColors.bulletcolor,
+                              color: MyColors.bulletcolor
                             ),
                             Expanded(
                               child: ParagraphText(
