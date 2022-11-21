@@ -193,7 +193,8 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         ParagraphText(
-                                          text: translate("newest_home_page.createShort"),
+                                          text: translate(
+                                              "newest_home_page.createShort"),
                                           color: MyColors.heading,
                                           fontSize: 12,
                                           fontFamily: 'bold',
@@ -269,7 +270,8 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         ParagraphText(
-                                          text: translate("my_purchased_banners.uploadVideo"),
+                                          text: translate(
+                                              "my_purchased_banners.uploadVideo"),
                                           color: MyColors.heading,
                                           fontSize: 12,
                                           fontFamily: 'bold',
@@ -330,26 +332,26 @@ class _NewestHomePageState extends State<NewestHomePage> {
                   padding: EdgeInsets.only(top: 16),
                   child: NotificationListener<ScrollUpdateNotification>(
                     onNotification: (scroll) {
-                      if (onLastIndex &&
-                          scroll.metrics.maxScrollExtent ==
-                              scroll.metrics.pixels) {
-                        onLastIndex = false;
-                        String lastObjectId = items.last['id'].toString();
-                        List newData = [];
-                        setState(() {});
+                      // if (onLastIndex &&
+                      //     scroll.metrics.maxScrollExtent ==
+                      //         scroll.metrics.pixels) {
+                      //   onLastIndex = false;
+                      //   String lastObjectId = items.last['id'].toString();
+                      //   List newData = [];
+                      //   setState(() {});
 
-                        Webservices.getList(ApiUrls.getAllPost +
-                                'user_id=$userId&last_id=$lastObjectId&page=${++pageNo}')
-                            .then((value) {
-                          newData = value;
-                          setState(() {
-                            print('about to add new items ${items.length}');
-                            items = items + newData;
-                            print('added new items ${items.length}');
-                            onLastIndex = true;
-                          });
-                        });
-                      }
+                      //   Webservices.getList(ApiUrls.getAllPost +
+                      //           'user_id=$userId&last_id=$lastObjectId&page=${++pageNo}')
+                      //       .then((value) {
+                      //     newData = value;
+                      //     setState(() {
+                      //       print('about to add new items ${items.length}');
+                      //       items = items + newData;
+                      //       print('added new items ${items.length}');
+                      //       onLastIndex = true;
+                      //     });
+                      //   });
+                      // }
 
                       return true;
                     },
@@ -388,7 +390,8 @@ class _NewestHomePageState extends State<NewestHomePage> {
                           items.length == 0
                               ? Center(
                                   child: ParagraphText(
-                                    text: translate("community_court_page.noData"),
+                                    text: translate(
+                                        "community_court_page.noData"),
                                   ),
                                 )
                               : ListView.builder(
@@ -782,10 +785,11 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                                           MediaQuery.of(context)
                                                               .size
                                                               .width,
-                                                      child:  CustomCircularImage(
-                                                        imageUrl: items[index]['thumbnail'],
+                                                      child:
+                                                          CustomCircularImage(
+                                                        imageUrl: items[index]
+                                                            ['thumbnail'],
                                                         borderRadius: 0,
-
                                                       ),
                                                       // child: Image.network(
                                                       //   // items[index]
@@ -852,8 +856,8 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                                                             .opaque,
                                                                     child:
                                                                         SubHeadingText(
-                                                                      text:
-                                                                      translate("newest_home_page.report"),
+                                                                      text: translate(
+                                                                          "newest_home_page.report"),
                                                                       color: Colors
                                                                           .red,
                                                                     ),
@@ -1055,8 +1059,8 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                                                     },
                                                                     child:
                                                                         SubHeadingText(
-                                                                      text:
-                                                                      translate("newest_home_page.block"),
+                                                                      text: translate(
+                                                                          "newest_home_page.block"),
                                                                       color: Colors
                                                                           .red,
                                                                     ),
@@ -1288,49 +1292,49 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                                     flex: 6,
                                                     child: Row(
                                                       mainAxisAlignment:
-                                                      MainAxisAlignment.end,
+                                                          MainAxisAlignment.end,
                                                       children: [
                                                         GestureDetector(
                                                           behavior:
-                                                          HitTestBehavior
-                                                              .opaque,
+                                                              HitTestBehavior
+                                                                  .opaque,
                                                           onTap: () async {
                                                             if (items[index][
-                                                            'is_like'] !=
+                                                                    'is_like'] !=
                                                                 1) {
                                                               print(
                                                                   '${items[index]['id']} is liked ');
                                                               items[index][
-                                                              'is_like'] = 1;
+                                                                  'is_like'] = 1;
                                                               setState(() {});
                                                               await Webservices
                                                                   .getData(ApiUrls
-                                                                  .likePost +
-                                                                  'user_id=$userId&post_id=${items[index]['id']}');
+                                                                          .likePost +
+                                                                      'user_id=$userId&post_id=${items[index]['id']}');
                                                             } else {
                                                               items[index][
-                                                              'is_like'] = 0;
+                                                                  'is_like'] = 0;
                                                               setState(() {});
                                                               await Webservices
                                                                   .getData(ApiUrls
-                                                                  .removelikeDislikePost +
-                                                                  'user_id=$userId&post_id=${items[index]['id']}');
+                                                                          .removelikeDislikePost +
+                                                                      'user_id=$userId&post_id=${items[index]['id']}');
                                                             }
                                                           },
                                                           child: Container(
                                                             padding: EdgeInsets
                                                                 .symmetric(
-                                                                horizontal:
-                                                                16),
+                                                                    horizontal:
+                                                                        16),
                                                             height: 28,
                                                             // width: 80,
                                                             decoration: BoxDecoration(
                                                                 color: MyColors
                                                                     .lightblue,
                                                                 borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                    4)),
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            4)),
                                                             child: Row(
                                                               // mainAxisAlignment: MainAxisAlignment.spaceAround,
                                                               children: [
@@ -1341,11 +1345,11 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                                                   fit: BoxFit
                                                                       .fitWidth,
                                                                   color: items[index]
-                                                                  [
-                                                                  'is_like'] ==
-                                                                      1
+                                                                              [
+                                                                              'is_like'] ==
+                                                                          1
                                                                       ? Colors
-                                                                      .red
+                                                                          .red
                                                                       : null,
                                                                 ),
                                                                 // hSizedBox,
@@ -1362,45 +1366,45 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                                         hSizedBox,
                                                         GestureDetector(
                                                           behavior:
-                                                          HitTestBehavior
-                                                              .opaque,
+                                                              HitTestBehavior
+                                                                  .opaque,
                                                           onTap: () async {
                                                             if (items[index][
-                                                            'is_like'] !=
+                                                                    'is_like'] !=
                                                                 -1) {
                                                               print(
                                                                   '${items[index]['id']} is liked ');
                                                               items[index][
-                                                              'is_like'] = -1;
+                                                                  'is_like'] = -1;
                                                               setState(() {});
                                                               await Webservices
                                                                   .getData(ApiUrls
-                                                                  .dislikePost +
-                                                                  'user_id=$userId&post_id=${items[index]['id']}');
+                                                                          .dislikePost +
+                                                                      'user_id=$userId&post_id=${items[index]['id']}');
                                                             } else {
                                                               items[index][
-                                                              'is_like'] = 0;
+                                                                  'is_like'] = 0;
                                                               setState(() {});
                                                               await Webservices
                                                                   .getData(ApiUrls
-                                                                  .removelikeDislikePost +
-                                                                  'user_id=$userId&post_id=${items[index]['id']}');
+                                                                          .removelikeDislikePost +
+                                                                      'user_id=$userId&post_id=${items[index]['id']}');
                                                             }
                                                           },
                                                           child: Container(
                                                             padding: EdgeInsets
                                                                 .symmetric(
-                                                                horizontal:
-                                                                8),
+                                                                    horizontal:
+                                                                        8),
                                                             height: 28,
                                                             // width: 40,
                                                             decoration: BoxDecoration(
                                                                 color: MyColors
                                                                     .lightblue,
                                                                 borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                    4)),
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            4)),
                                                             child: Row(
                                                               // mainAxisAlignment: MainAxisAlignment.spaceAround,
                                                               children: [
@@ -1411,11 +1415,11 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                                                   fit: BoxFit
                                                                       .fitWidth,
                                                                   color: items[index]
-                                                                  [
-                                                                  'is_like'] ==
-                                                                      -1
+                                                                              [
+                                                                              'is_like'] ==
+                                                                          -1
                                                                       ? Colors
-                                                                      .red
+                                                                          .red
                                                                       : null,
                                                                 ),
                                                                 // hSizedBox,
@@ -1433,31 +1437,34 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                                         hSizedBox,
                                                         GestureDetector(
                                                           behavior:
-                                                          HitTestBehavior
-                                                              .opaque,
+                                                              HitTestBehavior
+                                                                  .opaque,
                                                           onTap: () async {
                                                             showCustomBottomSheet(
-
                                                                 context,
                                                                 child:
-                                                                CommentsPageInHomeFeed(postId: items[index]['id'].toString(),),
-                                                                height: 400
-                                                            );
+                                                                    CommentsPageInHomeFeed(
+                                                                  postId: items[
+                                                                              index]
+                                                                          ['id']
+                                                                      .toString(),
+                                                                ),
+                                                                height: 400);
                                                           },
                                                           child: Container(
                                                             padding: EdgeInsets
                                                                 .symmetric(
-                                                                horizontal:
-                                                                16),
+                                                                    horizontal:
+                                                                        16),
                                                             height: 28,
                                                             // width: 80,
                                                             decoration: BoxDecoration(
                                                                 color: MyColors
                                                                     .lightblue,
                                                                 borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                    4)),
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            4)),
                                                             child: Row(
                                                               // mainAxisAlignment: MainAxisAlignment.spaceAround,
                                                               children: [
@@ -1470,7 +1477,7 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                                                   color: MyColors
                                                                       .primaryColor
                                                                       .withAlpha(
-                                                                      92),
+                                                                          92),
                                                                 ),
                                                                 // hSizedBox,
                                                                 // ParagraphText(
@@ -1486,44 +1493,50 @@ class _NewestHomePageState extends State<NewestHomePage> {
                                                         hSizedBox,
                                                         GestureDetector(
                                                           behavior:
-                                                          HitTestBehavior
-                                                              .opaque,
+                                                              HitTestBehavior
+                                                                  .opaque,
                                                           onTap: () async {
                                                             String link =
                                                                 MyGlobalConstants
                                                                     .ipfsLink;
                                                             link = link +
-                                                                items[index]
-                                                                ['video_cid'];
+                                                                items[index][
+                                                                    'video_cid'];
                                                             // link = items[index]
                                                             // ['video'];
-                                                            Share.share('${link}', subject: 'Look what I made!');
+                                                            Share.share(
+                                                                '${link}',
+                                                                subject:
+                                                                    'Look what I made!');
                                                           },
                                                           child: Container(
                                                             padding: EdgeInsets
                                                                 .symmetric(
-                                                                horizontal:
-                                                                8),
+                                                                    horizontal:
+                                                                        8),
                                                             height: 28,
                                                             // width: 80,
                                                             decoration: BoxDecoration(
                                                                 color: MyColors
                                                                     .lightblue,
                                                                 borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                    4)),
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            4)),
                                                             child: Row(
                                                               // mainAxisAlignment: MainAxisAlignment.spaceAround,
                                                               children: [
                                                                 Icon(
-                                                                  Icons.reply_rounded,
-                                                                  textDirection: TextDirection.rtl,
+                                                                  Icons
+                                                                      .reply_rounded,
+                                                                  textDirection:
+                                                                      TextDirection
+                                                                          .rtl,
                                                                   size: 16,
                                                                   color: MyColors
                                                                       .primaryColor
                                                                       .withAlpha(
-                                                                      92),
+                                                                          92),
                                                                 ),
                                                                 // hSizedBox,
                                                                 // ParagraphText(

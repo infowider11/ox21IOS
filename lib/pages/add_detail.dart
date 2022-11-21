@@ -81,17 +81,15 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
       load = true;
     });
     playList = await Webservices.getList(ApiUrls.getUserPlaylist + '$userId');
-    domains = await Webservices.getList(ApiUrls.getMyDomains + 'user_id=$userId');
-    if(domains.length==1){
+    domains =
+        await Webservices.getList(ApiUrls.getMyDomains + 'user_id=$userId');
+    if (domains.length == 1) {
       selectedDomain = domains[0];
     }
     setState(() {
       load = false;
     });
   }
-
-
-
 
   bool hideCreateChannel = false;
 
@@ -108,7 +106,6 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
     // selectedChannel = null;
     // print(selectedChannel);
     print(selectedChannelImageUrl);
-
 
     return Scaffold(
       appBar: appBar(
@@ -133,8 +130,6 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                   horizontalPadding: 0,
                   borderRadius: 5,
                   onTap: () async {
-                    
-
                     await updateSharedPreferenceFromServer();
                     print('the user data is $userData');
 
@@ -146,15 +141,19 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                     } else if (screenshots.length == 0) {
                       showSnackbar(context, translate("add_detail.alertSs"));
                     } else if (selectedPlayList == '0') {
-                      showSnackbar(context, translate("add_detail.alertPlaylist"));
-                    }else if(selectedDomain==null && domains.length!=0){
-                      showSnackbar(context, translate("add_detail.alertDomain"));
+                      showSnackbar(
+                          context, translate("add_detail.alertPlaylist"));
+                    } else if (selectedDomain == null && domains.length != 0) {
+                      showSnackbar(
+                          context, translate("add_detail.alertDomain"));
                     } else if (selectedChannelsList.length == 0) {
-                      showSnackbar(context, translate("add_detail.alertChanel"));
-                    }else if(userData!['points']<1000 && isFreshnessPurchased == true){
+                      showSnackbar(
+                          context, translate("add_detail.alertChanel"));
+                    } else if (userData!['points'] < 1000 &&
+                        isFreshnessPurchased == true) {
                       print(userData!['points']);
-                      showSnackbar(context, translate("add_detail.alertPoints"));
-
+                      showSnackbar(
+                          context, translate("add_detail.alertPoints"));
                     } else {
                       List? data = await Navigator.push(
                           context,
@@ -169,6 +168,19 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                         madeForKids = data[0];
                         ageRestricted = data[1];
                         setState(() {});
+                        // var request = {
+                        //   "title": titleController.text,
+                        //   "visibility": visibility,
+                        //   "time": postingTime.toString(),
+                        //   "description": descriptionController.text,
+                        //   "playlist": selectedPlayList,
+                        //   "video_type": widget.videoType,
+                        //   "madeForKids": madeForKids ? '1' : '0',
+                        //   "ageRestricted": ageRestricted ? '1' : '0',
+                        //   "user_id": userId,
+                        //   "channel_id": List.generate(selectedChannelsList.length, (index) => selectedChannelsList[index]['id']).join(','),
+                        //   // "ageRestricted": "hello",
+                        // };
                         var request = {
                           "title": titleController.text,
                           "visibility": visibility,
@@ -179,17 +191,24 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                           "madeForKids": madeForKids ? '1' : '0',
                           "ageRestricted": ageRestricted ? '1' : '0',
                           "user_id": userId,
-                          "channel_id": List.generate(selectedChannelsList.length, (index) => selectedChannelsList[index]['id']).join(','),
+                          // "channel_id": List.generate(selectedChannelsList.length, (index) => selectedChannelsList[index]['id']).join(','),
                           // "ageRestricted": "hello",
                         };
+                        var temp =
+                            List.generate(selectedChannelsList.length, (index) {
+                          request['channel_id[${index}]'] =
+                              selectedChannelsList[index]['id'].toString();
+                          return selectedChannelsList[index]['id'];
+                        });
 
-                        if(selectedDomain!=null){
-                          request['domain_id'] = selectedDomain!['id'].toString();
+                        if (selectedDomain != null) {
+                          request['domain_id'] =
+                              selectedDomain!['id'].toString();
                         }
                         print('qqqqwerty00.00');
                         print(request);
 
-                        if(isFreshnessPurchased){
+                        if (isFreshnessPurchased) {
                           request['use_points'] = freshness;
                         }
 
@@ -253,8 +272,8 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                             }
                           });
                         });
-                        showSnackbar(context,
-                            translate("add_detail.UnderProcess"));
+                        showSnackbar(
+                            context, translate("add_detail.UnderProcess"));
                         Navigator.popUntil(context, (route) => route.isFirst);
                         try {
                           Navigator.pushReplacement(
@@ -430,8 +449,10 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                                                   text: descriptionController
                                                               .text ==
                                                           ''
-                                                      ? translate("add_detail.addDes")
-                                                      : translate("add_detail.enterDes"),
+                                                      ? translate(
+                                                          "add_detail.addDes")
+                                                      : translate(
+                                                          "add_detail.enterDes"),
                                                   color: MyColors.heading,
                                                   fontSize: 14,
                                                   fontFamily: 'regular',
@@ -523,7 +544,8 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               ParagraphText(
-                                                text: translate("add_detail.visibility"),
+                                                text: translate(
+                                                    "add_detail.visibility"),
                                                 color: MyColors.blackColor
                                                     .withOpacity(0.5),
                                                 fontSize: 10,
@@ -609,13 +631,16 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               ParagraphText(
-                                                text: translate("add_detail.addSs"),
+                                                text: translate(
+                                                    "add_detail.addSs"),
                                                 color: MyColors.heading,
                                                 fontSize: 14,
                                                 fontFamily: 'regular',
                                               ),
                                               if (screenshots.length != 0)
-                                                ParagraphText(text: translate("add_detail.added")),
+                                                ParagraphText(
+                                                    text: translate(
+                                                        "add_detail.added")),
                                             ],
                                           ),
                                           Icon(
@@ -696,8 +721,8 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                                                                         .spaceBetween,
                                                                 children: [
                                                                   SubHeadingText(
-                                                                      text:
-                                                                      translate("add_detail.addPlaylist")),
+                                                                      text: translate(
+                                                                          "add_detail.addPlaylist")),
                                                                   TextButton(
                                                                       onPressed:
                                                                           () async {
@@ -757,8 +782,8 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                                                                       },
                                                                       child:
                                                                           ParagraphText(
-                                                                        text:
-                                                                        translate("add_detail.added"),
+                                                                        text: translate(
+                                                                            "add_detail.added"),
                                                                         color: MyColors
                                                                             .secondary,
                                                                         fontSize:
@@ -778,8 +803,8 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                                                                   child: Column(
                                                                 children: [
                                                                   ParagraphText(
-                                                                      text:
-                                                                      translate("add_detail.noPlayList")),
+                                                                      text: translate(
+                                                                          "add_detail.noPlayList")),
                                                                   GestureDetector(
                                                                     onTap:
                                                                         () async {
@@ -835,8 +860,8 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                                                                     },
                                                                     child:
                                                                         ParagraphText(
-                                                                      text:
-                                                                      translate("add_detail.createNewPlaylist"),
+                                                                      text: translate(
+                                                                          "add_detail.createNewPlaylist"),
                                                                       color: MyColors
                                                                           .primaryColor,
                                                                     ),
@@ -920,14 +945,16 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               ParagraphText(
-                                                text: translate("add_detail.addPlaylist"),
+                                                text: translate(
+                                                    "add_detail.addPlaylist"),
                                                 color: MyColors.heading,
                                                 fontSize: 14,
                                                 fontFamily: 'regular',
                                               ),
                                               if (selectedPlayList != '0')
                                                 ParagraphText(
-                                                    text: translate("add_detail.playlistAdded"))
+                                                    text: translate(
+                                                        "add_detail.playlistAdded"))
                                             ],
                                           ),
                                           Icon(
@@ -1188,11 +1215,11 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                     //     ],
                     //   ),
                     // ),
-                    if(domains.length!=0)
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 16),
-                      child: Row(
-                        children: [
+                    if (domains.length != 0)
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 16),
+                        child: Row(
+                          children: [
                             CircleAvatarcustom(
                               image: MyImages.add_playlist,
                               width: 20,
@@ -1200,33 +1227,35 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                               fit: BoxFit.fitWidth,
                               borderradius: 0,
                             ),
-                          Expanded(
-                            child: domains.length==1?Container(
-                              padding: EdgeInsets.symmetric(horizontal: 16),
-                              child: Text(
-                                '${domains[0]['domain']} ' +translate("add_detail.domainName")
-                              )
-                            ): CustomDropDown(
-                              onChanged: (value) {
-                                selectedDomain = value;
-                                setState(() {});
-                              },
-                              hint: translate("add_detail.selectDomain"),
-                              selectedItem: selectedDomain,
-                              items: List.generate(
-                                domains.length,
-                                    (index) => DropdownMenuItem(
-                                  value: domains[index],
-                                  child: Text(
-                                    domains[index]['domain'],
-                                  ),
-                                ),
-                              ),
+                            Expanded(
+                              child: domains.length == 1
+                                  ? Container(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 16),
+                                      child: Text('${domains[0]['domain']} ' +
+                                          translate("add_detail.domainName")))
+                                  : CustomDropDown(
+                                      onChanged: (value) {
+                                        selectedDomain = value;
+                                        setState(() {});
+                                      },
+                                      hint:
+                                          translate("add_detail.selectDomain"),
+                                      selectedItem: selectedDomain,
+                                      items: List.generate(
+                                        domains.length,
+                                        (index) => DropdownMenuItem(
+                                          value: domains[index],
+                                          child: Text(
+                                            domains[index]['domain'],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
                     // DropdownSearch<dynamic>(
                     //
                     //     onChanged: (dynamic value){
@@ -1327,23 +1356,24 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                     //             backgroundColor: Colors.white
                     //         )),
                     //   ),
-                    if(selectedChannelsList.length!=0)
-                      for(int i =0;i<selectedChannelsList.length;i++)
+                    if (selectedChannelsList.length != 0)
+                      for (int i = 0; i < selectedChannelsList.length; i++)
                         Container(
-                          padding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 10),
                           child: GestureDetector(
                             behavior: HitTestBehavior.translucent,
-
                             child: Row(
                               children: [
                                 Expanded(
                                   flex: 1,
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       CustomCircularImage(
-                                        imageUrl: selectedChannelsList[i]['image'],
+                                        imageUrl: selectedChannelsList[i]
+                                            ['image'],
                                         height: 30,
                                         width: 30,
                                       )
@@ -1356,36 +1386,42 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                                     padding: EdgeInsets.only(
                                         top: 2, bottom: 2, left: 10, right: 0),
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Row(
                                             mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                                MainAxisAlignment.spaceBetween,
                                             children: [
                                               Column(
                                                 crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   ParagraphText(
-                                                    text: '${selectedChannelsList[i]['name']}',
+                                                    text:
+                                                        '${selectedChannelsList[i]['name']}',
                                                     color: MyColors.heading,
                                                     fontSize: 14,
                                                     fontFamily: 'regular',
                                                   ),
-                                                  ParagraphText(text: translate("add_detail.added")),
+                                                  ParagraphText(
+                                                      text: translate(
+                                                          "add_detail.added")),
                                                 ],
                                               ),
-                                              IconButton(onPressed: (){
-                                                selectedChannelsList.removeAt(i);
-                                                setState(() {
-
-                                                });
-                                              }, icon: Icon(
-                                                Icons.delete,
-                                                size: 20,
-                                                color: MyColors.blackColor
-                                                    .withOpacity(0.5),
-                                              ),),
+                                              IconButton(
+                                                onPressed: () {
+                                                  selectedChannelsList
+                                                      .removeAt(i);
+                                                  setState(() {});
+                                                },
+                                                icon: Icon(
+                                                  Icons.delete,
+                                                  size: 20,
+                                                  color: MyColors.blackColor
+                                                      .withOpacity(0.5),
+                                                ),
+                                              ),
                                             ]),
                                       ],
                                     ),
@@ -1396,11 +1432,10 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                           ),
                         ),
                     DropdownSearch<dynamic>(
-
-                      onChanged: (dynamic value){
+                      onChanged: (dynamic value) {
                         // selectedChannel1 = value['id'].toString();
                         // selectedChannelImageUrl = value['image'];
-                        if(selectedChannelsList.contains(value)){
+                        if (selectedChannelsList.contains(value)) {
                           print('lkdsgkldfslkg');
                           selectedChannelsList.remove(value);
                         }
@@ -1408,9 +1443,8 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                         // print(selectedChannel);
                         setState(() {});
                       },
-                      dropdownBuilder: (context,dynamic m){
-
-                        print('drowpdown builder---'+m.toString());
+                      dropdownBuilder: (context, dynamic m) {
+                        print('drowpdown builder---' + m.toString());
                         // if(m!=null){
                         //   return Row(
                         //     children: [
@@ -1433,52 +1467,52 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                         // }
                         // else
                         return Row(
-                          children:[
+                          children: [
                             hSizedBox05,
                             CircleAvatarcustom(
                                 image: MyImages.add_playlist,
                                 width: 20,
                                 height: 20,
                                 fit: BoxFit.fitWidth,
-                                borderradius: 0)
-                            ,
+                                borderradius: 0),
                             hSizedBox2,
                             Text(translate("add_detail.selectChannel")),
                           ],
                         );
-
                       },
-
                       items: channels,
-
                       dropdownDecoratorProps: DropDownDecoratorProps(
-
                         dropdownSearchDecoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                          contentPadding:
+                              EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                           border: InputBorder.none,
                           labelText: "",
-                          hintText:translate("add_detail.selectChannel"),
+                          hintText: translate("add_detail.selectChannel"),
                         ),
                       ),
                       popupProps: PopupProps.bottomSheet(
-
-                          title: Center(child: Padding(
-                            padding: const EdgeInsets.only(top: 10,bottom: 5),
-                            child: Text(translate("add_detail.selectChannel"), style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+                          title: Center(
+                              child: Padding(
+                            padding: const EdgeInsets.only(top: 10, bottom: 5),
+                            child: Text(
+                              translate("add_detail.selectChannel"),
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
                           )),
                           // itemBuilder: channels,
-                          itemBuilder: (context,dynamic m, isSelected){
+                          itemBuilder: (context, dynamic m, isSelected) {
                             return Container(
-                                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 20),
                                 child: Row(
-                                  children:
-                                  [
-
+                                  children: [
                                     Container(
                                       height: 40,
                                       width: 40,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(5),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
                                           image: DecorationImage(
                                             image: NetworkImage(
                                               m['image'],
@@ -1486,18 +1520,15 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                                             fit: BoxFit.fitHeight,
                                           )),
                                     ),
-                                    hSizedBox,  Text(m['name']),
+                                    hSizedBox,
+                                    Text(m['name']),
                                   ],
-                                )
-                            );
+                                ));
                           },
                           //   title: Text("mizan"),
                           showSearchBox: true,
                           bottomSheetProps: BottomSheetProps(
-                              elevation: 16,
-
-                              backgroundColor: Colors.white
-                          )),
+                              elevation: 16, backgroundColor: Colors.white)),
                     ),
                     // DropdownSearch<String>(
                     //   popupProps: PopupProps.menu(
@@ -1514,70 +1545,66 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                     // ),
                     ///hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 
-                    if(!hideCreateChannel)
-                    Center(
-                      child: ParagraphText(
-                        text: translate("add_detail.or"),
+                    if (!hideCreateChannel)
+                      Center(
+                        child: ParagraphText(
+                          text: translate("add_detail.or"),
+                        ),
                       ),
-                    ),
-                    if(!hideCreateChannel)
-                    vSizedBox2,
-                    if(!hideCreateChannel)
-                    RoundEdgedButton(
-                      text: translate("add_detail.createPrivateChannel"),
-                      horizontalMargin: 120,
-                      height: null,
-                      verticalPadding: 10,
-                      onTap: ()async{
-                        print(channels);
-                        String? name = await push(context: context, screen: CreatePrivateChannel());
-                        if(name!=null){
-                          channels = await Webservices.getList(ApiUrls.getChannels);
-                          channels.forEach((element) {
-                            if(element['name']==name){
-                              selectedChannelsList.add(element);
-                             //  print('the channel name existsss');
-                             //  print(selectedChannel1);
-                             //  print('the channel1');
-                             //  print(selectedChannel);
-                             //  print('the channel1');
-                             // selectedChannel = element;
-                             //  selectedChannelImageUrl = element['image'];
-                             // selectedChannel1 = element['id'].toString();
-                             // hideCreateChannel = true;
-                            }
-                          });
-                          setState(() {
-
-                          });
-                        }
-
-                      },
-                    ),
+                    if (!hideCreateChannel) vSizedBox2,
+                    if (!hideCreateChannel)
+                      RoundEdgedButton(
+                        text: translate("add_detail.createPrivateChannel"),
+                        horizontalMargin: 120,
+                        height: null,
+                        verticalPadding: 10,
+                        onTap: () async {
+                          print(channels);
+                          String? name = await push(
+                              context: context, screen: CreatePrivateChannel());
+                          if (name != null) {
+                            channels =
+                                await Webservices.getList(ApiUrls.getChannels);
+                            channels.forEach((element) {
+                              if (element['name'] == name) {
+                                selectedChannelsList.add(element);
+                                //  print('the channel name existsss');
+                                //  print(selectedChannel1);
+                                //  print('the channel1');
+                                //  print(selectedChannel);
+                                //  print('the channel1');
+                                // selectedChannel = element;
+                                //  selectedChannelImageUrl = element['image'];
+                                // selectedChannel1 = element['id'].toString();
+                                // hideCreateChannel = true;
+                              }
+                            });
+                            setState(() {});
+                          }
+                        },
+                      ),
                     vSizedBox2,
                     Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: 10, horizontal: 16),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 16),
                       child: Container(
                         padding: EdgeInsets.symmetric(horizontal: 16),
                         child: Row(
                           children: [
-
-                              CircleAvatarcustom(
-                                image: MyImages.add_playlist,
-                                height: 20,
-                                width: 20,
-                               fit: BoxFit.fitWidth,
-                                borderradius: 0,
-                              ),
-
+                            CircleAvatarcustom(
+                              image: MyImages.add_playlist,
+                              height: 20,
+                              width: 20,
+                              fit: BoxFit.fitWidth,
+                              borderradius: 0,
+                            ),
                             Expanded(
                               child: CustomDropDown(
                                 onChanged: (value) {
                                   freshness = value;
-                                  if(freshness!=freshnessList[0]){
+                                  if (freshness != freshnessList[0]) {
                                     isFreshnessPurchased = true;
-                                  }else{
+                                  } else {
                                     isFreshnessPurchased = false;
                                   }
                                   setState(() {});
@@ -1586,10 +1613,12 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                                 selectedItem: freshness,
                                 items: List.generate(
                                   freshnessList.length,
-                                      (index) => DropdownMenuItem(
+                                  (index) => DropdownMenuItem(
                                     value: freshnessList[index],
                                     child: Text(
-                                      freshnessList[index]=='0'?translate("add_detail.noFreshness"):freshnessList[index],
+                                      freshnessList[index] == '0'
+                                          ? translate("add_detail.noFreshness")
+                                          : freshnessList[index],
                                     ),
                                   ),
                                 ),
@@ -1640,8 +1669,6 @@ class _Add_Detail_PageState extends State<Add_Detail_Page> {
                       //   ],
                       // ),
                     ),
-
-
                   ],
                 ),
               ),
